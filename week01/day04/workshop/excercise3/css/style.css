@@ -1,0 +1,27 @@
+body {
+  margin: 0px;
+}
+
+div {
+  font-size: 36px;
+  font-family: Arial;
+  color: white;
+  text-align: center;
+  border: 16px solid #4285F4;
+  width: 385px;
+  margin: 2px;
+}
+
+p {
+  margin: 0px;
+  line-height: 128px;
+}
+
+body div:first-of-type {
+  background: #E67676;
+  margin-bottom: 6px;
+}
+
+body div:last-of-type {
+  background: #A9E6E6;
+}
