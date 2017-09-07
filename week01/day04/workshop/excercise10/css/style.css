@@ -1,0 +1,57 @@
+body {
+  width: 272px;
+  margin: 0px;
+}
+
+div {
+  margin-left: 3px;
+  margin-top: 4px;
+  margin-bottom: 8px;
+  margin-right: 5px;
+  font-family: "Courier";
+  color: white;
+  padding-left: 2.5em;
+  padding-right: 2.5em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  text-align: center;
+  position: relative;
+  z-index: -1;
+}
+
+p {
+  text-align: center;
+  z-index: 0;
+}
+
+div:first-of-type {
+  background: #FF6347;
+}
+
+div:nth-of-type(2) {
+  background-color: #643579;
+}
+
+div:last-of-type {
+  background: #808080;
+}
+
+div img {
+  position: absolute;
+  z-index: -1;
+}
+
+#img1 {
+  left: 0px;
+  top: 40px;
+}
+
+#img2 {
+  left: 25px;
+  top: 30px;
+}
+
+#img3 {
+  bottom: 0px;
+  right: 0px;
+}
