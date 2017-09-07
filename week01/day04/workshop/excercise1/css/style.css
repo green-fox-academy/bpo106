@@ -1,0 +1,21 @@
+body {
+  display: block;
+  margin-top: 4px;
+  margin-left: 4px;
+  margin-right: 5px;
+  margin-bottom: 6px;
+}
+
+p {
+  color: #005566;
+  background-color: #0E91A1;
+  border: 5px solid #7DCE94;
+  width: 359px;
+  height: 163px;
+  font-size: 36px;
+  font-family: arial;
+  margin-bottom: 16px;
+  margin-top: 0px;
+  line-height: 80px;
+  text-indent: 16px;
+}
