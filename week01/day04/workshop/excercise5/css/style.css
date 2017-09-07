@@ -1,0 +1,34 @@
+body {
+  width: 340px; 
+}
+
+h3 {
+  color: #8A2BE2;
+}
+
+h2 {
+  color: 	#FF6347;
+  font-weight: 1000;
+}
+
+h2, h3 {
+  font-family: 'Vollkorn', serif;
+  font-weight: bold;
+  margin-bottom: 12px;
+  margin-top: 12px;
+}
+
+p, li {
+  font-size: 12px;
+  margin-bottom: 2px;
+  margin-top: 2px;
+}
+
+ol li:nth-child(1), ol li:nth-child(2), ol li:nth-child(3) {
+  color: #FF32FF;
+}
+
+ol li {
+  list-style-type: upper-roman;
+  text-decoration: underline;
+}
