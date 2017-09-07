@@ -1,0 +1,30 @@
+body {
+  font-size: 36px;
+  font-family: Arial;
+  color: white;
+  text-align: center;
+  border: 16px solid #4285F4;
+  width: 385px;
+  margin: 2px;
+}
+
+p {
+  margin: 0px;
+  line-height: 128px;
+}
+
+body p:first-of-type {
+  background: #E67676;
+}
+
+body p:nth-of-type(2) {
+  background: #F2F062;
+}
+
+body p:nth-of-type(3) {
+  background: #A9E6E6;
+}
+
+body p:nth-of-type(4) {
+  background: #7692E4;
+}
