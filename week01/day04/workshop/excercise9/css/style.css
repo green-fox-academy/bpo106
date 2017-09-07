@@ -6,13 +6,14 @@ body {
 p {
   display: inline-block;
   width: 340px;
+  font-size: 18px;
   padding: 1em;
   margin-right: 0px;
   margin-bottom: 0px;
   margin: 0px;
   border: 2px solid black;
   border-top: 0px;
-  line-height: 34px;
+  line-height: 36px;
   text-align: left;
 }
 
