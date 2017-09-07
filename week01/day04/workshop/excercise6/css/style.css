@@ -1,0 +1,24 @@
+span {
+  float: left;
+  text-align: center;
+  line-height: 128px;
+  width: 128px;
+  font-family: "Arial";
+  font-size: 28px;
+  border-radius: 64px;
+  color: white;
+  margin: 10px;
+  background-color: #0CEBDE;
+}
+
+span:first-of-type {
+  background-color: #B90CEB;
+}
+
+span:last-of-type {
+  background-color: #EBBE0C;
+}
+
+br {
+  line-height: 148px;
+}
