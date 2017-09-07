@@ -1,0 +1,29 @@
+body {
+  margin: 4px;
+}
+
+div {
+  margin-bottom: 12px;
+  border: 2px solid #4285F4;
+  width: 694px;
+  height: 100px;
+}
+
+div img {
+  display: inline-block;
+  margin: 25px 6px 25px 6px;
+}
+
+div :first-child {
+  display: inline-block;
+  margin: 25px 6px 25px 25px;
+}
+
+div :last-child {
+  display: inline-block;
+  margin: 25px 25px 25px 6px;
+}
+
+body :last-child {
+  background-color: #FF6347;
+}
