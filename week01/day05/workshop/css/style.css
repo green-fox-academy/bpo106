@@ -7,10 +7,12 @@ body {
   width: 620px;
   height: 784px;
   background-color: #127731;
-  border-bottom: 18px solid #DCD6CD;
-  border-top: 11px solid #DCD6CD;
-  border-left: 100px solid #DCD6CD;
-  border-right: 100px solid #DCD6CD;
+  border-bottom: 18px;
+  border-top: 11px;
+  border-left: 100px;
+  border-right: 100px;
+  border-style: solid;
+  border-color: #DCD6CD;
 }
 
 #content-outside {
@@ -22,6 +24,8 @@ body {
 
 #content-inside {
   background-color: #FFE42E;
+  outline-color: #FFC126;
+  outline-style: solid;
 }
 
 #content-outside:last-child .content:last-child {
@@ -42,4 +46,32 @@ body {
   display: inline-block;
   margin-right: -4px;
   margin-bottom: -4px;
+}
+
+.content-small, .content-smaller {
+  outline-color: black;
+  outline-style: solid;
+  position: absolute;
+  outline-width: 2px;
+}
+
+.content-smaller {
+  width: 143px;
+  top: 212px;
+  height: 46px;
+}
+
+.content-smaller:first-child {
+  left: 112px;
+}
+
+.content-smaller:last-child {
+  left: 255px;
+}
+
+.content-small {
+  left: 112px;
+  top: 295px;
+  width: 286px;
+  height: 151px;
 }
