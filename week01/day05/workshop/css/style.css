@@ -13,20 +13,23 @@ body {
   border-right: 100px solid #DCD6CD;
 }
 
-#content-look {
-  border: 12px solid #FF1200;
-  background-color: #FFE42E;
+#content-outside {
+  padding: 12px;
+  background-color: #FF1200;
   margin-top: 12px;
   margin-bottom: 4px;
-  /*height: 100px; random érték*/
 }
 
-.content:first-child {
-  height: 17px;
+#content-inside {
+  background-color: #FFE42E;
 }
 
-.content:last-child {
+#content-outside:last-child .content:last-child {
   height: 158px;
+}
+
+#content-outside:first-child .content:first-child {
+  height: 17px;
 }
 
 .content {
