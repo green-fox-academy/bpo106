@@ -1,0 +1,42 @@
+body {
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+.overall {
+  width: 620px;
+  height: 784px;
+  background-color: #127731;
+  border-bottom: 18px solid #DCD6CD;
+  border-top: 11px solid #DCD6CD;
+  border-left: 100px solid #DCD6CD;
+  border-right: 100px solid #DCD6CD;
+}
+
+#content-look {
+  border: 12px solid #FF1200;
+  background-color: #FFE42E;
+  margin-top: 12px;
+  margin-bottom: 4px;
+  /*height: 100px; random érték*/
+}
+
+.content:first-child {
+  height: 17px;
+}
+
+.content:last-child {
+  height: 158px;
+}
+
+.content {
+  width: 596px;
+}
+
+.half-content {
+  width: 286px;
+  height: 410px;
+  display: inline-block;
+  margin-right: -4px;
+  margin-bottom: -4px;
+}
