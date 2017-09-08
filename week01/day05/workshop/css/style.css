@@ -1,7 +1,12 @@
+/* Minden, ami a laphoz kell általánosan*/
+
 body {
   margin: 0px;
   box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
 }
+
+/* Dobozstruktúra*/
 
 .overall {
   width: 620px;
@@ -74,4 +79,11 @@ body {
   top: 311px;
   width: 286px;
   height: 151px;
+}
+
+/* Kontentek, melyek kellemesek lesznak a szemnek*/
+
+h3 {
+  margin: 0px;
+  font-weight: 400;
 }
