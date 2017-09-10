@@ -13,22 +13,71 @@
         </div>
       </div>
       <div>
-        <span id="content-outside" class="half-content">
-          <div id="content-inside" class="half-content">
+        <div id="content-outside" class="content">
+          <span id="content-inside" class="half-content">
+            <h3>Személyes adatok</h3>
+            <p>Név <span id="red">*</span></p>
+            <input type="text" name="name" style="width: 282px; height: 30px;" required>
             <div>
-              <span class="content-smaller"></span>
-              <span class="content-smaller"></span>
+              <span class="content-smaller">
+                <p>Születési éved <span id="red">*</span></p>
+                <form>
+                  <input type="year" name="year" placeholder="pl. 1984" style="width: 80px; height: 30px;" required>
+                </form>
+              </span>
+              <span class="content-smaller">
+                <p>Nemed <span id="red">*</span></p>
+                <form>
+                  <input type="radio" id="female" name="gender" checked /><label for="female">nő</label>
+                  <input type="radio" id="male" name="gender" /><label for="male">férfi</label>
+              </span>
             </div>
-            <div class="content-small"></div>
-          </div>
-        </span>
-        <span id="content-outside" class="half-content">
-          <div id="content-inside" class="half-content">
-          </div>
-        </span>
+            <div class="content-small">
+              <p>Milyen márkákat szeretsz?</p>
+              <table>
+                <form>
+                <tr><td><form><input type="checkbox" id="adidas" name="brand" /><label for="adidas">Adidas</label></form></td>
+                <td><form><input type="checkbox" id="opel" name="brand" /><label for="opel">Opel</label></form></td></tr>
+                <tr><td><form><input type="checkbox" id="apple" name="brand" /><label for="apple">Apple</label></form></td>
+                <td><form><input type="checkbox" id="rayban" name="brand" /><label for="rayban">Ray-Ban</label></form></td></tr>
+                <tr><td><form><input type="checkbox" id="cocacola" name="brand" /><label for="cocacola">Coca-Cola</label></form></td>
+                <td><form><input type="checkbox" id="starbucks" name="brand" /><label for="starbucks">Starbucks</label></form></td></tr>
+                <tr><td><form><input type="checkbox" id="mazda" name="brand" /><label for="mazda">Mazda</label></form></td>
+                <td><form><input type="checkbox" id="tesla" name="brand" /><label for="tesla">Tesla</label></form></td></tr>
+                <tr><td><form><input type="checkbox" id="nike" name="brand" /><label for="nike">Nike</label></form></td>
+                <td><form><input type="checkbox" id="yahoo" name="brand" /><label for="yahoo">Yahoo</label></form></td></tr>
+              </table>
+              <p>Többet is választhatsz!</p>
+            </div>
+          </span>
+          <span id="content-inside" class="half-content">
+            <h3>Kapcsolat</h3>
+            <p>Telefonszám <span id="red">*</span></p>
+            <form><input type="tel" name="tel" placeholder="+36 -- --- ----" style="width: 282px; height: 30px;" required></form>
+            <p>E-mail cím <span id="red">*</span></p>
+            <form><input type="email" name="email" placeholder="nev@domain.hu" style="width: 282px; height: 30px;" required></form>
+            <p>Facebook profilod</p>
+            <form><input type="url" name="url" placeholder="http://www.facebook.com/..." style="width: 282px; height: 30px;"></form>
+            <p>Twitter profilod</p>
+            <form><input type="url" name="url" placeholder="http://www.twitter.com/..." style="width: 282px; height: 30px;"></form>
+            <p>Milyen házban laksz?</p>
+            <select style="width: 286px; height: 30px;">
+              <option value="" disabled selected>Válassz típust!</option>
+              <option value="csh">Családi ház</option>
+              <option value="th">Társasház</option>
+              <option value="lak">Lakás</option>
+              <option value="kd">Kartondoboz</option>
+            </select>
+          </span>
+        </div>
       </div>
       <div id="content-outside" class="content">
         <div id="content-inside" class="content">
+          <p>Bemutatkozás <span id="red">*</span></p>
+          <form id="cv"><input type="text" name="text" placeholder="Írj magadról pár mondatot!" style="width: 592px; height: 165px;"></form>
+          <p>CV feltöltése</p>
+          <form>
+              <input type="checkbox" name="accept" required /><label>Elfogadom a <a href="404.txt">felhasználási feltételeket</a></label></form>
         </div>
       </div>
     </div>

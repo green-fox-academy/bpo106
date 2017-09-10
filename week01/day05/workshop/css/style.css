@@ -10,7 +10,7 @@ body {
 
 .overall {
   width: 620px;
-  height: 784px;
+  height: auto;
   background-color: #127731;
   border-bottom: 18px;
   border-top: 11px;
@@ -25,32 +25,40 @@ body {
   background-color: #FF1200;
   margin-top: 12px;
   margin-bottom: 4px;
+  height: auto;
 }
 
 #content-inside {
   background-color: #FFE42E;
   outline-color: #FFC126;
   outline-style: solid;
+  height: 500px;
 }
 
 #content-outside:last-child .content:last-child {
-  height: 158px;
+  height: auto;
 }
 
 #content-outside:first-child .content:first-child {
-  height: 17px;
+  height: auto;
 }
 
 .content {
   width: 596px;
+  height: auto;
 }
 
 .half-content {
   width: 286px;
-  height: 410px;
+  height: auto; /*random érték*/
   display: inline-block;
   margin-right: -4px;
   margin-bottom: -4px;
+}
+
+.half-content:last-child {
+  position: absolute;
+  left: 422px;
 }
 
 .content-small, .content-smaller {
@@ -62,28 +70,50 @@ body {
 
 .content-smaller {
   width: 143px;
-  top: 228px;
-  height: 46px;
 }
 
 .content-smaller:first-child {
-  left: 112px;
+  position: absolute;
 }
 
 .content-smaller:last-child {
   left: 255px;
+  height: 88px;
 }
 
 .content-small {
-  left: 112px;
-  top: 311px;
   width: 286px;
-  height: 151px;
+  margin-top: 120px;
 }
 
 /* Kontentek, melyek kellemesek lesznak a szemnek*/
 
 h3 {
   margin: 0px;
+  position: relative;
   font-weight: 400;
+}
+
+label {
+  margin-right: 38px;
+}
+
+label[for="male"], label[for="female"] {
+  margin-right: 20px;
+}
+
+#red {
+  color: red;
+}
+
+select {
+  color: #757790;
+}
+
+#cv {
+  text-align: top;
+}
+
+a, a:hover, a:active, a:visited {
+  color: black;
 }
