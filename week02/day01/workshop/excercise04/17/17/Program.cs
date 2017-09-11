@@ -22,7 +22,9 @@ namespace _17
                 sum += number[i];
             }
             d = i;
+            Console.Write("Sum: ");
             Console.WriteLine(sum);
+            Console.Write("Average: ");
             Console.WriteLine(sum/d);
             Console.ReadLine();
         }
