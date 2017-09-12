@@ -105,17 +105,13 @@ label[for="male"], label[for="female"] {
   color: red;
 }
 
-select, {
+select {
   color: #757790;
 }
 
 #select {
   color: #9F9C98;
   line-height: 65px;
-}
-
-#cv {
-  text-align: top;
 }
 
 h3 {
