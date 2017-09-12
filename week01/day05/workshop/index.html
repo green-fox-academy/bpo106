@@ -9,7 +9,7 @@
     <div class="overall">
       <div id="content-outside" class="content">
         <div id="content-inside" class="content">
-          <h3>Profil</h3>
+          <h2>Profil</h2>
         </div>
       </div>
       <div>
@@ -47,7 +47,7 @@
                 <tr><td><form><input type="checkbox" id="nike" name="brand" /><label for="nike">Nike</label></form></td>
                 <td><form><input type="checkbox" id="yahoo" name="brand" /><label for="yahoo">Yahoo</label></form></td></tr>
               </table>
-              <p>Többet is választhatsz!</p>
+              <p, id="select">Többet is választhatsz!</p>
             </div>
           </span>
           <span id="content-inside" class="half-content">
@@ -76,9 +76,15 @@
           <p>Bemutatkozás <span id="red">*</span></p>
           <form id="cv"><input type="text" name="text" placeholder="Írj magadról pár mondatot!" style="width: 592px; height: 165px;"></form>
           <p>CV feltöltése</p>
-          <input type="file" style="width: 220px; height: 40px;" /><label></label>
+          <img src="images/UploadButton.png" id="upload" style="cursor:pointer" />
+          <input type="file" style="display:none;" />
           <form>
-              <input type="checkbox" name="accept" required /><label>Elfogadom a <a href="404.txt">felhasználási feltételeket</a></label></form>
+              <input id="save" type="checkbox" name="accept" required /><label>Elfogadom a <a href="404.txt">felhasználási feltételeket</a></label>
+          </form>
+          <img src="images/Save.png" id="save" style="cursor:pointer" />
+          <input type="submit" style="display:none;" />
+          <img src="images/Delete.png" id="delete"" style="cursor:pointer" />
+          <input type="submit" style="display:none;" />
         </div>
       </div>
     </div>

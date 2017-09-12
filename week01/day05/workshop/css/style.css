@@ -11,7 +11,7 @@ body {
 .overall {
   width: 620px;
   height: auto;
-  background-color: #127731;
+  background-color: #DCD6CD;
   border-bottom: 18px;
   border-top: 11px;
   border-left: 100px;
@@ -22,17 +22,17 @@ body {
 
 #content-outside {
   padding: 12px;
-  background-color: #FF1200;
+  background-color: #DCD6CD;
   margin-top: 12px;
   margin-bottom: 4px;
   height: auto;
 }
 
 #content-inside {
-  background-color: #FFE42E;
-  outline-color: #FFC126;
+  background-color: #DCD6CD;
+  outline-color: #DCD6CD;
   outline-style: solid;
-  height: 500px;
+  height: 480px;
 }
 
 #content-outside:last-child .content:last-child {
@@ -50,7 +50,6 @@ body {
 
 .half-content {
   width: 286px;
-  height: auto; /*random érték*/
   display: inline-block;
   margin-right: -4px;
   margin-bottom: -4px;
@@ -62,7 +61,7 @@ body {
 }
 
 .content-small, .content-smaller {
-  outline-color: black;
+  outline-color: #DCD6CD;
   outline-style: solid;
   position: absolute;
   outline-width: 2px;
@@ -106,14 +105,40 @@ label[for="male"], label[for="female"] {
   color: red;
 }
 
-select {
+select, {
   color: #757790;
+}
+
+#select {
+  color: #9F9C98;
+  line-height: 65px;
 }
 
 #cv {
   text-align: top;
 }
 
-a, a:hover, a:active, a:visited {
-  color: black;
+h3 {
+  background-color: #938C97;
+  color: white;
+  line-height: 40px;
+}
+
+h2, label, a, a:hover, a:active, a:visited {
+  font-weight: 400px;
+  color: #494261;
+}
+
+p {
+  color: #494261;
+  font-weight: bold;
+}
+
+#save {
+  margin-top: 30px;
+}
+
+#delete {
+  float: right;
+  margin-top: 30px;
 }
