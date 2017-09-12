@@ -18,7 +18,7 @@ namespace _06
             Console.ReadLine();
         }
 
-        static void printer(params string[] strings)
+        static void printer(string[] strings)
         {
             for (int i = 0; i < strings.Length; i++) Console.WriteLine(strings[i]);
         }
