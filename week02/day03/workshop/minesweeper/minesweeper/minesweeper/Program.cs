@@ -106,11 +106,19 @@ namespace minesweeper
             Console.Clear();
             string[,] fieldSee = PreField(h, w, "■");
             FieldDrawer(fieldSee);
+            int x = 15;
+            int y = 15;
 
-            Console.Write("Set the X coordinate: ");
-            int x = Int32.Parse(Console.ReadLine());
-            Console.Write("Set the Y coordinate: ");
-            int y = Int32.Parse(Console.ReadLine());
+            while (x > w - 1)
+            {
+                Console.Write("Set the X coordinate: ");
+                x = Int32.Parse(Console.ReadLine());
+            }            
+            while (y > h - 1)
+            {
+                Console.Write("Set the Y coordinate: ");
+                y = Int32.Parse(Console.ReadLine());
+            }
 
             string[,] field = PreField(h, w, "0");
             field = Mineplacer(field, mines, x, y);
@@ -128,6 +136,7 @@ namespace minesweeper
                 x = Int32.Parse(Console.ReadLine());
                 Console.Write("Set the Y coordinate: ");
                 y = Int32.Parse(Console.ReadLine());
+
                 count++; // teszt
             }
 
