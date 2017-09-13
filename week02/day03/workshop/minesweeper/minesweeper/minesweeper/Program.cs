@@ -21,13 +21,13 @@ namespace minesweeper
             return field;
         }
 
-        static string[,] Mineplacer (string[,] field, int h, int w, int minenum)
+        static string[,] Mineplacer (string[,] field, int minenum)
         {
             for (int i = 0; i < minenum;)
             {
                 Random rnd = new Random();
-                int a = rnd.Next(0, h);
-                int b = rnd.Next(0, w);
+                int a = rnd.Next(0, field.GetLength(0));
+                int b = rnd.Next(0, field.GetLength(1));
                 if (field[a,b] == "0")
                 {
                     field[a, b] = "*";
@@ -37,16 +37,42 @@ namespace minesweeper
             return field;
         }
 
-        static void FieldDrawer (string[,] field, int h, int w)
+        static void FieldDrawer (string[,] field)
         {
-            for (int i = 0; i < h; i++)
+            for (int i = 0; i < field.GetLength(0); i++)
             {
-                for (int j = 0; j < w; j++)
+                for (int j = 0; j < field.GetLength(1); j++)
                 {
                     Console.Write(field[i, j] + " ");
                 }
                 Console.WriteLine();
             }
+        }
+
+        static string[,] FieldCounter (string[,] field)
+        {
+            for (int i = 0; i < field.GetLength(0); i++)
+            {
+                for (int j = 0; j < field.GetLength(1); j++)
+                {
+                    if (field[i, j] == "0")
+                    {
+                        int k = 0;
+
+                        if (i > 0 && j > 0 && field[i - 1, j - 1] == "*") k++;
+                        if (i > 0 && j < field.GetLength(1) - 1 && field[i - 1, j + 1] == "*") k++;
+                        if (i < field.GetLength(0) - 1 && j < field.GetLength(1) - 1 && field[i + 1, j + 1] == "*") k++;
+                        if (i < field.GetLength(0) - 1 && j > 0 && field[i + 1, j - 1] == "*") k++;
+                        if (i < field.GetLength(0) - 1 && field[i + 1, j] == "*") k++;
+                        if (j < field.GetLength(1) - 1 && field[i, j + 1] == "*") k++;
+                        if (i > 0 && field[i - 1, j] == "*") k++;
+                        if (j > 0 && field[i, j - 1] == "*") k++;
+
+                        field[i, j] = k.ToString();
+                    }
+                }
+            }
+            return field;
         }
 
         static void Main(string[] args)
@@ -75,8 +101,10 @@ namespace minesweeper
             }
 
             string[,] field = PreField(h, w);
-            field = Mineplacer(field, h, w, mines);
-            FieldDrawer(field, h, w);
+            field = Mineplacer(field, mines);
+            field = FieldCounter(field);
+
+            FieldDrawer(field);
 
             Console.ReadLine();
         }
