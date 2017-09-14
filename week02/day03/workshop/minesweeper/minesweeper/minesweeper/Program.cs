@@ -97,6 +97,20 @@ namespace minesweeper
             return field;
         }
 
+        static string[,] Submit (string[,] fieldSee, int[,] field, int ycoord, int xcoord)
+        {
+            for (int xc = Math.Max(0, xcoord-1);xc<Math.Min(xcoord+1,fieldSee.GetLength(1)); xc++)
+            {
+                for (int yc = Math.Max(0, ycoord - 1); xc < Math.Min(ycoord + 1, fieldSee.GetLength(0)); yc++)
+                {
+                    if (field[xc, yc] == 0)
+                        fieldSee[xc, yc] = "-";
+                    Submit(fieldSee, field, yc, xc);
+                }
+            }
+            return fieldSee;
+        }
+
         static void Main(string[] args)
         {
             Random random = new Random();
@@ -167,7 +181,10 @@ namespace minesweeper
                 {
                     Console.Clear();
                     if (field[ycoord,xcoord] == 0)
+                    {
                         fieldSee[ycoord, xcoord] = "-";
+                        fieldSee = Submit(fieldSee, field, ycoord, xcoord);
+                    }
                     else
                         fieldSee[ycoord, xcoord] = field[ycoord, xcoord].ToString();
 
