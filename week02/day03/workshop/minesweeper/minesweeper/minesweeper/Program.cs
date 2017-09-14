@@ -11,9 +11,9 @@ namespace minesweeper
         static string[,] PreField (int height, int width, string s)
         {
             string[,] field = new string[height, width];
-            for (int i = 0; i< height;i++)
+            for ( int i = 0; i < height;i++ )
             {
-                for (int j = 0; j < width;j++)
+                for ( int j = 0; j < width ; j++ )
                 {
                     field[i, j] = s;
                 }
@@ -21,14 +21,14 @@ namespace minesweeper
             return field;
         }
 
-        static string[,] Mineplacer (string[,] field, int minenum, int x, int y)
+        static string[,] Mineplacer (string[,] field, int minenum, int xcoord, int ycoord)
         {
-            for (int i = 0; i < minenum;)
+            for ( int i = 0; i < minenum; )
             {
-                Random rnd = new Random();
-                int a = rnd.Next(0, field.GetLength(0));
-                int b = rnd.Next(0, field.GetLength(1));
-                if (field[a,b] == "0" && a != y && b != x)
+                Random random = new Random();
+                int a = random.Next(0, field.GetLength(0));
+                int b = random.Next(0, field.GetLength(1));
+                if (field[a,b] == "0" && a != ycoord && b != xcoord)
                 {
                     field[a, b] = "*";
                     i++;
@@ -39,9 +39,9 @@ namespace minesweeper
 
         static void FieldDrawer (string[,] field)
         {
-            for (int i = 0; i < field.GetLength(0); i++)
+            for ( int i = 0; i < field.GetLength(0); i++ )
             {
-                for (int j = 0; j < field.GetLength(1); j++)
+                for ( int j = 0; j < field.GetLength(1); j++ )
                 {
                     Console.Write(field[i, j] + " ");
                 }
@@ -78,27 +78,23 @@ namespace minesweeper
 
         static void Main(string[] args)
         {
-            Random rnd = new Random();
+            Random random = new Random();
             bool amIdead = false;
-            int h = 4; //rnd.Next(5, 15);
-            int w = 4; //rnd.Next(5, 15);
+            int height = random.Next(5, 15);
+            int width = random.Next(5, 15);
 
             Console.WriteLine("It's time to play the game!");
-            Console.Write("Height: ");
-            Console.WriteLine(h);
-            Console.Write(" Width: ");
-            Console.WriteLine(w);
-            int mines=h*w;
+            Console.WriteLine("Height: {0}", height);
+            Console.WriteLine("Width: {0}", width);
+            int mines = height * width;
 
-            Console.Write("Set the number of mines (less than ");
-            Console.Write(h * w - 1);
-            Console.Write("): ");
+            Console.WriteLine("Set the number of mines (less than {0})", height * width - 1, ":");
 
-            while (mines >= h * w - 1)
+            while (mines >= height * width - 1)
             {
                 var input = Console.ReadLine();
                 Int32.TryParse(input, out mines);
-                if (mines >= h * w - 1)
+                if (mines >= height * width - 1)
                 {
                     Console.WriteLine("Too many mines!");
                     Console.ReadLine();
@@ -107,31 +103,31 @@ namespace minesweeper
             }
 
             Console.Clear();
-            string[,] fieldSee = PreField(h, w, "■");
+            string[,] fieldSee = PreField(height, width, "■");
             FieldDrawer(fieldSee);
-            int x = 15;
-            int y = 15;
+            int xcoord = 15;
+            int ycoord = 15;
 
-            while (x > w - 1)
+            while (xcoord > width - 1)
             {
                 Console.Write("Set the X coordinate: ");
-                x = Int32.Parse(Console.ReadLine());
+                xcoord = Int32.Parse(Console.ReadLine());
             }            
-            while (y > h - 1)
+            while (ycoord > height - 1)
             {
                 Console.Write("Set the Y coordinate: ");
-                y = Int32.Parse(Console.ReadLine());
+                ycoord = Int32.Parse(Console.ReadLine());
             }
 
-            string[,] field = PreField(h, w, "0");
-            field = Mineplacer(field, mines, x, y);
+            string[,] field = PreField(height, width, "0");
+            field = Mineplacer(field, mines, xcoord, ycoord);
             field = FieldCounter(field);
 
             int count = fieldSee.GetLength(0) * fieldSee.GetLength(1) - mines - 1;
 
             while ((count > 0))
             {
-                if (field[y, x] == "*")
+                if (field[ycoord, xcoord] == "*")
                 {
                     count = 0;
                     Console.WriteLine("Killed By Death\nBtw R.I.P. Lemmy :(");
@@ -139,13 +135,13 @@ namespace minesweeper
                 else
                 {
                     Console.Clear();
-                    fieldSee[y, x] = field[y, x];
+                    fieldSee[ycoord, xcoord] = field[ycoord, xcoord];
                     FieldDrawer(fieldSee);
 
                     Console.Write("Set the X coordinate: ");
-                    x = Int32.Parse(Console.ReadLine());
+                    xcoord = Int32.Parse(Console.ReadLine());
                     Console.Write("Set the Y coordinate: ");
-                    y = Int32.Parse(Console.ReadLine());
+                    ycoord = Int32.Parse(Console.ReadLine());
 
                     count--;
                     if (count == 0) Console.WriteLine("We only live to win!");
