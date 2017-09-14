@@ -99,40 +99,53 @@ namespace minesweeper
 
         static string[,] Submit (string[,] fieldSee, int[,] field, int ycoord, int xcoord)
         {
-            field[ycoord, xcoord] = -1;
-            fieldSee[ycoord, xcoord] = "-";
-            if (xcoord > 0 && ycoord > 0)
+            if (field[ycoord, xcoord] == 0)
             {
-                if ( field[ycoord - 1, xcoord-1] == 0 ) fieldSee = Submit(fieldSee, field, ycoord - 1, xcoord - 1);
+                field[ycoord, xcoord] = -1;
+                fieldSee[ycoord, xcoord] = "-";
+
+                if (xcoord > 0 && ycoord > 0)
+                {
+                    fieldSee = Submit(fieldSee, field, ycoord - 1, xcoord - 1);
+                }
+
+                if (xcoord > 0 && ycoord < field.GetLength(0) - 1)
+                {
+                    fieldSee = Submit(fieldSee, field, ycoord + 1, xcoord - 1);
+                }
+
+                if (xcoord < field.GetLength(1) - 1 && ycoord < field.GetLength(0) - 1)
+                {
+                    fieldSee = Submit(fieldSee, field, ycoord + 1, xcoord + 1);
+                }
+
+                if (xcoord < field.GetLength(1) - 1 && ycoord > 0)
+                {
+                    fieldSee = Submit(fieldSee, field, ycoord - 1, xcoord + 1);
+                }
+
+                if (xcoord > 0)
+                {
+                    fieldSee = Submit(fieldSee, field, ycoord, xcoord - 1);
+                }
+
+                if (ycoord < field.GetLength(0) - 1)
+                {
+                    fieldSee = Submit(fieldSee, field, ycoord + 1, xcoord);
+                }
+
+                if (xcoord < field.GetLength(1) - 1)
+                {
+                    fieldSee = Submit(fieldSee, field, ycoord, xcoord + 1);
+                }
+
+                if (ycoord > 0)
+                {
+                    fieldSee = Submit(fieldSee, field, ycoord - 1, xcoord);
+                }
             }
-            if (xcoord > 0 && ycoord < field.GetLength(0) - 1)
-            {
-                if (field[ycoord + 1, xcoord - 1] == 0) fieldSee = Submit(fieldSee, field, ycoord + 1, xcoord - 1);
-            }
-            if (xcoord < field.GetLength(1) - 1 && ycoord < field.GetLength(0) - 1)
-            {
-                if (field[ycoord + 1, xcoord + 1] == 0) fieldSee = Submit(fieldSee, field, ycoord + 1, xcoord + 1);
-            }
-            if (xcoord < field.GetLength(1) - 1 && ycoord > 0)
-            {
-                if (field[ycoord - 1, xcoord + 1] == 0) fieldSee = Submit(fieldSee, field, ycoord - 1, xcoord + 1);
-            }
-            if (xcoord > 0)
-            {
-                if (field[ycoord, xcoord - 1] == 0) fieldSee = Submit(fieldSee, field, ycoord, xcoord - 1);
-            }
-            if (ycoord < field.GetLength(0) - 1)
-            {
-                if (field[ycoord + 1, xcoord] == 0) fieldSee = Submit(fieldSee, field, ycoord + 1, xcoord);
-            }
-            if (xcoord < field.GetLength(1) - 1)
-            {
-                if (field[ycoord, xcoord + 1] == 0) fieldSee = Submit(fieldSee, field, ycoord, xcoord + 1);
-            }
-            if (ycoord > 0)
-            {
-                if (field[ycoord - 1, xcoord] == 0) fieldSee = Submit(fieldSee, field, ycoord - 1, xcoord);
-            }
+            else if (field[ycoord, xcoord] != -1)
+                fieldSee[ycoord, xcoord] = field[ycoord, xcoord].ToString();
 
             return fieldSee;
         }
@@ -141,15 +154,17 @@ namespace minesweeper
         {
             Random random = new Random();
             bool amIdead = false;
-            int height = 8;//random.Next(5, 15);
-            int width = 8;//random.Next(5, 15);
 
             Console.WriteLine("It's time to play the game!");
-            Console.WriteLine("Height: {0}", height);
-            Console.WriteLine("Width: {0}", width);
+            Console.Write("Height: ");
+            int height = Int32.Parse(Console.ReadLine());
+            Console.Write("Width: ");
+            int width = Int32.Parse(Console.ReadLine());
+
             int mines = height * width;
 
-            Console.WriteLine("Set the number of mines (less than {0})", height * width - 1, ":");
+            Console.Write("Set the number of mines (less than {0})", height * width - 1);
+            Console.Write(": ");
 
             while (mines >= height * width - 1)
             {
@@ -184,15 +199,15 @@ namespace minesweeper
             field = Mineplacer(field, mines, xcoord, ycoord);
             field = FieldCounter(field);
 
-            int count = fieldSee.GetLength(0) * fieldSee.GetLength(1) - mines;
+            int count = height * width;
 
-            while ((count > 0))
+            while ((count > mines))
             {
                 Console.Clear();
 
                 if (field[ycoord, xcoord] == 9)
                 {
-                    count = 0;
+                    count = mines;
                     amIdead = true;
                     for (int i = 0; i < field.GetLength(1); i++ )
                     {
@@ -206,8 +221,6 @@ namespace minesweeper
 
                 else
                 {
-                    if (fieldSee[ycoord, xcoord] == "■") count--;
-
                     if (field[ycoord, xcoord] == 0 || field[ycoord, xcoord] == -1)
                     {
                         fieldSee = Submit(fieldSee, field, ycoord, xcoord);
@@ -215,8 +228,16 @@ namespace minesweeper
                     else fieldSee[ycoord, xcoord] = field[ycoord, xcoord].ToString();
 
                     FieldDrawer(fieldSee);
+                    count = 0;
+                    for (int i = 0; i < fieldSee.GetLength(0); i++)
+                    {
+                        for (int j = 0; j < fieldSee.GetLength(0); j++)
+                        {
+                            if (fieldSee[i, j] == "■") count++;
+                        }
+                    }
 
-                    if (count > 0)
+                    if (count > mines)
                     {
                         Console.Write("Set the X coordinate: ");
                         xcoord = Int32.Parse(Console.ReadLine());
