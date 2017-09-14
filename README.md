@@ -12,4 +12,4 @@
 ##### Fifth day;
 
 ### Minesweeper project
-##### Content: [yeah, this is it.](https://github.com/greenfox-academy/bpo106/tree/master/week02/day03/workshop/minesweeper/minesweeper)
+##### Content: [yeah, this is it.](https://github.com/greenfox-academy/bpo106/tree/master/week02/day03/workshop/minesweeper)
