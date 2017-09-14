@@ -97,19 +97,44 @@ namespace minesweeper
             return field;
         }
 
-        static string[,] Submit (string[,] fieldSee, int[,] field, int ycoord, int xcoord)
+        /*static string[,] Submit (string[,] fieldSee, int[,] field, int ycoord, int xcoord)
         {
-            for (int xc = Math.Max(0, xcoord-1);xc<Math.Min(xcoord+1,fieldSee.GetLength(1)); xc++)
+            field[ycoord, xcoord] = -1;
+            if (xcoord > 0 && ycoord > 0)
             {
-                for (int yc = Math.Max(0, ycoord - 1); xc < Math.Min(ycoord + 1, fieldSee.GetLength(0)); yc++)
-                {
-                    if (field[xc, yc] == 0)
-                        fieldSee[xc, yc] = "-";
-                    Submit(fieldSee, field, yc, xc);
-                }
+                if ( field[ycoord - 1, xcoord-1] == 0 ) fieldSee = Submit(fieldSee, field, ycoord - 1, xcoord - 1);
             }
+            if (xcoord > 0 && ycoord < field.GetLength(0) - 1)
+            {
+                if (field[ycoord + 1, xcoord - 1] == 0) fieldSee = Submit(fieldSee, field, ycoord + 1, xcoord - 1);
+            }
+            if (xcoord < field.GetLength(1) - 1 && ycoord < field.GetLength(0) - 1)
+            {
+                if (field[ycoord + 1, xcoord + 1] == 0) fieldSee = Submit(fieldSee, field, ycoord + 1, xcoord + 1);
+            }
+            if (xcoord < field.GetLength(1) - 1 && ycoord > 0)
+            {
+                if (field[ycoord - 1, xcoord + 1] == 0) fieldSee = Submit(fieldSee, field, ycoord - 1, xcoord + 1);
+            }
+            if (xcoord > 0)
+            {
+                if (field[ycoord, xcoord - 1] == 0) fieldSee = Submit(fieldSee, field, ycoord, xcoord - 1);
+            }
+            if (ycoord < field.GetLength(0) - 1)
+            {
+                if (field[ycoord + 1, xcoord] == 0) fieldSee = Submit(fieldSee, field, ycoord + 1, xcoord);
+            }
+            if (xcoord < field.GetLength(1) - 1)
+            {
+                if (field[ycoord, xcoord + 1] == 0) fieldSee = Submit(fieldSee, field, ycoord, xcoord + 1);
+            }
+            if (ycoord > 0)
+            {
+                if (field[ycoord - 1, xcoord] == 0) fieldSee = Submit(fieldSee, field, ycoord - 1, xcoord);
+            }
+
             return fieldSee;
-        }
+        }*/
 
         static void Main(string[] args)
         {
@@ -158,10 +183,12 @@ namespace minesweeper
             field = Mineplacer(field, mines, xcoord, ycoord);
             field = FieldCounter(field);
 
-            int count = fieldSee.GetLength(0) * fieldSee.GetLength(1) - mines - 1;
+            int count = fieldSee.GetLength(0) * fieldSee.GetLength(1) - mines;
 
             while ((count > 0))
             {
+                Console.Clear();
+
                 if (field[ycoord, xcoord] == 9)
                 {
                     count = 0;
@@ -173,42 +200,35 @@ namespace minesweeper
                             if (field[i, j] == 9) fieldSee[i, j] = "*";
                         }
                     }
-                    Console.Clear();
                     FieldDrawer(fieldSee);
-                    Console.WriteLine("Killed By Death\nBtw R.I.P. Lemmy :(");
                 }
+
                 else
                 {
-                    Console.Clear();
-                    if (field[ycoord,xcoord] == 0)
+                    if (fieldSee[ycoord, xcoord] == "■") count--;
+
+                    if (field[ycoord, xcoord] == 0 || field[ycoord, xcoord] == -1)
                     {
                         fieldSee[ycoord, xcoord] = "-";
-                        fieldSee = Submit(fieldSee, field, ycoord, xcoord);
+                        //fieldSee = Submit(fieldSee, field, ycoord, xcoord);
                     }
-                    else
-                        fieldSee[ycoord, xcoord] = field[ycoord, xcoord].ToString();
+                    else fieldSee[ycoord, xcoord] = field[ycoord, xcoord].ToString();
 
                     FieldDrawer(fieldSee);
 
-                    Console.Write("Set the X coordinate: ");
-                    xcoord = Int32.Parse(Console.ReadLine());
-                    Console.Write("Set the Y coordinate: ");
-                    ycoord = Int32.Parse(Console.ReadLine());
-
-                    count--;
-                }
-                if ((count == 0) && (amIdead == false))
-                {
-                    if (field[ycoord, xcoord] == 0)
-                        fieldSee[ycoord, xcoord] = "-";
-                    else
-                        fieldSee[ycoord, xcoord] = field[ycoord, xcoord].ToString();
-                    FieldDrawer(fieldSee);
-
-                    Console.Clear();
-                    Console.WriteLine("We only live to win!");
+                    if (count > 0)
+                    {
+                        Console.Write("Set the X coordinate: ");
+                        xcoord = Int32.Parse(Console.ReadLine());
+                        Console.Write("Set the Y coordinate: ");
+                        ycoord = Int32.Parse(Console.ReadLine());
+                    }
                 }
             }
+
+            if (amIdead == true) Console.WriteLine("Killed By Death\nBtw R.I.P. Lemmy :(");
+            else Console.WriteLine("We only live to win!");
+
             Console.ReadLine();
         }
     }
