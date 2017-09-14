@@ -80,19 +80,22 @@ namespace minesweeper
         {
             Random rnd = new Random();
             bool amIdead = false;
-            bool didIwin = false;
-            int h = rnd.Next(5, 15);
-            int w = rnd.Next(5, 15);
+            int h = 4; //rnd.Next(5, 15);
+            int w = 4; //rnd.Next(5, 15);
+
+            Console.WriteLine("It's time to play the game!");
             Console.Write("Height: ");
-            Console.Write(h);
+            Console.WriteLine(h);
             Console.Write(" Width: ");
             Console.WriteLine(w);
             int mines=h*w;
-            while (mines >= h*w)
+
+            Console.Write("Set the number of mines (less than ");
+            Console.Write(h * w - 1);
+            Console.Write("): ");
+
+            while (mines >= h * w - 1)
             {
-                Console.Write("Set the number of mines (less than ");
-                Console.Write(h * w - 1);
-                Console.Write("): ");
                 var input = Console.ReadLine();
                 Int32.TryParse(input, out mines);
                 if (mines >= h * w - 1)
@@ -124,20 +127,29 @@ namespace minesweeper
             field = Mineplacer(field, mines, x, y);
             field = FieldCounter(field);
 
-            int count = 0; // teszt
+            int count = fieldSee.GetLength(0) * fieldSee.GetLength(1) - mines - 1;
 
-            while (/*amIdead == didIwin*/ count < 4)
+            while ((count > 0))
             {
-                Console.Clear();
-                fieldSee[y, x] = field[y, x];
-                FieldDrawer(fieldSee);
+                if (field[y, x] == "*")
+                {
+                    count = 0;
+                    Console.WriteLine("Killed By Death\nBtw R.I.P. Lemmy :(");
+                }
+                else
+                {
+                    Console.Clear();
+                    fieldSee[y, x] = field[y, x];
+                    FieldDrawer(fieldSee);
 
-                Console.Write("Set the X coordinate: ");
-                x = Int32.Parse(Console.ReadLine());
-                Console.Write("Set the Y coordinate: ");
-                y = Int32.Parse(Console.ReadLine());
+                    Console.Write("Set the X coordinate: ");
+                    x = Int32.Parse(Console.ReadLine());
+                    Console.Write("Set the Y coordinate: ");
+                    y = Int32.Parse(Console.ReadLine());
 
-                count++; // teszt
+                    count--;
+                    if (count == 0) Console.WriteLine("We only live to win!");
+                }
             }
 
             Console.ReadLine();
