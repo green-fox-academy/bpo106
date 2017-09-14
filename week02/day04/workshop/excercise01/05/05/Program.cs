@@ -8,7 +8,7 @@ namespace _04
 {
     class Program
     {
-        static bool Find (string input, string find) //from task 3!
+        static bool Find(string input, string find) //from task 3!
         {
             for (int i = 0; i < input.Length; i++)
             {
@@ -28,37 +28,36 @@ namespace _04
             return false;
         }
 
-        static List<int> Finder (List<int> input, int fnum)
+        static List<int> Finder(List<string> input, string felement)
         {
             List<int> output = new List<int>();
-            List<string> strInput = (from i in input select i.ToString()).ToList();
-            string strFnum = fnum.ToString();
+          
+            for (int i = 0; i < input.Count; i++)
+                if (Find(input[i], felement) == true) output.Add(i);
 
-            for (int i = 0; i < strInput.Count; i++)
-                if (Find(strInput[i], strFnum) == true) output.Add(i);
-
+            if (output.Count == 0) output.Add(-1);
             return output;
         }
 
         static void Main(string[] args)
         {
-            List<int> list = new List<int>();
+            List<string> list = new List<string>();
             Console.Write("Size of list: ");
             int inputnum = Int32.Parse(Console.ReadLine());
             Console.Write("Set the elements:\n");
-            for (int i = 0; i < inputnum; i++ )
+            for (int i = 0; i < inputnum; i++)
             {
-                int num = Int32.Parse(Console.ReadLine());
-                list.Add(num);
+                string element = Console.ReadLine();
+                list.Add(element);
             }
-            Console.Write("Number to be found: ");
-            inputnum = Int32.Parse(Console.ReadLine());
+            Console.Write("String to be found: ");
+            string findElement = Console.ReadLine();
 
             Console.Write("List: ");
             for (int i = 0; i < list.Count; i++) Console.Write("{0} ", list[i]);
             Console.WriteLine();
-            Console.Write("Where the number can be found: ");
-            for (int i = 0; i < Finder(list, inputnum).Count; i++) Console.Write("{0} ", Finder(list, inputnum)[i]);
+            Console.Write("Where the string can be found: ");
+            for (int i = 0; i < Finder(list, findElement).Count; i++) Console.Write("{0} ", Finder(list, findElement)[i]);
             Console.ReadLine();
         }
     }
