@@ -97,9 +97,10 @@ namespace minesweeper
             return field;
         }
 
-        /*static string[,] Submit (string[,] fieldSee, int[,] field, int ycoord, int xcoord)
+        static string[,] Submit (string[,] fieldSee, int[,] field, int ycoord, int xcoord)
         {
             field[ycoord, xcoord] = -1;
+            fieldSee[ycoord, xcoord] = "-";
             if (xcoord > 0 && ycoord > 0)
             {
                 if ( field[ycoord - 1, xcoord-1] == 0 ) fieldSee = Submit(fieldSee, field, ycoord - 1, xcoord - 1);
@@ -134,14 +135,14 @@ namespace minesweeper
             }
 
             return fieldSee;
-        }*/
+        }
 
         static void Main(string[] args)
         {
             Random random = new Random();
             bool amIdead = false;
-            int height = 4;//random.Next(5, 15);
-            int width = 4;//random.Next(5, 15);
+            int height = 8;//random.Next(5, 15);
+            int width = 8;//random.Next(5, 15);
 
             Console.WriteLine("It's time to play the game!");
             Console.WriteLine("Height: {0}", height);
@@ -209,8 +210,7 @@ namespace minesweeper
 
                     if (field[ycoord, xcoord] == 0 || field[ycoord, xcoord] == -1)
                     {
-                        fieldSee[ycoord, xcoord] = "-";
-                        //fieldSee = Submit(fieldSee, field, ycoord, xcoord);
+                        fieldSee = Submit(fieldSee, field, ycoord, xcoord);
                     }
                     else fieldSee[ycoord, xcoord] = field[ycoord, xcoord].ToString();
 
