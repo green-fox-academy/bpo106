@@ -14,8 +14,8 @@ namespace _05
             
             while (list.Count > 2)
             {
+                list.Remove(list[1]);
                 int temp = list[0];
-                list.Remove(list[0]);
                 list.Remove(list[0]);
                 list.Add(temp);
             }
