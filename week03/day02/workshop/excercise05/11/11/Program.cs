@@ -36,7 +36,7 @@ namespace _11
             {
                 for (int j = 0; j < 5; j++)
                 {
-                    count[Int32.Parse(numbers[i][j]) - 1] += Int32.Parse(numbers[i][j]);
+                    count[Int32.Parse(numbers[i][j]) - 1]++;
                 }
             }
             return count;
