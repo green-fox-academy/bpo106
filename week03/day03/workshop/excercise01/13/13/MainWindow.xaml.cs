@@ -28,11 +28,17 @@ namespace _13
 
             for (int i = 0; i<30; i++)
             {
-                for (int j = 0; j < 30; j++)
+                for (int j = 0; j < 15; j++)
                 {
+                    foxDraw.StrokeColor(Colors.Black);
+                    foxDraw.FillColor(Colors.Black);
                     if (i % 2 == 0)
                     {
-
+                        foxDraw.DrawRectangle(10*2*j, 10*i, 10, 10);
+                    }
+                    else
+                    {
+                        foxDraw.DrawRectangle(10 * (2 * j + 1), 10 * i, 10, 10);
                     }
                 }
             }
