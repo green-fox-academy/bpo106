@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using GreenFox;
 
-namespace _12
+namespace _13
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -26,12 +26,15 @@ namespace _12
             InitializeComponent();
             var foxDraw = new FoxDraw(canvas);
 
-            int j = 0;
-            for (int i = 1; i < 7; i++)
+            for (int i = 0; i<30; i++)
             {
-                foxDraw.FillColor(Colors.MediumPurple);
-                foxDraw.DrawRectangle(10 + j, 10 + j, 10*i, 10*i);
-                j += i*10;
+                for (int j = 0; j < 30; j++)
+                {
+                    if (i % 2 == 0)
+                    {
+
+                    }
+                }
             }
         }
     }
