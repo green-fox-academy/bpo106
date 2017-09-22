@@ -24,12 +24,17 @@ namespace _12
         static void DrawSix (FoxDraw foxDraw, double startx, double starty, double endx, double endy, int count)
         {
             foxDraw.StrokeColor(Colors.Black);
-            foxDraw.DrawLine(startx + (endx - startx) / 4, starty, startx + (endx - startx) * 3 / 4, starty);
-            foxDraw.DrawLine(startx + (endx - startx) / 4, endy, startx + (endx - startx) * 3 / 4, endy);
-            foxDraw.DrawLine(startx + (endx - startx) * 3 / 4, starty, endx, starty + (endy - starty) / 2);
-            foxDraw.DrawLine(startx, starty + (endy - starty) / 2, startx + (endx - startx) * 1 / 4, endy);
-            foxDraw.DrawLine(startx + (endx - startx) * 3 / 4, endy, endx, starty + (endy - starty) / 2);
-            foxDraw.DrawLine(startx, starty + (endy - starty) / 2, startx + (endx - startx) * 1 / 4, starty);
+            foxDraw.FillColor(Colors.White);
+
+            var points = new List<Point>();
+            points.Add(new Point(startx + (endx - startx) / 4, starty));
+            points.Add(new Point(startx + (endx - startx) * 3 / 4, starty));
+            points.Add(new Point(endx, starty + (endy - starty) / 2));
+            points.Add(new Point(startx + (endx - startx) * 3 / 4, endy));
+            points.Add(new Point(startx + (endx - startx) / 4, endy));
+            points.Add(new Point(startx, starty + (endy - starty) / 2));
+
+            foxDraw.DrawPolygon(points);
 
             count--;
             if (count > 0)

@@ -32,35 +32,35 @@ namespace _21
                 {
                     case 0:
                     case 14:
-                        Point myPoint = new Point(i, 5 * 10);
+                        Point myPoint = new Point(8 * i, 5 * 10);
                         sublist.Add(myPoint);
-                        myPoint = new Point(i, 5 * 12);
+                        myPoint = new Point(8 * i, 5 * 12);
                         sublist.Add(myPoint);
                         break;
                     case 1:
                     case 13:
-                        myPoint = new Point(i, 5 * 7);
+                        myPoint = new Point(8 * i, 5 * 7);
                         sublist.Add(myPoint);
-                        myPoint = new Point(i, 5 * 9);
+                        myPoint = new Point(8 * i, 5 * 9);
                         sublist.Add(myPoint);
-                        myPoint = new Point(i, 5 * 13);
+                        myPoint = new Point(8 * i, 5 * 13);
                         sublist.Add(myPoint);
-                        myPoint = new Point(i, 5 * 15);
+                        myPoint = new Point(8 * i, 5 * 15);
                         sublist.Add(myPoint);
                         break;
                     case 2:
                     case 12:
-                        myPoint = new Point(i, 5 * 4);
+                        myPoint = new Point(8 * i, 5 * 4);
                         sublist.Add(myPoint);
-                        myPoint = new Point(i, 5 * 6);
+                        myPoint = new Point(8 * i, 5 * 6);
                         sublist.Add(myPoint);
-                        myPoint = new Point(i, 5 * 10);
+                        myPoint = new Point(8 * i, 5 * 10);
                         sublist.Add(myPoint);
-                        myPoint = new Point(i, 5 * 12);
+                        myPoint = new Point(8 * i, 5 * 12);
                         sublist.Add(myPoint);
-                        myPoint = new Point(i, 5 * 16);
+                        myPoint = new Point(8 * i, 5 * 16);
                         sublist.Add(myPoint);
-                        myPoint = new Point(i, 5 * 18);
+                        myPoint = new Point(8 * i, 5 * 18);
                         sublist.Add(myPoint);
                         break;
                     default:
@@ -109,9 +109,9 @@ namespace _21
                             i = i + 1 - 1;
                             break;
                         default:
-                            if (i % 2 == 1)
+                            if (i % 2 == 0)
                             {
-                                if (i < 0)
+                                if (i > 0)
                                 {
                                     foxDraw.DrawLine(list[i][j], list[i - 1][j]);
                                 }
