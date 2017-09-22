@@ -21,7 +21,7 @@ namespace _01
     /// </summary>
     public partial class MainWindow : Window
     {
-        static void DrawTriangle (FoxDraw foxDraw, double startx, double starty, double endx, double endy, int count)
+        static void DrawTriangle(FoxDraw foxDraw, double startx, double starty, double endx, double endy, int count)
         {
             foxDraw.StrokeColor(Colors.Black);
             foxDraw.FillColor(Colors.White);
@@ -53,7 +53,7 @@ namespace _01
             InitializeComponent();
             var foxDraw = new FoxDraw(canvas);
 
-            DrawTriangle(foxDraw, 0, 0, 300, 259.8, 6);
+            DrawTriangle(foxDraw, 0, 0, 2*300, 2*259.8, 6);
         }
     }
 }
