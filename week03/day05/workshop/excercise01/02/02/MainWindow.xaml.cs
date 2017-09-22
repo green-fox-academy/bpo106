@@ -21,18 +21,25 @@ namespace _02
     /// </summary>
     public partial class MainWindow : Window
     {
-        static void DrawCircle(FoxDraw foxDraw, double startx, double starty, double endx, double endy, int count)
+        static void DrawCircle(FoxDraw foxDraw, Point start, Point end, int count)
         {
             foxDraw.StrokeColor(Colors.Black);
             foxDraw.FillColor(Colors.Transparent);
-            foxDraw.DrawEllipse(startx, starty, endx - startx, endy - starty);
+            foxDraw.DrawEllipse(start.X, start.Y, end.X - start.X, end.Y - start.Y);
             count--;
 
             if (count > 0)
             {
-                DrawCircle(foxDraw, startx + (endx - startx) / 4, starty, startx + (endx - startx) * 3 / 4, starty + (endy - starty) / 2, count);
-                DrawCircle(foxDraw, startx + 0.0335 * (endx - startx), starty + (endy - starty) * 3 / 8, startx + 0.5335 * (endx - startx), starty + (endy - starty) * 7 / 8, count);
-                DrawCircle(foxDraw, startx + (1 - 0.5335) * (endx - startx), starty + (endy - starty) * 3 / 8, startx + (1 - 0.0335) * (endx - startx), starty + (endy - starty) * 7 / 8, count);
+                Point point1 = new Point(start.X + (end.X - start.X) / 4, start.Y);
+                Point point2 = new Point(start.X + (end.X - start.X) * 3 / 4, start.Y + (end.Y - start.Y) / 2);
+                Point point3 = new Point(start.X + 0.0335 * (end.X - start.X), start.Y + (end.Y - start.Y) * 3 / 8);
+                Point point4 = new Point(start.X + 0.5335 * (end.X - start.X), start.Y + (end.Y - start.Y) * 7 / 8);
+                Point point5 = new Point(start.X + (1 - 0.5335) * (end.X - start.X), start.Y + (end.Y - start.Y) * 3 / 8);
+                Point point6 = new Point(start.X + (1 - 0.0335) * (end.X - start.X), start.Y + (end.Y - start.Y) * 7 / 8);
+
+                DrawCircle(foxDraw, point1, point2, count);
+                DrawCircle(foxDraw, point3, point4, count);
+                DrawCircle(foxDraw, point5, point6, count);
             }
         }
 
@@ -41,7 +48,7 @@ namespace _02
             InitializeComponent();
             var foxDraw = new FoxDraw(canvas);
 
-            DrawCircle(foxDraw, 0, 0, 300, 300, 5);
+            DrawCircle(foxDraw, new Point(0, 0), new Point(600, 600), 5);
         }
     }
 }
