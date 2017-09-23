@@ -26,40 +26,20 @@ namespace _06
             List<Point> list = new List<Point>();
             list.Add(new Point(start.X + (end.X - start.X) / 3, start.Y + (end.Y - start.Y) / 3));
             list.Add(new Point(start.X + (end.X - start.X) * 2 / 3, start.Y + (end.Y - start.Y) * 2 / 3));
-           
-            if (list[0].Y == list[1].Y)
-            {
-                list.Add(new Point(start.X + (end.X - start.X) / 2, start.Y - 0.866 * (list[1].X - list[0].X)));
-            }
-            else if (list[0].Y > list[1].Y && list[0].X < list[1].X)
-            {
-                list.Add(new Point(list[0].X + (list[0].X - list[1].X),list[1].Y));
-            }
-            else if (list[0].Y < list[1].Y && list[0].X > list[1].X)
-            {
-                list.Add(new Point(list[0].X + (list[0].X - list[1].X), list[1].Y));
-            }
-            else if (list[0].Y < list[1].Y && list[0].X < list[1].X)
-            {
-                list.Add(new Point(list[1].X + (list[1].X - list[0].X), list[0].Y));
-            }
-            else
-            {
-                list.Add(new Point(list[0].X + (list[0].X - list[1].X), list[0].Y));
-            }
+
+            list.Add(new Point(list[0].X + (list[1].X - list[0].X) / 2 - 1.732 * (list[0].Y - list[1].Y) / 2, list[0].Y - (list[0].Y - list[1].Y) / 2 - 1.732 * (list[1].X - list[0].X) / 2));
 
             foxDraw.StrokeColor(Colors.Black);
-            foxDraw.DrawLine(start, end);
+            foxDraw.DrawLine(start, list[0]);
             foxDraw.DrawLine(list[0], list[2]);
             foxDraw.DrawLine(list[1], list[2]);
-            foxDraw.StrokeColor(Colors.White);
-            foxDraw.DrawLine(list[0], list[1]);
-            
+            foxDraw.DrawLine(list[1], end);
+
             count--;
 
             if (count > 0)
             {
-                DrawTriangle(foxDraw, list[2], list[0], count);
+                DrawTriangle(foxDraw, list[0], list[2], count);
                 DrawTriangle(foxDraw, list[2], list[1], count);
                 DrawTriangle(foxDraw, start, list[0], count);
                 DrawTriangle(foxDraw, list[1], end, count);
@@ -72,7 +52,7 @@ namespace _06
             var points = new List<Point>();
             var foxDraw = new FoxDraw(canvas);
 
-            DrawTriangle(foxDraw, new Point(0, 173.2), new Point(300, 173.2), 3);
+            DrawTriangle(foxDraw, new Point(0, 173.2), new Point(300, 173.2), 5);
         }
     }
 }
