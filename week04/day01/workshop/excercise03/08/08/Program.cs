@@ -10,6 +10,12 @@ namespace _08
     {
         static void Main(string[] args)
         {
+            Counter counter = new Counter();
+
+            counter.Add(42);
+            counter.Add();
+            string str = counter.Get();
+            counter.Reset();
         }
     }
 }
