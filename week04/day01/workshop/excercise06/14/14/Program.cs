@@ -10,6 +10,8 @@ namespace _14
     {
         static void Main(string[] args)
         {
+            Pirate pirate;
+            Ship ship;
         }
     }
 }
