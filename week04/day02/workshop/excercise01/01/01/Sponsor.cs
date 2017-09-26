@@ -11,7 +11,7 @@ namespace _01
         string company;
         int hiredStudents;
 
-        public Sponsor()
+        public Sponsor() : base()
         {
             name = "Jane Doe";
             age = 30;
@@ -25,7 +25,7 @@ namespace _01
             hiredStudents = 0;
         }
 
-        public void Introduce()
+        public override void Introduce()
         {
             Console.WriteLine("Hi, I'm {0}, a {1} year old {2} who represents {3} and hired {4} students so far.", name, age, gender, company, hiredStudents);
         }
@@ -35,7 +35,7 @@ namespace _01
             hiredStudents++;
         }
 
-        public void GetGoal()
+        public override void GetGoal()
         {
             Console.WriteLine("Hire brilliant junior software developers.");
         }

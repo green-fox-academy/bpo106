@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace _01
 {
-    public class PallidaClass
+    public class PallidaClass : Person
     {
         private string className;
-        List<Student> students;
-        List<Mentor> mentors;
+        List<Student> students = new List<Student>();
+        List<Mentor> mentors = new List<Mentor>();
 
         public PallidaClass(string className)
         {
@@ -18,12 +18,12 @@ namespace _01
             mentors.Clear();
         }
 
-        void AddStudent(Student student)
+        public void AddStudent(Student student)
         {
             students.Add(student);
         }
 
-        void AddMentor(Mentor mentor)
+        public void AddMentor(Mentor mentor)
         {
             mentors.Add(mentor);
         }

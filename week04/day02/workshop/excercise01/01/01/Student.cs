@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace _01
 {
-    class Student : Person
+    public class Student : Person
     {
         private string previousOrganization;
         private int skippedDays;
 
-        Student()
+        public Student() :base()
         {
             name = "Jane Doe";
             age = 30;
@@ -20,17 +20,17 @@ namespace _01
             skippedDays = 0;
         }
 
-        Student(string name, int age, string gender, string previousOrganization)
+        public Student(string name, int age, string gender, string previousOrganization)
         {
             skippedDays = 0;
         }
 
-        public void GetGoal()
+        public new void GetGoal()
         {
             Console.WriteLine("Be a junior software developer.");
         }
 
-        public void Introduce()
+        public new void Introduce()
         {
             Console.WriteLine("Hi, I'm {0}, a {1} year old {2} from {3} who skipped {4} days from the course already.", name, age, gender, previousOrganization, skippedDays);
         }

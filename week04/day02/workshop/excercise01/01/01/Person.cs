@@ -23,12 +23,12 @@ namespace _01
         {
         }
 
-        public void Introduce()
+        public virtual void Introduce()
         {
             Console.WriteLine("Hi, I'm {0}, a {1} year old {2}.", name, age, gender);
         }
 
-        public void GetGoal()
+        public virtual void GetGoal()
         {
             Console.WriteLine("My goal is: Live for the moment!");
         }

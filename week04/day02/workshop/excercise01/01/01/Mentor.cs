@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace _01
 {
-    class Mentor : Person
+    public class Mentor : Person
     {
         private string level;
 
-        public Mentor()
+        public Mentor() : base()
         {
             name = "Jane Doe";
             age = 30;
@@ -22,12 +22,12 @@ namespace _01
         {
         }
 
-        public void GetGoal()
+        public override void GetGoal()
         {
             Console.WriteLine("Educate brilliant junior software developers.");
         }
 
-        public void Introduce()
+        public override void Introduce()
         {
             Console.WriteLine("Hi, I'm {0}, a {1} year old {2} level mentor.", name, age, level);
         }
