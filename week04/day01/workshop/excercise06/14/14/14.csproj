@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D7F77362-F099-4603-AAE1-3CDF7A7F8E9F}</ProjectGuid>
+    <ProjectGuid>{3941F38A-D409-4492-B98B-C811BC771E87}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>_13</RootNamespace>
-    <AssemblyName>13</AssemblyName>
+    <RootNamespace>_14</RootNamespace>
+    <AssemblyName>14</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -42,8 +42,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Blog.cs" />
-    <Compile Include="BlogPost.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
