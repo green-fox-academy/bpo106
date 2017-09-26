@@ -20,8 +20,9 @@ namespace _14
             ship1.ShipStatus();
             ship2.FillShip(random.Next(20, 29));
             ship2.ShipStatus();
-            ship3.FillShip(random.Next(15, 23));
-            ship3.ShipStatus();
+
+            ship1.ShipStatus();
+            ship2.ShipStatus();
 
             BattleApp battle = new BattleApp(ship1, ship2);
 
