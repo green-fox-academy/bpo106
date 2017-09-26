@@ -45,7 +45,7 @@ namespace _14
             {
                 for (int i = 0; i < random.Next(other.Crew.Count); i++)
                 {
-                    Console.WriteLine(this.Crew[random.Next(other.Crew.Count)].Die());
+                    Console.WriteLine(this.Crew[random.Next(this.Crew.Count)].Die());
                     this.alive--;
                 }
 

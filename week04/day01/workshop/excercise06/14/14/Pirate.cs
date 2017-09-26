@@ -41,18 +41,21 @@ namespace _14
 
         public void Brawl(Pirate other)
         {
-            switch (random.Next(0,3))
+            if ((other.IsPassedOut || other.IsDead || this.IsPassedOut || this.IsDead) == false)
             {
-                case 0:
-                    other.Die();
-                    break;
-                case 1:
-                    this.Die();
-                    break;
-                default:
-                    other.Die();
-                    this.Die();
-                    break;                
+                switch (random.Next(0, 3))
+                {
+                    case 0:
+                        other.Die();
+                        break;
+                    case 1:
+                        this.Die();
+                        break;
+                    default:
+                        other.Die();
+                        this.Die();
+                        break;
+                }
             }
         }
 

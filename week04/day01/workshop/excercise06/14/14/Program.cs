@@ -30,6 +30,15 @@ namespace _14
 
             Console.ReadLine();
 
+            Armada armada1 = new Armada();
+            Armada armada2 = new Armada();
+
+            armada1.FillFleet(random.Next(1, 42));
+            armada2.FillFleet(random.Next(1, 42));
+
+            WarApp war = new WarApp(armada1, armada2);
+
+            Console.ReadLine();
         }
     }
 }
