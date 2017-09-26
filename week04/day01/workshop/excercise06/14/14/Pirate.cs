@@ -5,6 +5,7 @@ namespace _14
     public class Pirate
     {
         private int Rum = 0;
+        private bool IsPassedOut = false;
         private bool HasParrot = false;
         private bool IsDead = false;
         private Random random = new Random();
@@ -12,6 +13,11 @@ namespace _14
         public int DrinkSomeRum()
         {
             return Rum++;
+        }
+
+        public int RumStatus()
+        {
+            return Rum;
         }
 
         public string HowsItGoingMate()
@@ -22,6 +28,7 @@ namespace _14
             }
             else
             {
+                IsPassedOut = true;
                 return "Arghh, I'ma Pirate. How d'ya d'ink its goin?";
             }
         }
@@ -52,6 +59,24 @@ namespace _14
         public void AddParrot()
         {
             HasParrot = true;
+        }
+
+        public void CaptainStatus(Pirate captain)
+        {
+            Console.WriteLine("Number of consumed bottles of rum: {0}", captain.Rum);
+            if (captain.IsDead)
+            {
+                Console.WriteLine(captain.Die());
+            }
+            else
+            {
+                Console.WriteLine(captain.HowsItGoingMate());
+            }
+        }
+
+        public Pirate()
+        {
+
         }
     }
 }
