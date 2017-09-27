@@ -7,25 +7,23 @@ namespace Extension
     {
         public int Add(int a, int b)
         {
-            return 5;
+            return a + b;
         }
 
         public int MaxOfThree(int a, int b, int c)
         {
-            if (a > b)
-                return a;
-            else
-                return c;
+            return Math.Max(Math.Max(a, b), c);
         }
 
         public int Median(List<int> pool)
         {
+            pool.Sort();
             return pool[(pool.Count - 1) / 2];
         }
 
         public bool IsVowel(char c)
         {
-            return (new List<char>() { 'a', 'u', 'o', 'e', 'i' }).Contains(c);
+            return (new List<char>() { 'a', 'á', 'e', 'é', 'i', 'í', 'o', 'ó', 'ö', 'ő', 'u', 'ú', 'ü', 'ű', 'A', 'Á', 'E', 'É', 'I', 'Í', 'O', 'Ó', 'Ö', 'Ő', 'U', 'Ú', 'Ü', 'Ű' }).Contains(c);
         }
 
         public string Translate(string hungarian)
@@ -37,7 +35,7 @@ namespace Extension
                 char c = teve[i];
                 if (IsVowel(c))
                 {
-                    teve = string.Join(c + "v" + c, teve.Split(c));
+                    teve = string.Concat(teve.Substring(0,i), c, "v", c, teve.Substring(i+1, length - i - 1));
                     i += 2;
                     length += 2;
                 }

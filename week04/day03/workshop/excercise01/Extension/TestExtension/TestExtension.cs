@@ -59,7 +59,7 @@ namespace Extension
         [Test]
         public void testTranslate_bemutatkozik()
         {
-            Assert.AreEqual("ÁvÁrvívíztűvűrővő", extension.Translate("Árvíztűrő"));
+            Assert.AreEqual("lávávávás", extension.Translate("lávás"));
         }
 
         [Test]
