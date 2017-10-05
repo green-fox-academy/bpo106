@@ -8,9 +8,18 @@ namespace _02
 {
     public class Garden
     {
-        List<Flower> flowers = new List<Flower>();
-        List<Tree> trees = new List<Tree>();
-
         protected int waterLevel;
+        protected string type;
+        protected string color;
+        protected string needs = "needs";
+
+        public virtual void waterLevelIncrease(int water, int count)
+        {
+        }
+
+        public void outputWaterLevel()
+        {
+            Console.WriteLine("The {0} {1} {2} water", color, type, needs);
+        }
     }
 }
