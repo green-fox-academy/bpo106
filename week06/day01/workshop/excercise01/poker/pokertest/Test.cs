@@ -69,5 +69,29 @@ namespace pokertest
             Assert.AreEqual(1, hand.Game(hand1, hand2));
             Assert.AreEqual(3, hand.Combination(hand.Convert(hand1)));
         }
+
+        [Test]
+        public void PokerAndTwoPairsTest()
+        {
+            Hand hand = new Hand();
+            List<int[]> hand1 = new List<int[]>() { new int[] { 2, 3, 0 }, new int[] { 9, 2, 0 }, new int[] { 9, 1, 0 }, new int[] { 5, 2, 0 }, new int[] { 5, 4, 0 } };
+            List<int[]> hand2 = new List<int[]>() { new int[] { 6, 1, 0 }, new int[] { 6, 3, 0 }, new int[] { 6, 4, 0 }, new int[] { 6, 2, 0 }, new int[] { 3, 3, 0 } };
+
+            Assert.AreEqual(-1, hand.Game(hand1, hand2));
+            Assert.AreEqual(2, hand.Combination(hand.Convert(hand1)));
+            Assert.AreEqual(7, hand.Combination(hand.Convert(hand2)));
+        }
+
+        [Test]
+        public void FullHouseTest()
+        {
+            Hand hand = new Hand();
+            List<int[]> hand1 = new List<int[]>() { new int[] { 3, 3, 0 }, new int[] { 3, 2, 0 }, new int[] { 5, 1, 0 }, new int[] { 5, 2, 0 }, new int[] { 5, 4, 0 } };
+            List<int[]> hand2 = new List<int[]>() { new int[] { 2, 1, 0 }, new int[] { 7, 3, 0 }, new int[] { 4, 4, 0 }, new int[] { 8, 1, 0 }, new int[] { 13, 3, 0 } };
+
+            Assert.AreEqual(1, hand.Game(hand1, hand2));
+            Assert.AreEqual(6, hand.Combination(hand.Convert(hand1)));
+            Assert.AreEqual(0, hand.Combination(hand.Convert(hand2)));
+        }
     }
 }

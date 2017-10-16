@@ -34,7 +34,11 @@ namespace poker
             }
             if (input[5] == 6)
             {
-                return input[5] + 1;
+                input[5]++;
+            }
+            if (input[5] == 4)
+            {
+                input[5] += 2;
             }
             return input[5]; 
         }
