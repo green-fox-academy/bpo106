@@ -20,7 +20,7 @@ namespace poker
             return list;
         }
 
-        public int Combination (List<int> input)
+        public int Combination (List<int[]> colors, List<int> input)
         {
             for (int i = 0; i < 4; i++)
             {
@@ -32,19 +32,33 @@ namespace poker
                     }
                 }
             }
+
             if (input[5] == 6)
             {
                 input[5]++;
             }
             if (input[5] == 4)
             {
-                input[5] += 2;
+                input[5] = 6;
             }
             if (input[5] == 0 && input[0] + 4 == input[4])
             {
                 input[5] = 4;
             }
-            return input[5]; 
+            if (input[5] % 4 == 0 && colors[0][1] == colors[1][1] && colors[0][1] == colors[2][1] && colors[0][1] == colors[3][1] && colors[0][1] == colors[4][1])
+            {
+                if (input[0] + 4 == input[4])
+                {
+                    input[5] = 8;
+                }
+                else
+                {
+                    input[5] = 5;
+                }
+            }
+
+            return input[5];
+            
         }
 
         public int Game(List<int[]> handArray1, List<int[]> handArray2)
@@ -52,8 +66,8 @@ namespace poker
             List<int> handList1 = Convert(handArray1);
             List<int> handList2 = Convert(handArray2);
 
-            handList1[5] = Combination(handList1);
-            handList2[5] = Combination(handList2);
+            handList1[5] = Combination(handArray1, handList1);
+            handList2[5] = Combination(handArray2, handList2);
 
             if (handList1[5] > handList2[5])
             {
