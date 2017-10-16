@@ -8,84 +8,91 @@ namespace poker
 {
     public class Hand
     {
-        public List<int> Convert (List<int[]> input)
-        {
-            List<int> list = new List<int>();
-            for (int i = 0; i < input.Count; i++)
-            {
-                list.Add(input[i][0]);
-            }
-            list.Sort();
-            list.Add(0);
-            return list;
-        }
-
-        public int Combination (List<int[]> colors, List<int> input)
+        List<int[]> sortElements(List<int[]> list)
         {
             for (int i = 0; i < 4; i++)
             {
                 for (int j = i + 1; j < 5; j++)
                 {
-                    if (input[i] == input[j])
+                    if (list[i][0] < list[j][0])
                     {
-                        input[5]++;
+                        int tmp = list[i][0];
+                        list[i][0] = list[j][0];
+                        list[j][0] = tmp;
+                        tmp = list[i][1];
+                        list[i][1] = list[j][1];
+                        list[j][1] = tmp;
+                    }
+                }
+            }
+            return list;
+        }
+
+        public List<int[]> Combination (List<int[]> input)
+        {
+            input = sortElements(input);
+            input.Add(new int[]{ 0 });
+            for (int i = 0; i < 4; i++)
+            {
+                for (int j = i + 1; j < 5; j++)
+                {
+                    if (input[i][0] == input[j][0])
+                    {
+                        input[5][0]++;
                     }
                 }
             }
 
-            if (input[5] == 6)
+            if (input[5][0] == 6)
             {
-                input[5]++;
+                input[5][0]++;
             }
-            if (input[5] == 4)
+            if (input[5][0] == 4)
             {
-                input[5] = 6;
+                input[5][0] = 6;
             }
-            if (input[5] == 0 && input[0] + 4 == input[4])
+            if (input[5][0] == 0 && input[4][0] + 4 == input[0][0])
             {
-                input[5] = 4;
+                input[5][0] = 4;
             }
-            if (input[5] % 4 == 0 && colors[0][1] == colors[1][1] && colors[0][1] == colors[2][1] && colors[0][1] == colors[3][1] && colors[0][1] == colors[4][1])
+            if (input[5][0] % 4 == 0 && input[0][1] == input[1][1] && input[0][1] == input[2][1] && input[0][1] == input[3][1] && input[0][1] == input[4][1])
             {
-                if (input[0] + 4 == input[4])
+                if (input[4][0] + 4 == input[0][0])
                 {
-                    input[5] = 8;
+                    input[5][0] = 8;
                 }
                 else
                 {
-                    input[5] = 5;
+                    input[5][0] = 5;
                 }
             }
 
-            return input[5];
+            return input;
             
         }
 
         public int Game(List<int[]> handArray1, List<int[]> handArray2)
         {
-            List<int> handList1 = Convert(handArray1);
-            List<int> handList2 = Convert(handArray2);
+            handArray1 = Combination(handArray1);
+            handArray2 = Combination(handArray2);
 
-            handList1[5] = Combination(handArray1, handList1);
-            handList2[5] = Combination(handArray2, handList2);
-
-            if (handList1[5] > handList2[5])
+            if (handArray1[5][0] > handArray2[5][0])
             {
                 return 1;
             }
-            else if (handList1[5] < handList2[5])
+            else if (handArray1[5][0] < handArray2[5][0])
             {
                 return -1;
             }
             else
             {
-                for (int i = 4; i >= 0; i--)
+                for (int i = 0; i <5; i++)
                 {
-                    if (handList1[i] > handList2[i])
+                    if (handArray1[i][0] > handArray2[i][0])
                     {
                         return 1;
                     }
-                    else if (handList1[i] < handList2[i])
+                    else if (handArray1[i][0] < handArray2[i][0])
                     {
                         return -1;
                     }
