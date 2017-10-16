@@ -13,8 +13,14 @@ namespace pokertest
     {
         // Első nyer: 1, második nyer: -1, döntetlen: 0
 
+        // Kombináció nélküli kéz: 0
+        // Pár: 1
+        // Két pár: 2
+        // Drill: 3
+        // stb. stb.
+
         [Test]
-        public void Test01()
+        public void HighCardTest01()
         {
             Hand hand = new Hand();
             List<int[]> hand1 = new List<int[]>() { new int[] { 2, 3, 0 }, new int[] { 3, 2, 0 }, new int[] { 5, 4, 0 }, new int[] { 9, 1, 0 }, new int[] { 12, 2, 0 } };
@@ -24,7 +30,7 @@ namespace pokertest
         }
 
         [Test]
-        public void Test02()
+        public void HighCardTest02()
         {
             Hand hand = new Hand();
             List<int[]> hand1 = new List<int[]>() { new int[] { 2, 3, 0 }, new int[] { 3, 2, 0 }, new int[] { 5, 4, 0 }, new int[] { 9, 1, 0 }, new int[] { 13, 2, 0 } };
@@ -34,13 +40,34 @@ namespace pokertest
         }
 
         [Test]
-        public void Test03()
+        public void HighCardTest03()
         {
             Hand hand = new Hand();
             List<int[]> hand1 = new List<int[]>() { new int[] { 2, 3, 0 }, new int[] { 3, 2, 0 }, new int[] { 9, 1, 0 }, new int[] { 13, 2, 0 }, new int[] { 5, 4, 0 } };
             List<int[]> hand2 = new List<int[]>() { new int[] { 2, 1, 0 }, new int[] { 3, 3, 0 }, new int[] { 4, 4, 0 }, new int[] { 8, 1, 0 }, new int[] { 13, 3, 0 } };
 
             Assert.AreEqual(1, hand.Game(hand1, hand2));
+        }
+
+        [Test]
+        public void OnePairTest()
+        {
+            Hand hand = new Hand();
+            List<int[]> hand1 = new List<int[]>() { new int[] { 2, 3, 0 }, new int[] { 3, 2, 0 }, new int[] { 9, 1, 0 }, new int[] { 5, 2, 0 }, new int[] { 5, 4, 0 } };
+            List<int[]> hand2 = new List<int[]>() { new int[] { 2, 1, 0 }, new int[] { 3, 3, 0 }, new int[] { 4, 4, 0 }, new int[] { 8, 1, 0 }, new int[] { 13, 3, 0 } };
+
+            Assert.AreEqual(1, hand.Game(hand1, hand2));
+        }
+
+        [Test]
+        public void ThreeOfAKindTest()
+        {
+            Hand hand = new Hand();
+            List<int[]> hand1 = new List<int[]>() { new int[] { 2, 3, 0 }, new int[] { 3, 2, 0 }, new int[] { 5, 1, 0 }, new int[] { 5, 2, 0 }, new int[] { 5, 4, 0 } };
+            List<int[]> hand2 = new List<int[]>() { new int[] { 2, 1, 0 }, new int[] { 3, 3, 0 }, new int[] { 4, 4, 0 }, new int[] { 8, 1, 0 }, new int[] { 13, 3, 0 } };
+
+            Assert.AreEqual(1, hand.Game(hand1, hand2));
+            Assert.AreEqual(3, hand.Combination(hand.Convert(hand1)));
         }
     }
 }
