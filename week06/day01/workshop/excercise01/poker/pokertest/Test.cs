@@ -93,5 +93,28 @@ namespace pokertest
             Assert.AreEqual(6, hand.Combination(hand.Convert(hand1)));
             Assert.AreEqual(0, hand.Combination(hand.Convert(hand2)));
         }
+
+        [Test]
+        public void StraightTest()
+        {
+            Hand hand = new Hand();
+            List<int[]> hand1 = new List<int[]>() { new int[] { 4, 3, 0 }, new int[] { 8, 2, 0 }, new int[] { 5, 1, 0 }, new int[] { 6, 2, 0 }, new int[] { 7, 4, 0 } };
+            List<int[]> hand2 = new List<int[]>() { new int[] { 2, 1, 0 }, new int[] { 3, 3, 0 }, new int[] { 4, 4, 0 }, new int[] { 8, 1, 0 }, new int[] { 13, 3, 0 } };
+
+            Assert.AreEqual(1, hand.Game(hand1, hand2));
+            Assert.AreEqual(4, hand.Combination(hand.Convert(hand1)));
+        }
+
+        [Test]
+        public void FlushAndStraightTest()
+        {
+            Hand hand = new Hand();
+            List<int[]> hand1 = new List<int[]>() { new int[] { 4, 3, 0 }, new int[] { 8, 2, 0 }, new int[] { 5, 1, 0 }, new int[] { 6, 2, 0 }, new int[] { 7, 4, 0 } };
+            List<int[]> hand2 = new List<int[]>() { new int[] { 2, 1, 0 }, new int[] { 3, 1, 0 }, new int[] { 9, 1, 0 }, new int[] { 10, 1, 0 }, new int[] { 11, 1, 0 } };
+
+            Assert.AreEqual(-1, hand.Game(hand1, hand2));
+            Assert.AreEqual(4, hand.Combination(hand.Convert(hand1)));
+            Assert.AreEqual(5, hand.Combination(hand.Convert(hand2)));
+        }
     }
 }

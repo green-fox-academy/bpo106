@@ -40,6 +40,10 @@ namespace poker
             {
                 input[5] += 2;
             }
+            if (input[5] == 0 && input[0] + 4 == input[4])
+            {
+                input[5] = 4;
+            }
             return input[5]; 
         }
 
