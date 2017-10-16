@@ -105,7 +105,7 @@ namespace poker
             }
             else
             {
-                if (handArray1[5][0] == 6)
+                if (handArray1[5][0] == 8 || handArray1[5][0] == 7 || handArray1[5][0] == 6 || handArray1[5][0] == 4 || handArray1[5][0] == 3)
                 {
                     if (handArray1[2][0] > handArray2[2][0])
                     {
