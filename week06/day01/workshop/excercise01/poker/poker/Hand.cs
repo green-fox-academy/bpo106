@@ -111,9 +111,13 @@ namespace poker
                     {
                         return 1;
                     }
-                    else
+                    else if (handArray1[2][0] < handArray2[2][0])
                     {
                         return -1;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
                 else
