@@ -12,7 +12,6 @@ namespace _03_instruments
         public abstract void Sound();
         public override void Play()
         {
-            Console.Write(", a {0}-stringed instrument that ", numberOfStrings);
             Sound();
         }
     }

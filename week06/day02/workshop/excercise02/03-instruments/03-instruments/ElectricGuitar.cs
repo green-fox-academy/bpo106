@@ -11,14 +11,13 @@ namespace _03_instruments
         public ElectricGuitar()
         {
             numberOfStrings = 6;
-            howItSounds = "twang";
-            Console.Write("Electric Guitar");
+            Console.Write("Electric guitar is a {0}-stringed instrument that ", numberOfStrings);
+            Sound();
         }
 
         public override void Sound()
         {
-            Play();
-            Console.WriteLine(howItSounds + "s");
+            Console.WriteLine("twangs.");
         }
     }
 }

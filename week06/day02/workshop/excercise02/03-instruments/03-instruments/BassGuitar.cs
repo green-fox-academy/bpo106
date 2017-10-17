@@ -11,11 +11,13 @@ namespace _03_instruments
         public BassGuitar()
         {
             numberOfStrings = 4;
+            Console.Write("Bass guitar is a {0}-stringed instrument that ", numberOfStrings);
+            Sound();
         }
 
         public override void Sound()
         {
-
+            Console.WriteLine("duum-duum-duum.");
         }
     }
 }

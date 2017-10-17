@@ -10,8 +10,11 @@ namespace _03_instruments
     {
         static void Main(string[] args)
         {
-            ElectricGuitar electricGuitar = new ElectricGuitar();
-            electricGuitar.Sound();
+            List<Instrument> list = new List<Instrument>();
+            list.Add(new ElectricGuitar());
+            list.Add(new BassGuitar());
+            list.Add(new Violin());
+
             Console.ReadLine();
         }
     }
