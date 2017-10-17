@@ -1,19 +1,22 @@
 ﻿using System;
 
-namespace _03_instruments
+namespace instruments
 {
     public class BassGuitar : StringedInstrument
     {
         public BassGuitar()
         {
             numberOfStrings = 4;
-            Console.Write("Bass guitar is a {0}-stringed instrument that ", numberOfStrings);
-            Sound();
+        }
+
+        public BassGuitar(int number)
+        {
+            numberOfStrings = number;
         }
 
         public override void Sound()
         {
-            Console.WriteLine("duum-duum-duum.");
+            Console.WriteLine("Bass guitar is a {0}-stringed instrument that duum-duum-duum.", numberOfStrings);
         }
     }
 }

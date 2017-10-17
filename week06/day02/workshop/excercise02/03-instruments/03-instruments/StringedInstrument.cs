@@ -1,4 +1,4 @@
-﻿namespace _03_instruments
+﻿namespace instruments
 {
     public abstract class StringedInstrument : Instrument
     {
