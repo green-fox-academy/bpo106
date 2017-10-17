@@ -38,7 +38,7 @@ namespace _01_cloneable
             skippedDays += numberOfDays;
         }
 
-        public Student Clone()
+        public object Clone()
         {
             Student cloned = new Student(name, age, gender, previousOrganization);
             return cloned;

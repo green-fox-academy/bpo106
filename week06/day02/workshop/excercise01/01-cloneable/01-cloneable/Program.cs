@@ -11,7 +11,7 @@ namespace _01_cloneable
         static void Main(string[] args)
         {
             Student john = new Student("John Doe", 20, "male", "BME");
-            Student johnTheClone = john.Clone();
+            object johnTheClone = john.Clone();
         }
     }
 }
