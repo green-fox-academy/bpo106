@@ -9,7 +9,7 @@ namespace _08
         static void upperCaseQuery(string s)
         {
             var uppercase = from element in s
-                            where element > 64 && element < 91
+                            where Char.IsUpper(element)
                             select element;
 
             uppercase.ToList().ForEach(x => Console.Write("{0} ", x));
@@ -17,7 +17,7 @@ namespace _08
 
         static void upperCaseLambda(string s)
         {
-            var uppercase = s.Where(x => x >= 'A' && x <= 'Z').Select(x => x);
+            var uppercase = s.Where(x => Char.IsUpper(x)).Select(x => x);
 
             uppercase.ToList().ForEach(x => Console.Write("{0} ", x));
             
