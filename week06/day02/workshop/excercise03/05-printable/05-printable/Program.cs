@@ -10,6 +10,11 @@ namespace _05_printable
     {
         static void Main(string[] args)
         {
+            Domino domino = new Domino(2, 1);
+            Todo todo = new Todo();
+            domino.PrintAllFields();
+            todo.PrintAllFields();
+            Console.ReadLine();
         }
     }
 }

@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace _05_printable
 {
-    interface IPrintable
+    public class Todo : IPrintable
     {
-        void PrintAllFields();
+        public void PrintAllFields()
+        {
+            Console.WriteLine("This is some random text. Enjoy.");
+        }
     }
 }
