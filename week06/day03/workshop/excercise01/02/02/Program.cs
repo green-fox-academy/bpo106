@@ -9,7 +9,6 @@ namespace _02
         static void avgOddQuery(int[] n)
         {
             int sum = 0;
-            double count = 0.0;
             var odd = from element in n
                       where element % 2 == 1 || -element % 2 == 1
                       select element;
@@ -17,9 +16,8 @@ namespace _02
             foreach (var element in odd)
             {
                 sum += element;
-                count++;
             }
-            Console.WriteLine(sum/count);
+            Console.WriteLine(sum / (double)(odd.ToList().Count));
         }
 
         static void avgOddLambda(int[] n)
@@ -33,7 +31,7 @@ namespace _02
                 sum += element;
                 count++;
             }
-            Console.WriteLine(sum/count);
+            Console.WriteLine(sum / (double)(odd.ToList().Count));
         }
 
         static void Main(string[] args)
