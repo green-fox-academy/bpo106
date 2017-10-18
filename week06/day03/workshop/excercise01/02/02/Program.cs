@@ -8,30 +8,18 @@ namespace _02
     {
         static void avgOddQuery(int[] n)
         {
-            int sum = 0;
             var odd = from element in n
-                      where element % 2 == 1 || -element % 2 == 1
+                      where element % 2 != 0
                       select element;
 
-            foreach (var element in odd)
-            {
-                sum += element;
-            }
-            Console.WriteLine(sum / (double)(odd.ToList().Count));
+            Console.WriteLine(odd.ToList().Average());
         }
 
         static void avgOddLambda(int[] n)
         {
-            IEnumerable<int> odd = n.Where(x => x % 2 == 1 || (-x) % 2 == 1);
+            IEnumerable<int> odd = n.Where(x => x % 2 != 0);
 
-            int sum = 0;
-            double count = 0.0;
-            foreach (var element in odd)
-            {
-                sum += element;
-                count++;
-            }
-            Console.WriteLine(sum / (double)(odd.ToList().Count));
+            Console.WriteLine(odd.ToList().Average());
         }
 
         static void Main(string[] args)
