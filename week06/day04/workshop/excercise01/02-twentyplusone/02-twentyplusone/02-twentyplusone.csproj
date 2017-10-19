@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BF035E4A-2F8C-42E2-8B3A-C6F117A77E03}</ProjectGuid>
+    <ProjectGuid>{1B0AE299-175D-4C37-A401-0C9576BBB662}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>_01_parkinglot</RootNamespace>
-    <AssemblyName>01-parkinglot</AssemblyName>
+    <RootNamespace>_02_twentyplusone</RootNamespace>
+    <AssemblyName>02-twentyplusone</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -42,7 +42,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Car.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
