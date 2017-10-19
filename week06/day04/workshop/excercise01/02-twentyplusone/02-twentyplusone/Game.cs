@@ -50,7 +50,7 @@ namespace _02_twentyplusone
 
         public static void OpponentPlays(List<Card> othersCards, Deck deck)
         {
-            if (random.Next(0, 20) < Sum(othersCards) - 5)
+            if (random.Next(15, 20) < Sum(othersCards))
             {
                 otherStops = true;
                 Console.WriteLine("The other finished drawing until the end.");
