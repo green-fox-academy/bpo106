@@ -16,7 +16,16 @@ namespace _02_twentyplusone
             {
                 for (int rank = 2; rank < 15; rank++)
                 {
-                    list.Add(new Card((suit * (suit % 3)) % 3, suit, rank));
+                    int rankTemp = rank;
+                    if (rank == 14)
+                    {
+                        rankTemp = 11;
+                    }
+                    else if (rank > 10)
+                    {
+                        rankTemp = 10;
+                    }
+                    list.Add(new Card((suit * (suit % 3)) % 3, suit, rankTemp));
                 }
             }
             ShuffleDeck();
