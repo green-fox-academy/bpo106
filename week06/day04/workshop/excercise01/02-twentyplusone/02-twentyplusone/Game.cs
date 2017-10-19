@@ -23,9 +23,18 @@ namespace _02_twentyplusone
             string input = Console.ReadLine();
             if (input.ToLower() == "n")
             {
-                youStop = true;
-                Console.WriteLine("You won't touch the deck anymore.");
-                return;
+                if (Sum(yourCards) > 14)
+                {
+                    youStop = true;
+                    Console.WriteLine("You won't touch the deck anymore.");
+                    return;
+                }
+                else
+                {
+                    Console.WriteLine("You need to draw more.");
+                    yourCards.Add(deck.PullFirst());
+                    Console.WriteLine("You drew {0}.\nYour new sum of cards: {1}.", yourCards[yourCards.Count - 1].colorSuitRank[2], Sum(yourCards));
+                }
             }
             else if (input.ToLower() != "y")
             {
