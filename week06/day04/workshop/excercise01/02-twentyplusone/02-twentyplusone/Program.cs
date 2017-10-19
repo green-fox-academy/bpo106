@@ -10,6 +10,7 @@ namespace _02_twentyplusone
     {
         static void Main(string[] args)
         {
+            Deck deck = new Deck();
         }
     }
 }

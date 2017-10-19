@@ -39,5 +39,13 @@ namespace _02_twentyplusone
 
     public class Card
     {
+        int[] colorSuitRank = new int[3];
+
+        public Card(int color, int suit, int rank)
+        {
+            colorSuitRank[0] = color;
+            colorSuitRank[1] = suit;
+            colorSuitRank[2] = rank;
+        }
     }
 }
