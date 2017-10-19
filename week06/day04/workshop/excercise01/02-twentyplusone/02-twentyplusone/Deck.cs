@@ -27,14 +27,11 @@ namespace _02_twentyplusone
             Random random = new Random();
             list = list.OrderBy(x => random.Next()).Select(x => x).ToList();
         }
-        public void PullFirst()
+        public Card PullFirst()
         {
-        }
-        public void PullLast()
-        {
-        }
-        public void PullRandom()
-        {
+            Card card = list[list.Count - 1];
+            list.RemoveAt(list.Count - 1);
+            return card;
         }
     }
 }

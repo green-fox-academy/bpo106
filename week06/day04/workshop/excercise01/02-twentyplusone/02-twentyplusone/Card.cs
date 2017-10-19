@@ -31,15 +31,15 @@ namespace _02_twentyplusone
         Eight,
         Nine,
         Ten,
-        J,
-        Q,
-        K,
-        A
+        Jack,
+        Queen,
+        King,
+        Ace
     }
 
     public class Card
     {
-        int[] colorSuitRank = new int[3];
+        public int[] colorSuitRank = new int[3];
 
         public Card(int color, int suit, int rank)
         {

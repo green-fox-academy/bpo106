@@ -6,31 +6,28 @@ using System.Threading.Tasks;
 
 namespace _02_twentyplusone
 {
-    public class Game
+    public static class Game
     {
-        Random random = new Random();
+        public static bool hasToStop = false;
+        static Random random = new Random();
 
-        public int GenerateOpponent()
+        public static int Sum(List<Card> list)
         {
-            return random.Next(15, 22);
+            return list.Sum(x => x.colorSuitRank[2]);
         }
 
-        public void Continue()
+        public static void Continue()
         {
-            Console.WriteLine("Would you want to continue drawing? (Y/N)");
+            Console.WriteLine("Do you want to continue? (Y/N)");
             string input = Console.ReadLine();
-            if (input == "Y" || input == "y")
+            if (input.ToLower() == "n")
             {
-                //do something
+                hasToStop = true;
+                return;
             }
-            else if (input == "N" || input == "n")
+            else if (input.ToLower() != "y")
             {
-                //do something else
-            }
-            else
-            {
-                Console.WriteLine("Dude, can you even read?");
-                Continue();
+                Console.WriteLine("Wrong character, dude.");
             }
         }
     }
