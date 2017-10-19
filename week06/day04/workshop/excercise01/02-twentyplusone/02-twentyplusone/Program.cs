@@ -21,16 +21,21 @@ namespace _02_twentyplusone
             othersCards.Add(deck.PullFirst());
 
             Console.WriteLine("Your sum of cards: " + Game.Sum(yourCards));
+            if (Game.Sum(yourCards) > 20)
+            {
+                Game.youStop = true;
+                Console.WriteLine("Now you can't draw from the deck.");
+            }
 
             while (!(Game.youStop && Game.otherStops))
             {
-                if (!Game.youStop || Game.Sum(yourCards) < 21)
+                if (!Game.youStop)
                 {
                     Game.Continue(yourCards, deck);
-                    Console.WriteLine("Your new sum of cards: " + Game.Sum(yourCards));
                     if (Game.Sum(yourCards) > 20)
                     {
                         Game.youStop = true;
+                        Console.WriteLine("Now you can't draw from the deck.");
                     }
                 }
                 Game.OpponentPlays(othersCards, deck);

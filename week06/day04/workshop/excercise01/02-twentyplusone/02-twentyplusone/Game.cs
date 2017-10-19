@@ -24,6 +24,7 @@ namespace _02_twentyplusone
             if (input.ToLower() == "n")
             {
                 youStop = true;
+                Console.WriteLine("You won't touch the deck anymore.");
                 return;
             }
             else if (input.ToLower() != "y")
@@ -34,7 +35,7 @@ namespace _02_twentyplusone
             else
             {
                 yourCards.Add(deck.PullFirst());
-                Console.WriteLine("You drew {0}.", yourCards[yourCards.Count - 1].colorSuitRank[2]);
+                Console.WriteLine("You drew {0}.\nYour new sum of cards: {1}.", yourCards[yourCards.Count - 1].colorSuitRank[2], Sum(yourCards));
             }
         }
 
@@ -43,6 +44,7 @@ namespace _02_twentyplusone
             if (random.Next(0, 20) < Sum(othersCards) - 5)
             {
                 otherStops = true;
+                Console.WriteLine("The other finished drawing until the end.");
             }
             else
             {
