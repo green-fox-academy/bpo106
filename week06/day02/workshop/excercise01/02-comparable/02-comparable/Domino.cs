@@ -18,8 +18,7 @@ namespace _02_comparable
 
         public int CompareTo(object obj)
         {
-            Domino other = obj as Domino;
-            return Values[0] - other.Values[0];
+            return Values[0] - (obj as Domino).Values[0];
         }
     }
 }
