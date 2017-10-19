@@ -27,11 +27,11 @@ namespace _02_twentyplusone
                 if (!Game.youStop || Game.Sum(yourCards) < 21)
                 {
                     Game.Continue(yourCards, deck);
+                    Console.WriteLine("Your new sum of cards: " + Game.Sum(yourCards));
                     if (Game.Sum(yourCards) > 20)
                     {
                         Game.youStop = true;
                     }
-                    Console.WriteLine("Your sum of cards: " + Game.Sum(yourCards));
                 }
                 Game.OpponentPlays(othersCards, deck);
             }

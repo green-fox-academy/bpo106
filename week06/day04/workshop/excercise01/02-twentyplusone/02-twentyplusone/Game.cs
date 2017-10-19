@@ -34,24 +34,26 @@ namespace _02_twentyplusone
             else
             {
                 yourCards.Add(deck.PullFirst());
+                Console.WriteLine("You drew {0}.", yourCards[yourCards.Count - 1].colorSuitRank[2]);
             }
         }
 
         public static void OpponentPlays(List<Card> othersCards, Deck deck)
         {
-            if (random.Next(0, 20) < Sum(othersCards))
+            if (random.Next(0, 20) < Sum(othersCards) - 5)
             {
                 otherStops = true;
             }
             else
             {
                 othersCards.Add(deck.PullFirst());
+                Console.WriteLine("The other drew a card.");
             }
         }
 
         public static void End (List<Card> yourCards, List<Card> othersCards)
         {
-            Console.WriteLine("Other's sum of cards: {0}.", Sum(othersCards));
+            Console.WriteLine("\nThe game has ended.\nYour sum of cards: {0}.\nOther's sum of cards: {1}.", Sum(yourCards), Sum(othersCards));
 
             if (Sum(yourCards) > 21)
             {
@@ -59,11 +61,11 @@ namespace _02_twentyplusone
                 {
                     Console.WriteLine("The other won.");
                 }
-                else if (Sum(yourCards) > Sum(othersCards))
+                else if (Sum(yourCards) < Sum(othersCards))
                 {
                     Console.WriteLine("You won.");
                 }
-                else if (Sum(yourCards) < Sum(othersCards))
+                else if (Sum(yourCards) > Sum(othersCards))
                 {
                     Console.WriteLine("The other won.");
                 }
