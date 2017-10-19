@@ -8,6 +8,7 @@ namespace _02_twentyplusone
 {
     class Program
     {
+
         static void Main(string[] args)
         {
             Deck deck = new Deck();
@@ -21,15 +22,20 @@ namespace _02_twentyplusone
 
             Console.WriteLine("Your sum of cards: " + Game.Sum(yourCards));
 
-            while(Game.Sum(yourCards) < 21 && Game.Sum(othersCards) < 21 && !Game.hasToStop)
+            while (!(Game.youStop && Game.otherStops))
             {
-                Game.Continue();
-                if (Game.hasToStop)
+                if (!Game.youStop || Game.Sum(yourCards) < 21)
                 {
-                    continue;
+                    Game.Continue(yourCards, deck);
+                    if (Game.Sum(yourCards) > 20)
+                    {
+                        Game.youStop = true;
+                    }
+                    Console.WriteLine("Your sum of cards: " + Game.Sum(yourCards));
                 }
-
+                Game.OpponentPlays(othersCards, deck);
             }
+            Game.End(yourCards, othersCards);
 
             Console.ReadLine();
         }
