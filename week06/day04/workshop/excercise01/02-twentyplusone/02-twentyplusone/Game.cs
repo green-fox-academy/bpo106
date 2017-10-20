@@ -17,23 +17,32 @@ namespace _02_twentyplusone
             return list.Sum(x => x.colorSuitRank[2]);
         }
 
-        public static void Continue(List<Card> yourCards, Deck deck)
+        public static void Split(List<List<Card>> cards)
+        {
+            cards.Add(new List<Card>());
+            cards[1].Add(cards[0][1]);
+            cards[0].RemoveAt(1);
+            Console.WriteLine("You splitted the cards in two hands.\nYour new sum of cards in each hand: {0} and {1}.", Sum(cards[0]), Sum(cards[1]));
+        }
+
+        public static void Continue(List<List<Card>> yourCards, Deck deck)
         {
             Console.WriteLine("Do you want to continue? (Y/N)");
             string input = Console.ReadLine();
             if (input.ToLower() == "n")
             {
-                if (Sum(yourCards) > 14)
+                if ((yourCards.Count == 2 && (Sum(yourCards[0]) > 14 || Sum(yourCards[1]) > 14)) || (yourCards.Count == 1 && Sum(yourCards[0]) > 14))
                 {
                     youStop = true;
-                    Console.WriteLine("You won't touch the deck anymore.");
+                    Console.WriteLine("You won't touch this deck anymore.");
                     return;
                 }
                 else
                 {
-                    Console.WriteLine("You need to draw more.");
-                    yourCards.Add(deck.PullFirst());
-                    Console.WriteLine("You drew {0}.\nYour new sum of cards: {1}.", yourCards[yourCards.Count - 1].colorSuitRank[2], Sum(yourCards));
+                    for (int i = 0; i < yourCards.Count; i++)
+                    {
+                        ContinueElement(yourCards[i], deck, input);
+                    }
                 }
             }
             else if (input.ToLower() != "y")
@@ -43,9 +52,24 @@ namespace _02_twentyplusone
             }
             else
             {
-                yourCards.Add(deck.PullFirst());
-                Console.WriteLine("You drew {0}.\nYour new sum of cards: {1}.", yourCards[yourCards.Count - 1].colorSuitRank[2], Sum(yourCards));
+                for (int i = 0; i < yourCards.Count; i++)
+                {
+                    if (Sum(yourCards[i]) < 21)
+                    {
+                        ContinueElement(yourCards[i], deck, input);
+                    }
+                }
             }
+        }
+
+        public static void ContinueElement(List<Card> list, Deck deck, string input)
+        {
+            if (Sum(list) < 15 && input == "n")
+            {
+                Console.WriteLine("You need to draw more.");
+            }
+            list.Add(deck.PullFirst());
+            Console.WriteLine("You drew {0}.\nYour new sum of cards: {1}.", list[list.Count - 1].colorSuitRank[2], Sum(list));
         }
 
         public static void OpponentPlays(List<Card> othersCards, Deck deck)
@@ -62,46 +86,81 @@ namespace _02_twentyplusone
             }
         }
 
-        public static void End (List<Card> yourCards, List<Card> othersCards)
+        public static List<Card> End (List<Card> yourCards, List<Card> othersCards, bool hasToWrite)
         {
-            Console.WriteLine("\nThe game has ended.\nYour sum of cards: {0}.\nOther's sum of cards: {1}.", Sum(yourCards), Sum(othersCards));
+            if (hasToWrite)
+            {
+                Console.WriteLine("\nThe game has ended.\nYour sum of cards: {0}.\nOther's sum of cards: {1}.", Sum(yourCards), Sum(othersCards));
+            }
 
             if (Sum(yourCards) > 21)
             {
                 if (Sum(othersCards) < 22)
                 {
-                    Console.WriteLine("The other won.");
+                    if (hasToWrite)
+                    {
+                        Console.WriteLine("The other won.");
+                    }
+                    return othersCards;
                 }
                 else if (Sum(yourCards) < Sum(othersCards))
                 {
-                    Console.WriteLine("You won.");
+                    if (hasToWrite)
+                    {
+                        Console.WriteLine("You won.");
+                    }
+                    return yourCards;
                 }
                 else if (Sum(yourCards) > Sum(othersCards))
                 {
-                    Console.WriteLine("The other won.");
+                    if (hasToWrite)
+                    {
+                        Console.WriteLine("The other won.");
+                    }
+                    return othersCards;
                 }
                 else
                 {
-                    Console.WriteLine("Draw.");
+                    if (hasToWrite)
+                    {
+                        Console.WriteLine("Draw.");
+                    }
+                    return yourCards;
                 }
             }
             else
             {
                 if (Sum(othersCards) > 22)
                 {
-                    Console.WriteLine("You won.");
+                    if (hasToWrite)
+                    {
+                        Console.WriteLine("You won.");
+                    }
+                    return yourCards;
                 }
                 else if (Sum(yourCards) > Sum(othersCards))
                 {
-                    Console.WriteLine("You won.");
+                    if (hasToWrite)
+                    {
+                        Console.WriteLine("You won.");
+                    }
+                    return yourCards;
                 }
                 else if (Sum(yourCards) < Sum(othersCards))
                 {
-                    Console.WriteLine("The other won.");
+                    if (hasToWrite)
+                    {
+                        Console.WriteLine("The other won.");
+                    }
+                    return othersCards;
                 }
                 else
                 {
-                    Console.WriteLine("Draw.");
+                    if (hasToWrite)
+                    {
+                        Console.WriteLine("Draw.");
+                    }
+                    return yourCards;
                 }
             }
         }
