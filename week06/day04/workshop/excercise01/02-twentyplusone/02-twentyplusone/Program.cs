@@ -30,11 +30,8 @@ namespace _02_twentyplusone
                 Console.WriteLine("Now you can't draw from the deck.");
             }
 
-            if (yourCards[0][0].colorSuitRank[2] == yourCards[0][1].colorSuitRank[2])
-            {
-
-                Game.IfSplit(yourCards);
-            }
+            Game.IfSplit(yourCards, true);
+            Game.IfSplit(othersCards, false);
 
             while (!(Game.youStop && Game.otherStops))
             {
@@ -47,7 +44,7 @@ namespace _02_twentyplusone
                         Console.WriteLine("Now you can't draw from the deck.");
                     }
                 }
-                Game.OpponentPlays(othersCards[0], deck);
+                Game.OpponentPlays(othersCards, deck);
             }
 
             if (yourCards.Count == 2 && othersCards.Count == 2)

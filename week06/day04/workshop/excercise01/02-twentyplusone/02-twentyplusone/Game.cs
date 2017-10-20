@@ -15,18 +15,33 @@ namespace _02_twentyplusone
             return list.Sum(x => x.colorSuitRank[2]);
         }
 
-        public static void IfSplit(List<List<Card>> cards)
+        public static void IfSplit(List<List<Card>> cards, bool isYourHand)
         {
-            Console.WriteLine("You have two identical valued cards. Do you want to split? (Y/N)");
-            string input = Console.ReadLine();
-            if (input.ToLower() == "y")
+            if (cards[0][0].colorSuitRank[2] == cards[0][1].colorSuitRank[2])
             {
-                Split(cards);
-            }
-            else if (input.ToLower() != "n")
-            {
-                Console.WriteLine("Wrong character, dude.");
-                IfSplit(cards);
+                if (isYourHand)
+                {
+                    Console.WriteLine("You have two identical valued cards. Do you want to split? (Y/N)");
+                    string input = Console.ReadLine();
+                    if (input.ToLower() == "y")
+                    {
+                        Split(cards);
+                    }
+                    else if (input.ToLower() != "n")
+                    {
+                        Console.WriteLine("Wrong character, dude.");
+                        IfSplit(cards, isYourHand);
+                    }
+                }
+                else
+                {
+                    Random random = new Random();
+                    if (random.Next(2) == 0)
+                    {
+                        Split(cards);
+                        Console.WriteLine("The other split the cards.");
+                    }
+                }
             }
         }
 
@@ -85,16 +100,16 @@ namespace _02_twentyplusone
             Console.WriteLine("You drew {0}.\nYour new sum of cards: {1}.", list[list.Count - 1].colorSuitRank[2], Sum(list));
         }
 
-        public static void OpponentPlays(List<Card> othersCards, Deck deck)
+        public static void OpponentPlays(List<List<Card>> othersCards, Deck deck)
         {
-            if (random.Next(15, 20) < Sum(othersCards))
+            if (random.Next(15, 20) < Sum(othersCards[0]))
             {
                 otherStops = true;
                 Console.WriteLine("The other finished drawing until the end.");
             }
             else
             {
-                othersCards.Add(deck.PullFirst());
+                othersCards[0].Add(deck.PullFirst());
                 Console.WriteLine("The other drew a card.");
             }
         }
