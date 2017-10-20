@@ -30,8 +30,7 @@ namespace _02_twentyplusone
                 Console.WriteLine("Now you can't draw from the deck.");
             }
 
-            Game.IfSplit(yourCards, true);
-            Game.IfSplit(othersCards, false);
+            Game.IfSplit(yourCards);
 
             while (!(Game.youStop && Game.otherStops))
             {

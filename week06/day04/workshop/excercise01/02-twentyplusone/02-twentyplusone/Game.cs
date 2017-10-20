@@ -15,33 +15,21 @@ namespace _02_twentyplusone
             return list.Sum(x => x.colorSuitRank[2]);
         }
 
-        public static void IfSplit(List<List<Card>> cards, bool isYourHand)
+        public static void IfSplit(List<List<Card>> cards)
         {
             if (cards[0][0].colorSuitRank[2] == cards[0][1].colorSuitRank[2])
             {
-                if (isYourHand)
+                Console.WriteLine("You have two identical valued cards. Do you want to split? (Y/N)");
+                string input = Console.ReadLine();
+                if (input.ToLower() == "y")
                 {
-                    Console.WriteLine("You have two identical valued cards. Do you want to split? (Y/N)");
-                    string input = Console.ReadLine();
-                    if (input.ToLower() == "y")
-                    {
-                        Split(cards);
-                        Console.WriteLine("You splitted the cards in two hands.\nYour new sum of cards in each hand: {0} and {1}.", Sum(cards[0]), Sum(cards[1]));
-                    }
-                    else if (input.ToLower() != "n")
-                    {
-                        Console.WriteLine("Wrong character, dude.");
-                        IfSplit(cards, isYourHand);
-                    }
+                    Split(cards);
+                    Console.WriteLine("You splitted the cards in two hands.\nYour new sum of cards in each hand: {0} and {1}.", Sum(cards[0]), Sum(cards[1]));
                 }
-                else
+                else if (input.ToLower() != "n")
                 {
-                    Random random = new Random();
-                    if (random.Next(2) == 0)
-                    {
-                        Split(cards);
-                        Console.WriteLine("The other split the cards.");
-                    }
+                    Console.WriteLine("Wrong character, dude.");
+                    IfSplit(cards);
                 }
             }
         }
@@ -114,7 +102,7 @@ namespace _02_twentyplusone
             if (random.Next(15, 20) < validSum)
             {
                 otherStops = true;
-                Console.WriteLine("The other finished drawing until the end.");
+                Console.WriteLine("The dealer finished drawing until the end.");
             }
             else
             {
@@ -123,7 +111,7 @@ namespace _02_twentyplusone
                 {
                     othersCards[1].Add(deck.PullFirst());
                 }
-                Console.WriteLine("The other drew a card.");
+                Console.WriteLine("The dealer drew a card.");
             }
         }
 
@@ -131,7 +119,7 @@ namespace _02_twentyplusone
         {
             if (hasToWrite)
             {
-                Console.WriteLine("\nThe game has ended.\nYour sum of cards: {0}.\nOther's sum of cards: {1}.", Sum(yourCards), Sum(othersCards));
+                Console.WriteLine("\nThe game has ended.\nYour sum of cards: {0}.\nThe dealer's sum of cards: {1}.", Sum(yourCards), Sum(othersCards));
             }
 
             if (Sum(yourCards) > 21)
@@ -140,7 +128,7 @@ namespace _02_twentyplusone
                 {
                     if (hasToWrite)
                     {
-                        Console.WriteLine("The other won.");
+                        Console.WriteLine("The dealer won.");
                     }
                     return othersCards;
                 }
@@ -156,7 +144,7 @@ namespace _02_twentyplusone
                 {
                     if (hasToWrite)
                     {
-                        Console.WriteLine("The other won.");
+                        Console.WriteLine("The dealer won.");
                     }
                     return othersCards;
                 }
@@ -171,7 +159,7 @@ namespace _02_twentyplusone
             }
             else
             {
-                if (Sum(othersCards) > 22)
+                if (Sum(othersCards) > 21)
                 {
                     if (hasToWrite)
                     {
@@ -191,7 +179,7 @@ namespace _02_twentyplusone
                 {
                     if (hasToWrite)
                     {
-                        Console.WriteLine("The other won.");
+                        Console.WriteLine("The dealer won.");
                     }
                     return othersCards;
                 }

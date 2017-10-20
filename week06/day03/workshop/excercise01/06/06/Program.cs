@@ -8,8 +8,7 @@ namespace _06
     {
         static void frequencyLambda(string s)
         {
-            s = s.ToLower();
-            var frequency = s.Where(x => x != '.' && x != ',' && x != ' ' && x != '-').GroupBy(x => x).Select(x => new { Character = x.Key, Count = x.Count() });
+            var frequency = s.ToLower().Where(x => x != '.' && x != ',' && x != ' ' && x != '-').GroupBy(x => x).Select(x => new { Character = x.Key, Count = x.Count() });
         
             foreach (var element in frequency)
             {
