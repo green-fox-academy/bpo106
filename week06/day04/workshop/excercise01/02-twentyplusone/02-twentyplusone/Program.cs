@@ -32,7 +32,8 @@ namespace _02_twentyplusone
 
             if (yourCards[0][0].colorSuitRank[2] == yourCards[0][1].colorSuitRank[2])
             {
-                Game.Split(yourCards);
+
+                Game.IfSplit(yourCards);
             }
 
             while (!(Game.youStop && Game.otherStops))

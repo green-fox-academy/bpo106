@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace _02_twentyplusone
 {
@@ -15,6 +13,21 @@ namespace _02_twentyplusone
         public static int Sum(List<Card> list)
         {
             return list.Sum(x => x.colorSuitRank[2]);
+        }
+
+        public static void IfSplit(List<List<Card>> cards)
+        {
+            Console.WriteLine("You have two identical valued cards. Do you want to split? (Y/N)");
+            string input = Console.ReadLine();
+            if (input.ToLower() == "y")
+            {
+                Split(cards);
+            }
+            else if (input.ToLower() != "n")
+            {
+                Console.WriteLine("Wrong character, dude.");
+                IfSplit(cards);
+            }
         }
 
         public static void Split(List<List<Card>> cards)
