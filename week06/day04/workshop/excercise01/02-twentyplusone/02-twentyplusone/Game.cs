@@ -26,6 +26,7 @@ namespace _02_twentyplusone
                     if (input.ToLower() == "y")
                     {
                         Split(cards);
+                        Console.WriteLine("You splitted the cards in two hands.\nYour new sum of cards in each hand: {0} and {1}.", Sum(cards[0]), Sum(cards[1]));
                     }
                     else if (input.ToLower() != "n")
                     {
@@ -50,7 +51,6 @@ namespace _02_twentyplusone
             cards.Add(new List<Card>());
             cards[1].Add(cards[0][1]);
             cards[0].RemoveAt(1);
-            Console.WriteLine("You splitted the cards in two hands.\nYour new sum of cards in each hand: {0} and {1}.", Sum(cards[0]), Sum(cards[1]));
         }
 
         public static void Continue(List<List<Card>> yourCards, Deck deck)
@@ -102,7 +102,16 @@ namespace _02_twentyplusone
 
         public static void OpponentPlays(List<List<Card>> othersCards, Deck deck)
         {
-            if (random.Next(15, 20) < Sum(othersCards[0]))
+            int validSum;
+            if (othersCards.Count == 1)
+            {
+                validSum = Sum(othersCards[0]);
+            }
+            else
+            {
+                validSum = Math.Max(Sum(othersCards[0]), Sum(othersCards[1]));
+            }
+            if (random.Next(15, 20) < validSum)
             {
                 otherStops = true;
                 Console.WriteLine("The other finished drawing until the end.");
@@ -110,6 +119,10 @@ namespace _02_twentyplusone
             else
             {
                 othersCards[0].Add(deck.PullFirst());
+                if (othersCards.Count == 2)
+                {
+                    othersCards[1].Add(deck.PullFirst());
+                }
                 Console.WriteLine("The other drew a card.");
             }
         }
