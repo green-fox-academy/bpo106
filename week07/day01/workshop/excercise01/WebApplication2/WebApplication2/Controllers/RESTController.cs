@@ -12,12 +12,15 @@ namespace WebApplication2.Controllers
     [Route("api")]
     public class RESTController : Controller
     {
-        // GET: /<controller>/
+        static int id = 0;
         
         [Route("greeting")]
-        public IActionResult Greeting()
+        public IActionResult Greeting(string name)
         {
-            Greeting obj = new Greeting() { Id = 1, Content = "Hello World!" };
+            var obj = new Greeting();
+            id++;
+            obj.Id = id;
+            obj.Content = "Hello, " + name;
             return new JsonResult(obj);
         }
     }
