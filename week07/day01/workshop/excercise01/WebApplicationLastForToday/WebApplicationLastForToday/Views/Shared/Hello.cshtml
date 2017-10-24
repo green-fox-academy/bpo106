@@ -1,4 +1,7 @@
 ﻿@model string[]
+@{
+    Random random = new Random();
+}
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -8,7 +11,7 @@
 <body>
     @foreach (var element in Model)
     {
-        <t>@element</t>
-    }
+        <span style="color:rgb(@random.Next(255), @random.Next(255), @random.Next(255)); font-size: @random.Next(36)pt">@element</span>
+            }
 </body>
 </html>
