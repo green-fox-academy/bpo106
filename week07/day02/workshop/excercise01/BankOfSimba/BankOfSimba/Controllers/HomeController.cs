@@ -13,11 +13,11 @@ namespace BankOfSimba.Controllers
     {
         List<BankAccount> list = new List<BankAccount>()
         {
-            new BankAccount { Name = "Simba", Balance = "2000.00", AnimalType = "Lion", IsKing = true },
-            new BankAccount { Name = "RandomLion", Balance = "1000.00", AnimalType = "Lion", IsKing = false },
-            new BankAccount { Name = "SomeOtherRandomLion", Balance = "500.00", AnimalType = "Lion", IsKing = false },
-            new BankAccount { Name = "LionWithAReallyProblematicName", Balance = "200.00", AnimalType = "Lion", IsKing = false },
-            new BankAccount { Name = "LionVersionOfAnonymous", Balance = "100.00", AnimalType = "Lion", IsKing = false }
+            new BankAccount { Name = "Simba", Balance = "2000.00", AnimalType = "Lion", IsKing = true, IsGood = true },
+            new BankAccount { Name = "RandomLion", Balance = "1000.00", AnimalType = "Lion", IsKing = false, IsGood = true },
+            new BankAccount { Name = "SomeOtherRandomLion", Balance = "500.00", AnimalType = "Lion", IsKing = false, IsGood = false },
+            new BankAccount { Name = "LionWithAReallyProblematicName", Balance = "200.00", AnimalType = "Lion", IsKing = false, IsGood = false },
+            new BankAccount { Name = "LionVersionOfAnonymous", Balance = "100.00", AnimalType = "Lion", IsKing = false, IsGood = true }
         };
 
         [Route("client")]

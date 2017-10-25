@@ -7,13 +7,14 @@
 </head>
 <body>
     @{int index = 1; }
-    <table>
+    <table style="text-align:center">
         <tr>
             <th>Index</th>
             <th>Name</th>
             <th>Balance</th>
             <th>Type</th>
-            <th>Status</th>
+            <th>Power Status</th>
+            <th>Goodness Status</th>
         </tr>
         @foreach (BankOfSimba.Models.BankAccount element in Model)
         {
@@ -23,6 +24,17 @@
                 <td>Ƶ @element.Balance</td>
                 <td>@element.AnimalType</td>
                 <td>@(element.IsKing ? "King" : "")</td>
+                @{ 
+                    switch(element.IsGood)
+                    {
+                        case true:
+                            <td>Good One</td>
+                            break;
+                        default:
+                            <td>Bad Guy</td>
+                            break;
+                    }
+                }
             </tr>
         }
     </table>
