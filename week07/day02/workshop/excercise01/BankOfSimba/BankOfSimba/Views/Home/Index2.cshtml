@@ -1,0 +1,28 @@
+﻿@model List<BankOfSimba.Models.BankAccount>
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Bank of Simba</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    @{int index = 1; }
+    <table>
+        <tr>
+            <th>Index</th>
+            <th>Name</th>
+            <th>Balance</th>
+            <th>Type</th>
+        </tr>
+        @foreach (BankOfSimba.Models.BankAccount element in Model)
+        {
+            <tr>
+                <td>@(index++)</td>
+                <td>@element.Name</td>
+                <td>Ƶ @element.Balance</td>
+                <td>@element.AnimalType</td>
+            </tr>
+        }
+    </table>
+</body>
+</html>

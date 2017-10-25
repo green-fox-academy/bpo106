@@ -13,18 +13,24 @@ namespace BankOfSimba.Controllers
     {
         List<BankAccount> list = new List<BankAccount>()
         {
-            new BankAccount { Name = "Simba", Balance = "2000.00", AnimalType = "Animal.Lion" },
-            new BankAccount { Name = "RandomLion", Balance = "1000.00", AnimalType = "Animal.Lion" },
-            new BankAccount { Name = "SomeOtherRandomLion", Balance = "500.00", AnimalType = "Animal.Lion" },
-            new BankAccount { Name = "LionWithAReallyProblematicName", Balance = "200.00", AnimalType = "Animal.Lion" },
-            new BankAccount { Name = "LionVersionOfAnonymous", Balance = "100.00", AnimalType = "Animal.Lion" }
+            new BankAccount { Name = "Simba", Balance = "2000.00", AnimalType = "Lion" },
+            new BankAccount { Name = "RandomLion", Balance = "1000.00", AnimalType = "Lion" },
+            new BankAccount { Name = "SomeOtherRandomLion", Balance = "500.00", AnimalType = "Lion" },
+            new BankAccount { Name = "LionWithAReallyProblematicName", Balance = "200.00", AnimalType = "Lion" },
+            new BankAccount { Name = "LionVersionOfAnonymous", Balance = "100.00", AnimalType = "Lion" }
         };
 
-        [Route("")]
+        [Route("client")]
         public IActionResult Index(string name)
         {
             var bankAccount = list.FirstOrDefault(x => x.Name == name);
             return View(bankAccount);
+        }
+
+        [Route("allclients")]
+        public IActionResult Index2()
+        {
+            return View(list);
         }
     }
 }
