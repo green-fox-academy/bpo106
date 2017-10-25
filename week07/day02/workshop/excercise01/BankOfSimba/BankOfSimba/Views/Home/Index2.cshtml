@@ -24,17 +24,7 @@
                 <td>Ƶ @element.Balance</td>
                 <td>@element.AnimalType</td>
                 <td>@(element.IsKing ? "King" : "")</td>
-                @{ 
-                    switch(element.IsGood)
-                    {
-                        case true:
-                            <td>Good One</td>
-                            break;
-                        default:
-                            <td>Bad Guy</td>
-                            break;
-                    }
-                }
+                <td>@(element.IsGood ? "Good One" : "Bad Guy")</td>
             </tr>
         }
     </table>
