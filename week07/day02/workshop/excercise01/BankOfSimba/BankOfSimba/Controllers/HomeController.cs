@@ -14,7 +14,7 @@ namespace BankOfSimba.Controllers
     {
         public IActionResult Index()
         {
-            var bankAccount = new BankAccount("Simba", "2000", "Animal.Lion");
+            var bankAccount = new BankAccount("Simba", "2000.00", "Animal.Lion");
             return View(bankAccount);
         }
     }
