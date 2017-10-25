@@ -10,5 +10,6 @@ namespace BankOfSimba.Models
         public string Name;
         public string Balance;
         public string AnimalType;
+        public bool IsKing;
     }
 }

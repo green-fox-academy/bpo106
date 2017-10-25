@@ -13,14 +13,16 @@
             <th>Name</th>
             <th>Balance</th>
             <th>Type</th>
+            <th>Status</th>
         </tr>
         @foreach (BankOfSimba.Models.BankAccount element in Model)
         {
-            <tr>
+            <tr style=@(element.IsKing ? "color:red" : "color:black" )>
                 <td>@(index++)</td>
                 <td>@element.Name</td>
                 <td>Ƶ @element.Balance</td>
                 <td>@element.AnimalType</td>
+                <td>@(element.IsKing ? "King" : "")</td>
             </tr>
         }
     </table>
