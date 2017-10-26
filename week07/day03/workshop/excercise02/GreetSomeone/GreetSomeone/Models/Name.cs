@@ -7,6 +7,8 @@ namespace GreetSomeone.Models
 {
     public class Name
     {
-        public string Namestring;
+        public string Namestring { get; set; }
+
+        public Name() { }
     }
 }

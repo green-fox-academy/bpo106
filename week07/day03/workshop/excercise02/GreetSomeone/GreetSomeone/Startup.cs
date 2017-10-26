@@ -30,7 +30,7 @@ namespace GreetSomeone
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseMvcWithDefaultRoute();
+            app.UseMvc();
             app.Run(async (context) =>
             {
                 await context.Response.WriteAsync("Hello World!");

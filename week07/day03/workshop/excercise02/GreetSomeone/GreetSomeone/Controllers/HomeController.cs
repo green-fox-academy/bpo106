@@ -19,15 +19,17 @@ namespace GreetSomeone.Controllers
         }
 
         [HttpGet]
+        [Route("")]
         public IActionResult Index()
         {
             return View(name);
         }
 
         [HttpPost]
-        public IActionResult Post()
+        [Route("")]
+        public IActionResult Post(Name name)
         {
-            return RedirectToAction("Greet");
+            return RedirectToAction("Greet", name);
         }
 
         [HttpGet]

@@ -6,16 +6,15 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-    <form method="post" action="greet">
-        <div>
+    @using (Html.BeginForm("index", "home", FormMethod.Post))
+    {
+        <p>
             Type your name here:
-        </div>
-        <div>
-            <input type="text" />
-        </div>
-        <div>
-            <input type="submit" value="Post" />
-        </div>
-    </form>
+        </p>
+        <p>
+            @Html.TextBoxFor(model => model.Namestring)
+        </p>
+        <button type="submit">Post</button>
+    }
 </body>
 </html>
