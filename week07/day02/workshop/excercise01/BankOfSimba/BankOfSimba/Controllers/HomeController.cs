@@ -20,6 +20,7 @@ namespace BankOfSimba.Controllers
             new BankAccount { Name = "LionVersionOfAnonymous", Balance = "100.00", AnimalType = "Lion", IsKing = false, IsGood = true }
         };
 
+        [HttpGet]
         [Route("client")]
         public IActionResult Index(string name)
         {
@@ -27,10 +28,22 @@ namespace BankOfSimba.Controllers
             return View(bankAccount);
         }
 
+        [HttpGet]
         [Route("allclients")]
         public IActionResult Index2()
         {
             return View(list);
+        }
+
+        [HttpPost]
+        [Route("allclients")]
+        public IActionResult Increase()
+        {
+            foreach (BankAccount element in list)
+            {
+                element.Change();
+            }
+            return RedirectToAction("Index2");
         }
     }
 }
