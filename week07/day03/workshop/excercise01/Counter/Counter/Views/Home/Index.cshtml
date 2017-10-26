@@ -1,0 +1,18 @@
+﻿@model CounterApp.Models.Counter
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Random increase button</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <form method="post" action="Index">
+        <div>
+            @Model.Number
+        </div>
+        <div>
+            <input type="submit" value="Increase" />
+        </div>
+    </form>
+</body>
+</html>
