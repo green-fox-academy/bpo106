@@ -6,8 +6,11 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-    @{int index = 1; }
-    <table style="text-align:center" bgcolor="yellow" bordercolor="black">
+    @{
+        int index = 1;
+    }
+
+    <table style="text-align:center; font-family:'Comic Sans MS';" bgcolor="yellow" bordercolor="black">
         <tr style="color:yellow" bgcolor="black">
             <th>Index</th>
             <th>Name</th>
@@ -15,9 +18,27 @@
             <th>Type</th>
             <th>Power Status</th>
             <th>Goodness Status</th>
+            <th>EU Money Support</th>
         </tr>
         @foreach (BankOfSimba.Models.BankAccount element in Model)
         {
+            @functions{
+                void increase(BankOfSimba.Models.BankAccount row)
+                {
+                    int integer = Int32.Parse(row.Balance.Substring(0, row.Balance.Length - 3));
+                    if (row.IsKing)
+                    {
+                        integer += 100;
+                    }
+                    else
+                    {
+                        integer += 10;
+                    }
+                    row.Balance = integer.ToString() + ".00";
+                    row.IsGood = false;
+                }
+            }
+
             <tr style=@(element.IsKing ? "color:red" : "color:black" )>
                 <td>@(index++)</td>
                 <td>@element.Name</td>
@@ -25,6 +46,12 @@
                 <td>@element.AnimalType</td>
                 <td>@(element.IsKing ? "King" : "")</td>
                 <td>@(element.IsGood ? "Good One" : "Bad Guy")</td>
+                <td>
+                    <form method="post" action="Index2.cshtml">
+                        <input type="button" style="width:100%" value="Steal some"/>
+                    </form>
+                <!-- <button type="submit" value="Submit" style="width:100%" onclick="increase(element)">Steal some</button> -->
+                </td>
             </tr>
         }
     </table>

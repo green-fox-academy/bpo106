@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace BankOfSimba
+namespace Counter
 {
     public class Startup
     {
@@ -33,7 +33,7 @@ namespace BankOfSimba
 
             app.Run(async (context) =>
             {
-                await context.Response.WriteAsync("Main Page.\nThere is nothing here.");
+                await context.Response.WriteAsync("Hello World!");
             });
         }
     }
