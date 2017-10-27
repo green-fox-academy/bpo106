@@ -4,7 +4,7 @@ namespace poker
 {
     public class Hand
     {
-        List<int[]> removeElement(List<int[]> list, int num)
+        List<int[]> RemoveElement(List<int[]> list, int num)
         {
             for (int i = 0; i < list.Count - 1;)
             {
@@ -21,7 +21,7 @@ namespace poker
             return list;
         }
 
-        List<int[]> sortElements(List<int[]> list)
+        List<int[]> SortElements(List<int[]> list)
         {
             for (int i = 0; i < 4; i++)
             {
@@ -43,7 +43,7 @@ namespace poker
 
         public List<int[]> Combination (List<int[]> input)
         {
-            input = sortElements(input);
+            input = SortElements(input);
             input.Add(new int[]{ 0 });
             for (int i = 0; i < 4; i++)
             {
@@ -126,10 +126,10 @@ namespace poker
                         handArray2NonCombo.Add(handArray2[i]);
                     }
 
-                    handArray1 = removeElement(handArray1, 0);
-                    handArray2 = removeElement(handArray2, 0);
-                    handArray1NonCombo = removeElement(handArray1NonCombo, 1);
-                    handArray2NonCombo = removeElement(handArray2NonCombo, 1);
+                    handArray1 = RemoveElement(handArray1, 0);
+                    handArray2 = RemoveElement(handArray2, 0);
+                    handArray1NonCombo = RemoveElement(handArray1NonCombo, 1);
+                    handArray2NonCombo = RemoveElement(handArray2NonCombo, 1);
 
                     for (int i = 0; i < handArray1.Count; i++)
                     {
