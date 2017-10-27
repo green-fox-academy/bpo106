@@ -11,20 +11,25 @@ namespace BankOfSimba.Controllers
 {
     public class HomeController : Controller
     {
-        List<BankAccount> list = new List<BankAccount>()
+        BankAccountList list;
+
+        public HomeController(BankAccountList list)
         {
-            new BankAccount { Name = "Simba", Balance = "2000.00", AnimalType = "Lion", IsKing = true, IsGood = true },
-            new BankAccount { Name = "RandomLion", Balance = "1000.00", AnimalType = "Lion", IsKing = false, IsGood = true },
-            new BankAccount { Name = "SomeOtherRandomLion", Balance = "500.00", AnimalType = "Lion", IsKing = false, IsGood = false },
-            new BankAccount { Name = "LionWithAReallyProblematicName", Balance = "200.00", AnimalType = "Lion", IsKing = false, IsGood = false },
-            new BankAccount { Name = "LionVersionOfAnonymous", Balance = "100.00", AnimalType = "Lion", IsKing = false, IsGood = true }
-        };
+            this.list = list;
+        }
 
         [HttpGet]
         [Route("client")]
         public IActionResult Index(string name)
         {
-            var bankAccount = list.FirstOrDefault(x => x.Name == name);
+            var bankAccount = new BankAccount();
+            foreach (BankAccount element in list.list)
+            {
+                if (element.Name == name)
+                {
+                    bankAccount = element;
+                }
+            }
             return View(bankAccount);
         }
 
@@ -32,17 +37,14 @@ namespace BankOfSimba.Controllers
         [Route("allclients")]
         public IActionResult Index2()
         {
-            return View(list);
+            return View(list.list);
         }
 
         [HttpPost]
         [Route("allclients")]
         public IActionResult Increase()
         {
-            foreach (BankAccount element in list)
-            {
-                element.Change();
-            }
+            //list[0].Change();
             return RedirectToAction("Index2");
         }
     }

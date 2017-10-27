@@ -8,24 +8,9 @@ namespace BankOfSimba.Models
     public class BankAccount
     {
         public string Name;
-        public string Balance;
+        public string Balance { get; set; }
         public string AnimalType;
         public bool IsKing;
-        public bool IsGood;
-
-        public void Change()
-        {
-            int integer = Int32.Parse(Balance.Substring(0, Balance.Length - 3));
-            if (IsKing)
-            {
-                integer += 100;
-            }
-            else
-            {
-                integer += 10;
-            }
-            Balance = integer.ToString() + ".00";
-            IsGood = false;
-        }
+        public bool IsGood { get; set; }
     }
 }
