@@ -29,12 +29,12 @@ namespace poker
                 {
                     if (list[i][0] < list[j][0])
                     {
-                        list[i][0] += list[j][0];
-                        list[j][0] = list[i][0] - list[j][0];
-                        list[i][0] -= list[j][0];
-                        list[i][1] += list[j][1];
-                        list[j][1] = list[i][1] - list[j][1];
-                        list[i][1] -= list[j][1];
+                        for (int k = 0; k < list[i].Length; k++)
+                        {
+                            list[i][k] += list[j][k];
+                            list[j][k] = list[i][k] - list[j][k];
+                            list[i][k] -= list[j][k];
+                        }
                     }
                 }
             }
@@ -82,8 +82,7 @@ namespace poker
                 }
             }
 
-            return input;
-            
+            return input;            
         }
 
         public int Game(List<int[]> handArray1, List<int[]> handArray2)
