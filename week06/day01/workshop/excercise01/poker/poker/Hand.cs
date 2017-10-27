@@ -33,12 +33,12 @@ namespace poker
                 {
                     if (list[i][0] < list[j][0])
                     {
-                        int tmp = list[i][0];
-                        list[i][0] = list[j][0];
-                        list[j][0] = tmp;
-                        tmp = list[i][1];
-                        list[i][1] = list[j][1];
-                        list[j][1] = tmp;
+                        list[i][0] += list[j][0];
+                        list[j][0] = list[i][0] - list[j][0];
+                        list[i][0] -= list[j][0];
+                        list[i][1] += list[j][1];
+                        list[j][1] = list[i][1] - list[j][1];
+                        list[i][1] -= list[j][1];
                     }
                 }
             }
