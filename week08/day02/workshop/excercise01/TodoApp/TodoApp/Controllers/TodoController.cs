@@ -6,14 +6,13 @@ using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace Todo.Controllers
+namespace TodoApp.Controllers
 {
-    [Route("/todo")]
-    public class HomeController : Controller
+    public class TodoController : Controller
     {
-        [Route("/")]
+        [Route("")]
         [Route("/list")]
-        public IActionResult Index()
+        public IActionResult List()
         {
             return View();
         }
