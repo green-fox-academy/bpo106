@@ -7,18 +7,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace EFCoreIntro.Controllers
 {
     [Route("")]
     public class HomeController : Controller
     {
-        StudentRepository studentRepository;
+        StudentRepository StudentRepository;
 
         public HomeController(StudentRepository studentRepository)
         {
-            this.studentRepository = studentRepository;
+            StudentRepository = studentRepository;
         }
 
         [Route("")]
@@ -26,21 +24,21 @@ namespace EFCoreIntro.Controllers
         {
             return View(StudentRepository.GetLastStudent());
         }
- 
+
         [Route("/add")]
         public IActionResult AddStudent()
         {
             StudentRepository.AddStudent();
             return RedirectToAction("Index");
         }
- 
+
         [Route("/update")]
         public IActionResult UpdateStudent()
         {
             StudentRepository.UpdateStudent();
             return RedirectToAction("Index");
         }
- 
+
         [Route("/remove")]
         public IActionResult RemoveStudent()
         {
