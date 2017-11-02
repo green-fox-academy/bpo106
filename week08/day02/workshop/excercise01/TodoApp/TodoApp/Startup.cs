@@ -34,6 +34,9 @@ namespace TodoApp
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseExceptionHandler("/error");
+            app.UseStatusCodePagesWithReExecute("/error/{code}");
+
             app.UseMvc();
 
             app.Run(async (context) =>
