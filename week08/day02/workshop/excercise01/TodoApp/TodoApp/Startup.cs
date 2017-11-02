@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using TodoApp.Repositories;
+using TodoApp.Models;
 using Microsoft.EntityFrameworkCore;
 using TodoApp.Entities;
 
