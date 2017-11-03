@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using TodoApp.Repositories;
-using TodoApp.Entities;
 
 namespace TodoApp.Controllers
 {
@@ -23,15 +21,7 @@ namespace TodoApp.Controllers
         [Route("/list")]
         public IActionResult List()
         {
-            return View();
-        }
-
-        [HttpPost]
-        [Route("/add/{title}")]
-        public IActionResult Add(string title)
-        {
-            todoRepository.Add(title);
-            return RedirectToAction("list");
+            return View(todoRepository.context.Todos);
         }
     }
 }

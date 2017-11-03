@@ -1,0 +1,28 @@
+﻿@model Microsoft.EntityFrameworkCore.DbSet<TodoApp.Models.Todo>
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>First todo</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <h1>List of todos:</h1>
+    <table>
+        <thead>
+            <td>Id</td>
+            <td>Title</td>
+            <td>Urgency</td>
+            <td>Status</td>
+        </thead>
+        @foreach (var todo in @Model)
+        {
+            <tr>
+                <td>@todo.Id</td>
+                <td>@todo.Title</td>
+                <td>@todo.IsUrgent</td>
+                <td>@todo.IsDone</td>
+            </tr>
+        }
+    </table>
+</body>
+</html>
