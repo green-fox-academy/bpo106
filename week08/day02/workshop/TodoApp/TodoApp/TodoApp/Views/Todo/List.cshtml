@@ -14,13 +14,13 @@
             <td>Urgency</td>
             <td>Status</td>
         </thead>
-        @foreach (var todo in @Model)
+        @foreach (var element in @Model)
         {
             <tr>
-                <td>@todo.Id</td>
-                <td>@todo.Title</td>
-                <td>@todo.IsUrgent</td>
-                <td>@todo.IsDone</td>
+                <td>@element.Id</td>
+                <td>@element.Title</td>
+                <td>@element.IsUrgent</td>
+                <td>@element.IsDone</td>
             </tr>
         }
     </table>
