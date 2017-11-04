@@ -14,5 +14,15 @@ namespace TodoApp.Repositories
         {
             this.context = context;
         }
+
+        public void AddRow()
+        {
+
+        }
+
+        public void RemoveRow()
+        {
+
+        }
     }
 }
