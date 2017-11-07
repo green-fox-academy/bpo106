@@ -27,9 +27,13 @@ namespace Frontend.Controllers
         [Route("/greeter")]
         public IActionResult Greeter(string name, string title)
         {
-            if (name == null || title == null)
+            if (name == null)
             {
-                return Json(new { error = "Please provide a name and a title!" });
+                return Json(new { error = "Please provide a name!" });
+            }
+            if (title == null)
+            {
+                return Json(new { error = "Please provide a title!" });
             }
             return Json(new { welcome_message = "Oh, hi there " + name +", my dear " + title + "!" });
         }
@@ -38,6 +42,10 @@ namespace Frontend.Controllers
         [Route("/appenda/{appendable}")]
         public IActionResult Appenda(string appendable)
         {
+            if (appendable == null)
+            {
+                return RedirectToAction("Randomness");
+            }
             return Json(new { appended = appendable + "a" });
         }
     }
