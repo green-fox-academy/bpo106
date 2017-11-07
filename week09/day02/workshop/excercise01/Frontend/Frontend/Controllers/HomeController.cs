@@ -40,6 +40,7 @@ namespace Frontend.Controllers
 
         [HttpGet]
         [Route("/appenda/{appendable}")]
+        [Route("appenda")]
         public IActionResult Appenda(string appendable)
         {
             if (appendable == null)
