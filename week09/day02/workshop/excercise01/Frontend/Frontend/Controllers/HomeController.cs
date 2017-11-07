@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Frontend.Models;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -6,6 +7,7 @@ namespace Frontend.Controllers
 {
     public class HomeController : Controller
     {
+
         [Route("/")]
         public IActionResult Index()
         {
@@ -48,6 +50,34 @@ namespace Frontend.Controllers
                 return RedirectToAction("Randomness");
             }
             return Json(new { appended = appendable + "a" });
+        }
+
+        [HttpPost]
+        [Route("/dountil/{what}")]
+        [Route("/dountil")]
+        public IActionResult DoUntil(string what, [FromBody] DoUntil until)
+        {
+            if (until.until == null)
+            {
+                return Json(new { error = "Please provide a number!" });
+            }
+            int? end = until.until;
+            for (int? i = until.until - 1; i > 0; i--)
+            {
+                if (what == "sum")
+                {
+                    end += i;
+                }
+                else if (what == "factor")
+                {
+                    end *= i;
+                }
+                else
+                {
+                    return Json(new { error = "Please provide an input!" });
+                }
+            }
+            return Json(new { result = $"{end}" });
         }
     }
 }
