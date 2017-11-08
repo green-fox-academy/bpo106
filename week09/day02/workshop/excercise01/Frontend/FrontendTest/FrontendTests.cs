@@ -47,5 +47,41 @@ namespace FrontendTest
 
             Assert.Equal("{\"error\":\"Please provide an input!\"}", responseJson);
         }
+
+        [Fact]
+        public async Task GreeterReturnOkStatus()
+        {
+            var response = await Client.GetAsync("/greeter?name=Petike&title=student");
+            string responseJson = await response.Content.ReadAsStringAsync();
+
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+        }
+
+        [Fact]
+        public async Task GreeterReturnRight()
+        {
+            var response = await Client.GetAsync("/greeter?name=Petike&title=student");
+            string responseJson = await response.Content.ReadAsStringAsync();
+
+            Assert.Equal("{\"welcome_message\":\"Oh, hi there Petike, my dear student!\"}", responseJson);
+        }
+
+        [Fact]
+        public async Task GreeterReturnNamelessError()
+        {
+            var response = await Client.GetAsync("/greeter?title=student");
+            string responseJson = await response.Content.ReadAsStringAsync();
+
+            Assert.Equal("{\"error\":\"Please provide a name!\"}", responseJson);
+        }
+
+        [Fact]
+        public async Task GreeterReturnTitlelessError()
+        {
+            var response = await Client.GetAsync("/greeter?name=Petike");
+            string responseJson = await response.Content.ReadAsStringAsync();
+
+            Assert.Equal("{\"error\":\"Please provide a title!\"}", responseJson);
+        }
     }
 }
