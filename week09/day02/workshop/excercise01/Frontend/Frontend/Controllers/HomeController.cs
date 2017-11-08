@@ -55,7 +55,7 @@ namespace Frontend.Controllers
         [HttpPost]
         [Route("/dountil/{what}")]
         [Route("/dountil")]
-        public IActionResult DoUntil(string what, [FromBody] DoUntil until)
+        public IActionResult DoUntil(string what, [FromBody] BasicClass until)
         {
             if (until.until == null)
             {
@@ -78,6 +78,48 @@ namespace Frontend.Controllers
                 }
             }
             return Json(new { result = $"{end}" });
+        }
+
+        [HttpPost]
+        [Route("/arrays")]
+        public IActionResult Arrays([FromBody] string what, [FromBody] BasicClass array)
+        {
+            if (array.array.Length == 0)
+            {
+                return Json(new { error = "Please provide an array!" });
+            }
+            int konets = array.array[0];
+            if (array.array.Length == 1)
+            {
+                return Json(new { what = what, result = konets });
+            }
+            for (int i = 1; i < array.array.Length; i++)
+            {
+                if (what == "sum")
+                {
+                    konets += i;
+                }
+                if (what == "multiply")
+                {
+                    konets *= i;
+                }
+                if (what == "double")
+                {
+                    array.array[i] *= 2;
+                }
+                else
+                {
+                    return Json(new { error = "Please provide a method!" });
+                }
+            }
+            if (what == "double")
+            {
+                return Json(new { result = array.array });
+            }
+            else
+            {
+                return Json(new { result = konets });
+            }
         }
     }
 }

@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frontend", "Frontend\Frontend.csproj", "{18019AB3-7142-415A-BB09-2A84510EA904}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Frontend", "Frontend\Frontend.csproj", "{18019AB3-7142-415A-BB09-2A84510EA904}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrontendTest", "FrontendTest\FrontendTest.csproj", "{83714982-F4A9-41D3-A76C-1A7D88B76EF3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{18019AB3-7142-415A-BB09-2A84510EA904}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18019AB3-7142-415A-BB09-2A84510EA904}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{18019AB3-7142-415A-BB09-2A84510EA904}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83714982-F4A9-41D3-A76C-1A7D88B76EF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83714982-F4A9-41D3-A76C-1A7D88B76EF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83714982-F4A9-41D3-A76C-1A7D88B76EF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83714982-F4A9-41D3-A76C-1A7D88B76EF3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
