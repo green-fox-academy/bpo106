@@ -29,5 +29,23 @@ namespace FrontendTest
 
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         }
+
+        [Fact]
+        public async Task DoublingReturnRight()
+        {
+            var response = await Client.GetAsync("/doubling?input=5");
+            string responseJson = await response.Content.ReadAsStringAsync();
+
+            Assert.Equal("{\"received\":5,\"result\":10}", responseJson);
+        }
+
+        [Fact]
+        public async Task DoublingReturnError()
+        {
+            var response = await Client.GetAsync("/doubling");
+            string responseJson = await response.Content.ReadAsStringAsync();
+
+            Assert.Equal("{\"error\":\"Please provide an input!\"}", responseJson);
+        }
     }
 }
