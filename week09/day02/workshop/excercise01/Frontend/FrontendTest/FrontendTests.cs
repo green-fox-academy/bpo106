@@ -146,22 +146,26 @@ namespace FrontendTest
             Assert.Equal("{\"result\":\"120\"}", responseJson);
         }
 
-        //[Fact]
-        //public async Task DountilReturnNumberlessError()
-        //{
-        //    var response = await Client.GetAsync("/greeter?title=student");
-        //    string responseJson = await response.Content.ReadAsStringAsync();
+        [Fact]
+        public async Task DountilReturnNumberlessError()
+        {
+            var data = new BasicClass();
+            var content = new StringContent(JsonConvert.SerializeObject(data).ToString(), encoding: Encoding.UTF8, mediaType: "application/json");
+            var response = await Client.PostAsync("/dountil/sum", content);
+            string responseJson = await response.Content.ReadAsStringAsync();
 
-        //    Assert.Equal("{\"error\":\"Please provide a name!\"}", responseJson);
-        //}
+            Assert.Equal("{\"error\":\"Please provide a number!\"}", responseJson);
+        }
 
-        //[Fact]
-        //public async Task DountilReturnInputlessError()
-        //{
-        //    var response = await Client.GetAsync("/greeter?name=Petike");
-        //    string responseJson = await response.Content.ReadAsStringAsync();
+        [Fact]
+        public async Task DountilReturnInputlessError()
+        {
+            var data = new BasicClass { until = 5 };
+            var content = new StringContent(JsonConvert.SerializeObject(data).ToString(), encoding: Encoding.UTF8, mediaType: "application/json");
+            var response = await Client.PostAsync("/dountil", content);
+            string responseJson = await response.Content.ReadAsStringAsync();
 
-        //    Assert.Equal("{\"error\":\"Please provide a title!\"}", responseJson);
-        //}
+            Assert.Equal("{\"error\":\"Please provide an input!\"}", responseJson);
+        }
     }
 }
