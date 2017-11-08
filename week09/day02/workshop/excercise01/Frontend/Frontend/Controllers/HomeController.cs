@@ -47,7 +47,7 @@ namespace Frontend.Controllers
         {
             if (appendable == null)
             {
-                return RedirectToAction("Randomness");
+                return NotFound();
             }
             return Json(new { appended = appendable + "a" });
         }

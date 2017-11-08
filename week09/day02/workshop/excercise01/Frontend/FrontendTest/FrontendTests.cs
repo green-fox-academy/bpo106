@@ -83,5 +83,32 @@ namespace FrontendTest
 
             Assert.Equal("{\"error\":\"Please provide a title!\"}", responseJson);
         }
+
+        [Fact]
+        public async Task AppendaReturnOkStatus()
+        {
+            var response = await Client.GetAsync("/appenda/kuty");
+            string responseJson = await response.Content.ReadAsStringAsync();
+
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+        }
+
+        [Fact]
+        public async Task AppendaReturnNotFound()
+        {
+            var response = await Client.GetAsync("/appenda");
+            string responseJson = await response.Content.ReadAsStringAsync();
+
+            Assert.Equal(HttpStatusCode.NotFound, response.StatusCode);
+        }
+
+        [Fact]
+        public async Task AppendaReturnRight()
+        {
+            var response = await Client.GetAsync("/appenda/kuty");
+            string responseJson = await response.Content.ReadAsStringAsync();
+
+            Assert.Equal("{\"appended\":\"kutya\"}", responseJson);
+        }
     }
 }
