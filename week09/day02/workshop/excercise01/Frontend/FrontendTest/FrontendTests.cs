@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using Xunit;
 using System;
 using System.Collections.Generic;
+using System.Text;
+using Newtonsoft.Json;
 
 namespace FrontendTest
 {
@@ -110,5 +112,51 @@ namespace FrontendTest
 
             Assert.Equal("{\"appended\":\"kutya\"}", responseJson);
         }
+
+        [Fact]
+        public async Task DountilReturnOkStatus()
+        {
+            var data = new { result = "120" };
+            var content = new StringContent(JsonConvert.SerializeObject(data), Encoding.UTF8, "application/json");
+            var response = await Client.PostAsync("/dountil/sum", content);
+
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+        }
+
+        //[Fact]
+        //public async Task DountilReturnSum()
+        //{
+        //    var response = await Client.GetAsync("/greeter?name=Petike&title=student");
+        //    string responseJson = await response.Content.ReadAsStringAsync();
+
+        //    Assert.Equal("{\"welcome_message\":\"Oh, hi there Petike, my dear student!\"}", responseJson);
+        //}
+
+        //[Fact]
+        //public async Task DountilReturnFactor()
+        //{
+        //    var response = await Client.GetAsync("/greeter?name=Petike&title=student");
+        //    string responseJson = await response.Content.ReadAsStringAsync();
+
+        //    Assert.Equal("{\"welcome_message\":\"Oh, hi there Petike, my dear student!\"}", responseJson);
+        //}
+
+        //[Fact]
+        //public async Task DountilReturnNumberlessError()
+        //{
+        //    var response = await Client.GetAsync("/greeter?title=student");
+        //    string responseJson = await response.Content.ReadAsStringAsync();
+
+        //    Assert.Equal("{\"error\":\"Please provide a name!\"}", responseJson);
+        //}
+
+        //[Fact]
+        //public async Task DountilReturnInputlessError()
+        //{
+        //    var response = await Client.GetAsync("/greeter?name=Petike");
+        //    string responseJson = await response.Content.ReadAsStringAsync();
+
+        //    Assert.Equal("{\"error\":\"Please provide a title!\"}", responseJson);
+        //}
     }
 }
