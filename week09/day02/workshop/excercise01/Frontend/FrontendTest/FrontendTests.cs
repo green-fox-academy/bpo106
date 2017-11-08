@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Newtonsoft.Json;
+using Frontend.Models;
 
 namespace FrontendTest
 {
@@ -118,28 +119,32 @@ namespace FrontendTest
         {
             var data = new { result = "120" };
             var content = new StringContent(JsonConvert.SerializeObject(data), Encoding.UTF8, "application/json");
-            var response = await Client.PostAsync("/dountil/sum", content);
+            var response = await Client.PostAsync("/dountil/factor", content);
 
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         }
 
-        //[Fact]
-        //public async Task DountilReturnSum()
-        //{
-        //    var response = await Client.GetAsync("/greeter?name=Petike&title=student");
-        //    string responseJson = await response.Content.ReadAsStringAsync();
+        [Fact]
+        public async Task DountilReturnSum()
+        {
+            var data = new BasicClass { until = 5 };
+            var content = new StringContent(JsonConvert.SerializeObject(data).ToString(), encoding: Encoding.UTF8, mediaType: "application/json");
+            var response = await Client.PostAsync("/dountil/sum", content);
+            string responseJson = await response.Content.ReadAsStringAsync();
 
-        //    Assert.Equal("{\"welcome_message\":\"Oh, hi there Petike, my dear student!\"}", responseJson);
-        //}
+            Assert.Equal("{\"result\":\"15\"}", responseJson);
+        }
 
-        //[Fact]
-        //public async Task DountilReturnFactor()
-        //{
-        //    var response = await Client.GetAsync("/greeter?name=Petike&title=student");
-        //    string responseJson = await response.Content.ReadAsStringAsync();
+        [Fact]
+        public async Task DountilReturnFactor()
+        {
+            var data = new BasicClass { until = 5 };
+            var content = new StringContent(JsonConvert.SerializeObject(data).ToString(), encoding: Encoding.UTF8, mediaType: "application/json");
+            var response = await Client.PostAsync("/dountil/factor", content);
+            string responseJson = await response.Content.ReadAsStringAsync();
 
-        //    Assert.Equal("{\"welcome_message\":\"Oh, hi there Petike, my dear student!\"}", responseJson);
-        //}
+            Assert.Equal("{\"result\":\"120\"}", responseJson);
+        }
 
         //[Fact]
         //public async Task DountilReturnNumberlessError()
