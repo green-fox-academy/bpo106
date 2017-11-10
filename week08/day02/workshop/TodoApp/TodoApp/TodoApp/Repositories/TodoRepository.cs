@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TodoApp.Entities;
+using TodoApp.Models;
 
 namespace TodoApp.Repositories
 {
@@ -15,14 +16,16 @@ namespace TodoApp.Repositories
             this.context = context;
         }
 
-        public void AddRow()
+        public void AddRow(Todo todo)
         {
-
+            context.Todos.Add(todo);
+            context.SaveChanges();
         }
 
-        public void RemoveRow()
+        public void RemoveRow(int id)
         {
-
+            context.Todos.Remove(context.Todos.FirstOrDefault(x => x.Id == id));
+            context.SaveChanges();
         }
     }
 }

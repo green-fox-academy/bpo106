@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TodoApp.Repositories;
+using TodoApp.Models;
 
 namespace TodoApp.Controllers
 {
@@ -26,17 +27,19 @@ namespace TodoApp.Controllers
 
         [Route("/add")]
         [HttpPost]
-        public IActionResult Add()
+        public IActionResult Add(string title)
         {
-            todoRepository.AddRow();
+            var todo = new Todo();
+            todo.Title = title;
+            todoRepository.AddRow(todo);
             return RedirectToAction("List");
         }
 
-        [Route("/remove")]
+        [Route("/remove/{id}")]
         [HttpPost]
-        public IActionResult Remove()
+        public IActionResult Remove(int id)
         {
-            todoRepository.RemoveRow();
+            todoRepository.RemoveRow(id);
             return RedirectToAction("List");
         }
     }

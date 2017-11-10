@@ -30,11 +30,22 @@ namespace Groot.IntegrationTests
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         }
 
-        //[Fact]
-        //public async Task RandomTestName()
-        //{
-        //    var grootController = new Groot.Controllers.GrootController();
-        //    Assert.Equal("I am Groot!", grootController.Translate("/groot?message=randommessage").message);
-        //}
+        [Fact]
+        public async Task RandomTestName()
+        {
+            var response = await Client.GetAsync("/groot?message=somemessage");
+            string responseJson = await response.Content.ReadAsStringAsync();
+
+            Assert.Equal("{\"received\":\"somemessage\",\"translated\":\"I am Groot!\"}", responseJson);
+        }
+
+        [Fact]
+        public async Task NamelessError()
+        {
+            var response = await Client.GetAsync("/groot");
+            string responseJson = await response.Content.ReadAsStringAsync();
+
+            Assert.Equal("{\"error\":\"I am Groot!\"}", responseJson);
+        }
     }
 }

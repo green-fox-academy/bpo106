@@ -1,18 +1,27 @@
 ﻿@model Microsoft.EntityFrameworkCore.DbSet<TodoApp.Models.Todo>
+@{ 
+    Layout = "_Layout";
+}
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>First todo</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <title>such todo app</title>
+    <meta  name="viewport" http-equiv="Content-Type" content="text/html; width=device-width, initial-scale=1, shrink-to-fit=no; charset=UTF-8" />
 </head>
 <body>
-    <p style="font-family:'Comic Sans MS'; font-weight: bold; font-size: 32px">List of todos</p>
+    <div class="starter-template">
+        <h1 style="font-family:'Comic Sans MS'">much todo</h1>
+    </div>
+    <p style="font-family:'Comic Sans MS'; font-weight: bold; font-size: 16px">such list</p>
     <table style="text-align:center; font-family:'Comic Sans MS';" bgcolor="yellow" bordercolor="black">
         <tr style="color:yellow" bgcolor="black">
             <th>Id</th>
             <th>Title</th>
             <th>Urgency</th>
             <th>Status</th>
+            <th>Update</th>
+            <th>Remove</th>
         </tr>
         @foreach (var element in @Model)
         {
@@ -39,8 +48,37 @@
                         @:Undone
                     }
                 </td>
+                <td><input type="submit" style="width:100%; font-family:'Comic Sans MS'" value="Update" /></td>
+                <td>
+                    <form action="/remove/{id}" method="post">
+                        <input type="hidden" name="Id" value="@element.Id" />
+                        <button type="submit" style="width:100%; font-family:'Comic Sans MS'">Remove</button>
+                    </form>
+                </td>
             </tr>
         }
     </table>
+
+    <p style="font-family:'Comic Sans MS'; font-weight: bold; font-size: 16px">want todo</p>
+    <table style="text-align:left; font-family:'Comic Sans MS';" bgcolor="yellow" bordercolor="black">
+        <tr style="text-align:center; color:yellow" bgcolor="black">
+            <th>Add new todo</th>
+        </tr>
+        <tr>
+            <td>
+                <form action="/add" method="post">
+                    <input type="text" style="font-family:'Comic Sans MS'" name=""><br>
+                    <input type="radio" name="urgency" value="urgent" style="text-align: left" checked> Urgent<br>
+                    <input type="radio" name="urgency" value="noturgent" style="text-align: left"> Not urgent<br>
+                    <input type="hidden" name="Todo" value="@Model" /><br>
+                    <input type="submit" value="Add" style="width:100%; font-family:'Comic Sans MS'">
+                </form>
+            </td>
+        </tr>
+    </table>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 </body>
 </html>
