@@ -11,9 +11,8 @@
 </head>
 <body>
     <div class="starter-template">
-        <h1 style="font-family:'Comic Sans MS'">much todo</h1>
-    </div>
-    <p style="font-family:'Comic Sans MS'; font-weight: bold; font-size: 16px">such list</p>
+        <h1 style="font-family:'Comic Sans MS'">such list</h1>
+</div>
     <table style="text-align:center; font-family:'Comic Sans MS';" bgcolor="yellow" bordercolor="black">
         <tr style="color:yellow" bgcolor="black">
             <th>Id</th>
@@ -32,21 +31,21 @@
                     @if (@element.IsUrgent)
                     {
                         @:Urgent
-                    }
+                }
                     else
                     {
                         @:Not urgent
-                    }
+                }
                 </td>
                 <td>
                     @if (@element.IsDone)
                     {
                         @:Done
-                    }
+                }
                     else
                     {
                         @:Undone
-                    }
+                }
                 </td>
                 <td><input type="submit" style="width:100%; font-family:'Comic Sans MS'" value="Update" /></td>
                 <td>
@@ -59,7 +58,9 @@
         }
     </table>
 
-    <p style="font-family:'Comic Sans MS'; font-weight: bold; font-size: 16px">want todo</p>
+    <div class="starter-template">
+        <h1 style="font-family:'Comic Sans MS'">want todo</h1>
+    </div>
     <table style="text-align:left; font-family:'Comic Sans MS';" bgcolor="yellow" bordercolor="black">
         <tr style="text-align:center; color:yellow" bgcolor="black">
             <th>Add new todo</th>
