@@ -6,6 +6,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/StyleSheet.css" />
     <title>such todo app</title>
     <meta name="viewport" http-equiv="Content-Type" content="text/html; width=device-width, initial-scale=1, shrink-to-fit=no; charset=UTF-8" />
 </head>
@@ -13,14 +14,16 @@
     <div class="starter-template">
         <h1 style="font-family:'Comic Sans MS'">want todo</h1>
     </div>
-    <table align="center" style="text-align:left; font-family:'Comic Sans MS';" bgcolor="yellow" bordercolor="black">
+    <table align="center" style="text-align:left; font-family:'Comic Sans MS';" bordercolor="black">
         <tr style="text-align:center; color:yellow" bgcolor="black">
             <th>Add new todo</th>
         </tr>
         <tr>
             <td>
-                <form action="/add" method="post">
+                <form action="/add" method="post" style="background-color:yellow">
+                    <input type="hidden" name="Todo" value="@Model" /><br>
                     <input type="text" style="font-family:'Comic Sans MS'" name=""><br>
+                    <input type="hidden" name="Todo" value="@Model" /><br>
                     <input type="radio" name="urgency" value="urgent" style="text-align: left" checked> Urgent<br>
                     <input type="radio" name="urgency" value="noturgent" style="text-align: left"> Not urgent<br>
                     <input type="hidden" name="Todo" value="@Model" /><br>

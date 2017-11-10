@@ -6,6 +6,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/StyleSheet.css" />
     <title>such todo app</title>
     <meta  name="viewport" http-equiv="Content-Type" content="text/html; width=device-width, initial-scale=1, shrink-to-fit=no; charset=UTF-8" />
 </head>
@@ -13,7 +14,7 @@
     <div class="starter-template">
         <h1 style="font-family:'Comic Sans MS'">much list</h1>
 </div>
-    <table align="center" style="text-align:center; font-family:'Comic Sans MS';" bgcolor="yellow" bordercolor="black">
+    <table align="center" style="text-align:center; font-family:'Comic Sans MS'; background-color:yellow" bordercolor="black">
         <tr style="color:yellow" bgcolor="black">
             <th>Id</th>
             <th>Title</th>
@@ -25,9 +26,9 @@
         @foreach (var element in @Model)
         {
             <tr>
-                <td>@element.Id</td>
-                <td>@element.Title</td>
-                <td>
+                <td class="table-bordered">@element.Id</td>
+                <td class="table-bordered">@element.Title</td>
+                <td class="table-bordered">
                     @if (@element.IsUrgent)
                     {
                         @:Urgent
@@ -37,7 +38,7 @@
                         @:Not urgent
                 }
                 </td>
-                <td>
+                <td class="table-bordered">
                     @if (@element.IsDone)
                     {
                         @:Done
@@ -47,8 +48,10 @@
                         @:Undone
                 }
                 </td>
-                <td><input type="submit" style="width:100%; font-family:'Comic Sans MS'" value="Update" /></td>
-                <td>
+                <td class="table-bordered">
+                    <input type="submit" style="width:100%; font-family:'Comic Sans MS'" value="Update" />
+                </td>
+                <td class="table-bordered">
                     <form action="/remove/{id}" method="post">
                         <input type="hidden" name="Id" value="@element.Id" />
                         <button type="submit" style="width:100%; font-family:'Comic Sans MS'">Remove</button>
