@@ -26,6 +26,13 @@ namespace TodoApp.Controllers
         }
 
         [Route("/add")]
+        [HttpGet]
+        public IActionResult Add()
+        {
+            return View();
+        }
+
+        [Route("/add")]
         [HttpPost]
         public IActionResult Add(string title)
         {

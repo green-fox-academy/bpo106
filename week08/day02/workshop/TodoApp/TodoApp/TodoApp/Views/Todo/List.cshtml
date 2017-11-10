@@ -11,9 +11,9 @@
 </head>
 <body>
     <div class="starter-template">
-        <h1 style="font-family:'Comic Sans MS'">such list</h1>
+        <h1 style="font-family:'Comic Sans MS'">much list</h1>
 </div>
-    <table style="text-align:center; font-family:'Comic Sans MS';" bgcolor="yellow" bordercolor="black">
+    <table align="center" style="text-align:center; font-family:'Comic Sans MS';" bgcolor="yellow" bordercolor="black">
         <tr style="color:yellow" bgcolor="black">
             <th>Id</th>
             <th>Title</th>
@@ -56,26 +56,6 @@
                 </td>
             </tr>
         }
-    </table>
-
-    <div class="starter-template">
-        <h1 style="font-family:'Comic Sans MS'">want todo</h1>
-    </div>
-    <table style="text-align:left; font-family:'Comic Sans MS';" bgcolor="yellow" bordercolor="black">
-        <tr style="text-align:center; color:yellow" bgcolor="black">
-            <th>Add new todo</th>
-        </tr>
-        <tr>
-            <td>
-                <form action="/add" method="post">
-                    <input type="text" style="font-family:'Comic Sans MS'" name=""><br>
-                    <input type="radio" name="urgency" value="urgent" style="text-align: left" checked> Urgent<br>
-                    <input type="radio" name="urgency" value="noturgent" style="text-align: left"> Not urgent<br>
-                    <input type="hidden" name="Todo" value="@Model" /><br>
-                    <input type="submit" value="Add" style="width:100%; font-family:'Comic Sans MS'">
-                </form>
-            </td>
-        </tr>
     </table>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
