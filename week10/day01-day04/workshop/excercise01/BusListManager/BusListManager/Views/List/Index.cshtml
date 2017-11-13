@@ -1,0 +1,43 @@
+﻿@model Microsoft.EntityFrameworkCore.DbSet<BusListManager.Models.Bus>
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Bus list</title>
+</head>
+<body>
+    <h1>Bus list</h1>
+    <table align="center" style="text-align:center">
+        <tr>
+            <td>Id</td>
+            <td>Number</td>
+            <td>Former number</td>
+            <td>License plate</td>
+            <td>Former license plate</td>
+            <td>Type</td>
+            <td>Depot</td>
+            <td>Date of get</td>
+            <td>Date of withdrawal</td>
+            <td>Distance run in km</td>
+            <td>Operational status</td>
+            <td>Comments</td>
+        </tr>
+        @foreach (var element in @Model)
+        {
+            <tr>
+                <td>@element.Id</td>
+                <td>@element.Number</td>
+                <td>@element.FormerNumber</td>
+                <td>@element.LicensePlate</td>
+                <td>@element.FormerLicensePlate</td>
+                <td>@element.Type</td>
+                <td>@element.Depot</td>
+                <td>@element.DateOfGet</td>
+                <td>@element.DateOfWithdrawal</td>
+                <td>@element.Kilometer</td>
+                <td>@element.IsInOperation</td>
+                <td>@element.Comments</td>
+            </tr>
+        }
+    </table>
+</body>
+</html>

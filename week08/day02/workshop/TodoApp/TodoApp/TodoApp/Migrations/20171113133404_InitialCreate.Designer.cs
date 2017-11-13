@@ -8,8 +8,8 @@ using TodoApp.Entities;
 namespace TodoApp.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20171103125515_InitialCreate3")]
-    partial class InitialCreate3
+    [Migration("20171113133404_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
