@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using BusListManager.Repositories;
+using BusListManager.Entities;
 
 namespace BusListManager
 {
@@ -18,6 +19,7 @@ namespace BusListManager
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddDbContext<ListContext>();
             services.AddScoped<ListRepository>();
         }
 

@@ -5,8 +5,8 @@
     <title>Bus list</title>
 </head>
 <body>
-    <h1>Bus list</h1>
-    <table align="center" style="text-align:center">
+    <h1 style="text-align:center">Bus list</h1>
+    <table align="center" style="text-align:center" border="1">
         <tr>
             <td>Id</td>
             <td>Number</td>
@@ -21,7 +21,7 @@
             <td>Operational status</td>
             <td>Comments</td>
         </tr>
-        @foreach (var element in @Model)
+        @*@foreach (var element in @Model)
         {
             <tr>
                 <td>@element.Id</td>
@@ -37,7 +37,7 @@
                 <td>@element.IsInOperation</td>
                 <td>@element.Comments</td>
             </tr>
-        }
+        }*@
     </table>
 </body>
 </html>
