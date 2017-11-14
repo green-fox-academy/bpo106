@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using BusListManager.Repositories;
-
-// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+using BusListManager.Models;
 
 namespace BusListManager.Controllers
 {
@@ -16,9 +15,48 @@ namespace BusListManager.Controllers
 
         [Route("/")]
         [Route("/list")]
+        [HttpGet]
         public IActionResult List()
         {
+            return View(listRepository.listContext.List);
+        }
+
+        [Route("/add")]
+        [HttpGet]
+        public IActionResult Add()
+        {
             return View();
+        }
+
+        [Route("/add")]
+        [HttpPost]
+        public IActionResult Add(Bus bus)
+        {
+            listRepository.AddRow(bus);
+            return RedirectToAction("List");
+        }
+
+        [Route("/remove/{id}")]
+        [HttpPost]
+        public IActionResult Remove(int id)
+        {
+            listRepository.RemoveRow(id);
+            return RedirectToAction("List");
+        }
+
+        [Route("/update/{id}")]
+        [HttpGet]
+        public IActionResult Update()
+        {
+            return View();
+        }
+
+        [Route("/update/{id}")]
+        [HttpPost]
+        public IActionResult Update(int id, Bus bus)
+        {
+            listRepository.UpdateRow(id, bus);
+            return RedirectToAction("List");
         }
     }
 }

@@ -1,8 +1,8 @@
 ﻿CREATE TABLE [dbo].[List] (
     [Id]                 INT            IDENTITY (1, 1) NOT NULL,
     [Comments]           NVARCHAR (MAX) NULL,
-    [DateOfGet]          DATETIME2 (7)  NOT NULL,
-    [DateOfWithdrawal]   DATETIME2 (7)  NOT NULL,
+    [DateOfGet]          NVARCHAR (MAX)  NOT NULL,
+    [DateOfWithdrawal]   NVARCHAR (MAX)  NULL,
     [Depot]              NVARCHAR (MAX) NOT NULL,
     [FormerLicensePlate] NVARCHAR (MAX) NULL,
     [FormerNumber]       INT            NULL,
