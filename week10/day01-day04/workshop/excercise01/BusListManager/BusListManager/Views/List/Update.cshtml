@@ -1,0 +1,27 @@
+﻿@model BusListManager.Models.Bus
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Update bus</title>
+</head>
+<body>
+    <h1 style="text-align:center">Update bus</h1>
+    <div>
+        <h1>Update bus</h1>
+        <div>
+            @using (Html.BeginForm("Update", "List"))
+            {
+                <p><input type="hidden" name="Id" value="@Model.Id" /></p>
+                <p>License Plate @Html.TextBoxFor(model => model.LicensePlate)</p>
+                <p>Type @Html.TextBoxFor(model => model.Type)</p>
+                <p>Depot @Html.TextBoxFor(model => model.Depot)</p>
+                <p>Date of get @Html.TextBoxFor(model => model.DateOfGet)</p>
+                <div>
+                    <button type="submit">Update</button>
+                    <button>@Html.ActionLink("Cancel", "List", "Todo")</button>
+                </div>
+            }
+        </div>
+    </div>
+</body>
+</html>

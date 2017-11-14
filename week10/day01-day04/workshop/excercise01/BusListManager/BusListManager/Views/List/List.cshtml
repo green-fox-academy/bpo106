@@ -46,7 +46,10 @@
                 </td>
                 <td>@element.Comments</td>
                 <td>
-                    <input type="submit" style="width:100%" value="Update" />
+                    <form action="/update/{id}" method="post">
+                        <input type="hidden" name="Id" value="@element.Id" />
+                        <button type="submit" style="width:100%">Update</button>
+                    </form>
                 </td>
                 <td>
                     <form action="/remove/{id}" method="post">

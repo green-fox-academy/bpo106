@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using BusListManager.Repositories;
 using BusListManager.Models;
+using System;
+using System.Linq;
 
 namespace BusListManager.Controllers
 {
@@ -44,18 +46,21 @@ namespace BusListManager.Controllers
             return RedirectToAction("List");
         }
 
-        [Route("/update/{id}")]
+        [Route("/list/update/{id}")]
         [HttpGet]
-        public IActionResult Update()
+        public IActionResult Update([FromQuery] string Id)
         {
-            return View();
+            int id = int.Parse(Id);
+            var bus = listRepository.Id(id);
+            return View(bus);
         }
 
         [Route("/update/{id}")]
         [HttpPost]
-        public IActionResult Update(int id, Bus bus)
+        public IActionResult Update(Bus bus)
         {
-            listRepository.UpdateRow(id, bus);
+
+            listRepository.UpdateRow(bus);
             return RedirectToAction("List");
         }
     }

@@ -13,6 +13,11 @@ namespace BusListManager.Repositories
             this.listContext = listContext;
         }
 
+        public void Id()
+        {
+
+        }
+
         public void AddRow(Bus bus)
         {
             listContext.List.Add(bus);
@@ -25,14 +30,15 @@ namespace BusListManager.Repositories
             listContext.SaveChanges();
         }
 
-        public void UpdateRow(int id, Bus bus)
+        public Bus Id(int id)
         {
-            foreach (var x in listContext.List.Where(x => x.Id == id))
-            {
-                x.Id = bus.Id;
-                x.Number = bus.Number;
-                x.FormerNumber = bus.FormerNumber;
-            }
+            return listContext.List.FirstOrDefault(x => x.Id == id);
+        }
+
+        public void UpdateRow(Bus bus)
+        {
+            listContext.List.Update(bus);
+            listContext.SaveChanges();
         }
     }
 }
