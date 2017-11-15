@@ -55,25 +55,10 @@ namespace BusListManager.Controllers
 
         [HttpPost("{id}")]
         [Route("/list/update")]
-        public IActionResult Update(int id, [FromBody] Bus newBus)
+        public IActionResult UpdateRow(Bus newBus)
         {
-            var bus = listRepository.listContext.List.Where(t => t.Id == id).FirstOrDefault();
-
-            bus.Number = newBus.Number;
-            bus.FormerNumber = newBus.FormerNumber;
-            bus.LicensePlate = newBus.LicensePlate;
-            bus.FormerLicensePlate = newBus.FormerLicensePlate;
-            bus.Type = newBus.Type;
-            bus.Depot = newBus.Depot;
-            bus.DateOfGet = newBus.DateOfGet;
-            bus.DateOfWithdrawal = newBus.DateOfWithdrawal;
-            bus.Kilometer = newBus.Kilometer;
-            bus.IsInOperation = newBus.IsInOperation;
-            bus.Comments = newBus.Comments;
-
-            listRepository.Update(bus);
-
-            return RedirectToAction("List", new { id = bus.Id });
+            listRepository.Update(newBus);
+            return RedirectToAction("List");
         }
     }
 }
