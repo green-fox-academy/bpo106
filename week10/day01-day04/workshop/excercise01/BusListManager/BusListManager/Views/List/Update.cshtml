@@ -6,22 +6,50 @@
 </head>
 <body>
     <h1 style="text-align:center">Update bus</h1>
-    <div>
-        <h1>Update bus</h1>
-        <div>
-            @using (Html.BeginForm("Update", "List"))
-            {
-                <p><input type="hidden" name="Id" value="@Model.Id" /></p>
-                <p>License Plate @Html.TextBoxFor(model => model.LicensePlate)</p>
-                <p>Type @Html.TextBoxFor(model => model.Type)</p>
-                <p>Depot @Html.TextBoxFor(model => model.Depot)</p>
-                <p>Date of get @Html.TextBoxFor(model => model.DateOfGet)</p>
-                <div>
-                    <button type="submit">Update</button>
-                    <button>@Html.ActionLink("Cancel", "List", "Todo")</button>
-                </div>
-            }
-        </div>
+
+    <div style="text-align:center">
+
+        @using (Html.BeginForm("Update", "List"))
+        {
+            <table align="center" style="text-align:center" border="1">
+                <tr>
+                    <td>Number</td>
+                    <td>Prev. number</td>
+                    <td>License plate</td>
+                    <td>Prev. lic. pl.</td>
+                    <td>Type</td>
+                    <td>Depot</td>
+                </tr>
+                <tr>
+                    <td>@Html.TextBoxFor(model => model.Number)</td>
+                    <td>@Html.TextBoxFor(model => model.FormerNumber)</td>
+                    <td>@Html.TextBoxFor(model => model.LicensePlate)</td>
+                    <td>@Html.TextBoxFor(model => model.FormerLicensePlate)</td>
+                    <td>@Html.TextBoxFor(model => model.Type)</td>
+                    <td>@Html.TextBoxFor(model => model.Depot)</td>
+                </tr>
+                <tr>
+                    <td>Date of get</td>
+                    <td>Date of withdrawal</td>
+                    <td>Distance (km)</td>
+                    <td>Op. status</td>
+                    <td>Comments</td>
+                    <td>Update</td>
+                </tr>
+                <tr>
+                    <td>@Html.TextBoxFor(model => model.DateOfGet)</td>
+                    <td>@Html.TextBoxFor(model => model.DateOfWithdrawal)</td>
+                    <td>@Html.TextBoxFor(model => model.Kilometer)</td>
+                    <td>@Html.TextBoxFor(model => model.IsInOperation)</td>
+                    <td>@Html.TextBoxFor(model => model.Comments)</td>
+                    <td>
+                        <input class="button" type="submit" value="Save">
+                        @*<input type="button" value="Save" onclick="@("window.location.href='" + @Url.Action("List", "ListController") + "'");" />*@
+                    </td>
+                </tr>
+            </table>
+        }
+
     </div>
 </body>
 </html>

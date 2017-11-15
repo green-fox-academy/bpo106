@@ -23,45 +23,57 @@ namespace BusListManager.Controllers
             return View(listRepository.listContext.List);
         }
 
-        [Route("/add")]
         [HttpGet]
+        [Route("/add")]
         public IActionResult Add()
         {
             return View();
         }
 
-        [Route("/add")]
         [HttpPost]
+        [Route("/add")]
         public IActionResult Add(Bus bus)
         {
             listRepository.AddRow(bus);
             return RedirectToAction("List");
         }
 
-        [Route("/remove/{id}")]
-        [HttpPost]
+        [HttpPost("{id}")]
+        [Route("/remove")]
         public IActionResult Remove(int id)
         {
             listRepository.RemoveRow(id);
             return RedirectToAction("List");
         }
 
-        [Route("/list/update/{id}")]
-        [HttpGet]
-        public IActionResult Update([FromQuery] string Id)
+        [HttpGet("{id}")]
+        [Route("/update")]
+        public IActionResult Update([FromQuery] int Id)
         {
-            int id = int.Parse(Id);
-            var bus = listRepository.Id(id);
-            return View(bus);
+            return View(listRepository.listContext.List.Where(x => x.Id == Id).FirstOrDefault());
         }
 
-        [Route("/update/{id}")]
-        [HttpPost]
-        public IActionResult Update(Bus bus)
+        [HttpPost("{id}")]
+        [Route("/list/update")]
+        public IActionResult Update(int id, [FromBody] Bus newBus)
         {
+            var bus = listRepository.listContext.List.Where(t => t.Id == id).FirstOrDefault();
 
-            listRepository.UpdateRow(bus);
-            return RedirectToAction("List");
+            bus.Number = newBus.Number;
+            bus.FormerNumber = newBus.FormerNumber;
+            bus.LicensePlate = newBus.LicensePlate;
+            bus.FormerLicensePlate = newBus.FormerLicensePlate;
+            bus.Type = newBus.Type;
+            bus.Depot = newBus.Depot;
+            bus.DateOfGet = newBus.DateOfGet;
+            bus.DateOfWithdrawal = newBus.DateOfWithdrawal;
+            bus.Kilometer = newBus.Kilometer;
+            bus.IsInOperation = newBus.IsInOperation;
+            bus.Comments = newBus.Comments;
+
+            listRepository.Update(bus);
+
+            return RedirectToAction("List", new { id = bus.Id });
         }
     }
 }

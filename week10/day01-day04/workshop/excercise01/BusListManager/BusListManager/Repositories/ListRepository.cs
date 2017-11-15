@@ -26,16 +26,11 @@ namespace BusListManager.Repositories
 
         public void RemoveRow(int id)
         {
-            listContext.List.Remove(listContext.List.FirstOrDefault(x => x.Id == id));
+            listContext.List.Remove(listContext.List.FirstOrDefault(t => t.Id == id));
             listContext.SaveChanges();
         }
 
-        public Bus Id(int id)
-        {
-            return listContext.List.FirstOrDefault(x => x.Id == id);
-        }
-
-        public void UpdateRow(Bus bus)
+        public void Update(Bus bus)
         {
             listContext.List.Update(bus);
             listContext.SaveChanges();
