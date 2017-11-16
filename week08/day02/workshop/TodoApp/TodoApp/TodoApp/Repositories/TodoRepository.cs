@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using TodoApp.Entities;
 using TodoApp.Models;
 
@@ -25,6 +22,12 @@ namespace TodoApp.Repositories
         public void RemoveRow(int id)
         {
             context.Todos.Remove(context.Todos.FirstOrDefault(x => x.Id == id));
+            context.SaveChanges();
+        }
+
+        public void Update(Todo todo)
+        {
+            context.Todos.Update(todo);
             context.SaveChanges();
         }
     }

@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using BusListManager.Repositories;
 using BusListManager.Models;
-using System;
 using System.Linq;
 
 namespace BusListManager.Controllers

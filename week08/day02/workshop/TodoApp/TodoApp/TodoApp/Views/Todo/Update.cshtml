@@ -9,26 +9,34 @@
     <link rel="stylesheet" href="~/css/StyleSheet.css" />
     <title>such todo app</title>
     <meta name="viewport" http-equiv="Content-Type" content="text/html; width=device-width, initial-scale=1, shrink-to-fit=no; charset=UTF-8" />
+
 </head>
 <body>
-    <div class="starter-template">
-        <h1 style="font-family:'Comic Sans MS'">want todo</h1>
+    <h1 style="font-family:'Comic Sans MS'">update todo</h1>
+
+    <div style="text-align:center">
+
+        @using (Html.BeginForm("UpdateRow", "Todo"))
+        {
+            <input type="hidden" name="Id" value="@Model.Id" />
+            <table align="center" style="text-align:center; font-family:'Comic Sans MS';" bordercolor="black">
+                <tr style="text-align:center; color:yellow" bgcolor="black">
+                    <th style="text-align:center">much title</th>
+                    <th style="text-align:center">so urgent</th>
+                    <th style="text-align:center">such status</th>
+                    <th style="text-align:center">wow</th>
+                </tr>
+                <tr style="background-color: yellow">
+                    <td>@Html.TextBoxFor(model => model.Title)</td>
+                    <td>@Html.CheckBoxFor(model => model.IsUrgent)</td>
+                    <td>@Html.CheckBoxFor(model => model.IsDone)</td>
+                    <td>
+                        <input class="button" type="submit" style="width:200px; font-family:'Comic Sans MS'" value="update todo">
+                    </td>
+                </tr>
+            </table>
+        }
     </div>
-    @using (Html.BeginForm("Add", "Todo"))
-    {
-        <table align="center" style="text-align:center; font-family:'Comic Sans MS';" bordercolor="black">
-            <tr style="text-align:center; color:yellow" bgcolor="black">
-                <th style="text-align:center">such todo</th>
-                <th style="text-align:center">so urgent</th>
-                <th style="text-align:center">much button push</th>
-            </tr>
-            <tr style="background-color: yellow">
-                <td>@Html.TextBoxFor(model => model.Title)</td>
-                <td>@Html.CheckBoxFor(model => model.IsUrgent)</td>
-                <td><input class="button" type="submit" style="width:200px; font-family:'Comic Sans MS'" value="give doge todo"></td>
-            </tr>
-        </table>
-    }
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>

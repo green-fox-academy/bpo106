@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using TodoApp.Repositories;
 using TodoApp.Models;
@@ -34,19 +31,32 @@ namespace TodoApp.Controllers
 
         [Route("/add")]
         [HttpPost]
-        public IActionResult Add(string title)
+        public IActionResult Add(Todo todo)
         {
-            var todo = new Todo();
-            todo.Title = title;
             todoRepository.AddRow(todo);
             return RedirectToAction("List");
         }
 
-        [Route("/remove/{id}")]
-        [HttpPost]
+        [HttpPost("{id}")]
+        [Route("/remove")]
         public IActionResult Remove(int id)
         {
             todoRepository.RemoveRow(id);
+            return RedirectToAction("List");
+        }
+
+        [HttpGet("{id}")]
+        [Route("/update")]
+        public IActionResult Update([FromQuery] int Id)
+        {
+            return View(todoRepository.context.Todos.Where(x => x.Id == Id).FirstOrDefault());
+        }
+
+        [HttpPost("{id}")]
+        [Route("/list/update")]
+        public IActionResult UpdateRow(Todo todo)
+        {
+            todoRepository.Update(todo);
             return RedirectToAction("List");
         }
     }
