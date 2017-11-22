@@ -19,14 +19,14 @@ namespace CounterApp.Controllers
         }
 
         [HttpGet]
-        [Route("index")]
+        [Route("/")]
         public IActionResult Index()
         {
             return View(counter);
         }
 
         [HttpPost]
-        [Route("index")]
+        [Route("/")]
         public IActionResult Increase()
         {
             counter.Raise();
