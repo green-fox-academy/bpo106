@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace BankOfSimba.Models
 {
@@ -16,21 +14,24 @@ namespace BankOfSimba.Models
             new BankAccount { Name = "LionVersionOfAnonymous", Balance = "100.00", AnimalType = "Lion", IsKing = false, IsGood = true }
         };
 
-        public void Increase()
+        public void Increase(string name)
         {
-            foreach (BankAccount account in list)
+            for (int i = 0; i < list.Count; i++)
             {
-                int integer = Int32.Parse(account.Balance.Substring(0, account.Balance.Length - 3));
-                if (account.IsKing)
+                if (name == list[i].Name)
                 {
-                    integer += 100;
+                    int integer = Int32.Parse(list[i].Balance.Substring(0, list[i].Balance.Length - 3));
+                    if (list[i].IsKing)
+                    {
+                        integer += 100;
+                    }
+                    else
+                    {
+                        integer += 10;
+                    }
+                    list[i].Balance = integer.ToString() + ".00";
+                    list[i].IsGood = false;
                 }
-                else
-                {
-                    integer += 10;
-                }
-                account.Balance = integer.ToString() + ".00";
-                account.IsGood = false;
             }
         }
     }

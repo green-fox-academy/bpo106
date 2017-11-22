@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using BankOfSimba.Models;
-
-// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace BankOfSimba.Controllers
 {
@@ -40,11 +34,11 @@ namespace BankOfSimba.Controllers
             return View(list.list);
         }
 
-        [HttpPost]
-        [Route("allclients")]
-        public IActionResult Increase()
+        [HttpPost("{name}")]
+        [Route("increase")]
+        public IActionResult Increase(string name)
         {
-            //list[0].Change();
+            list.Increase(name);
             return RedirectToAction("Index2");
         }
     }

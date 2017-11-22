@@ -30,7 +30,14 @@
                     <td>@element.AnimalType</td>
                     <td>@(element.IsKing ? "King" : "")</td>
                     <td>@(element.IsGood ? "Good One" : "Bad Guy")</td>
-                    <td><input type="submit" style="width:100%" value="Steal some" /></td>
+                    <td>
+                        <form action="/increase" method="post">
+                            <input type="hidden" name="name" value="@element.Name" />
+                            <button type="submit" style="width:100%; font-family:'Comic Sans MS'">Steal some</button>
+                        </form>
+
+                        
+                    </td>
                 </tr>
             }
         </table>
