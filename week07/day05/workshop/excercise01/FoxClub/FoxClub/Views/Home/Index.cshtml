@@ -1,0 +1,35 @@
+﻿@model FoxClub.Models.Fox
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>FoxClub</title>
+</head>
+<body>
+    <ul>
+        <li><a href="/">Information</a></li>
+    </ul>
+    <img src="/Images/greenfox.png" />
+    <span>This is Mr. Fox. Currently living on @Model.Food and @Model.Drink. He knows @Model.Tricks.Count </span>
+    @if (Model.Tricks.Count == 1) {
+        <span>trick.</span>
+    }
+    else {
+        <span>tricks.</span>
+    }
+    <h1>Known tricks</h1>
+    @if (Model.Tricks.Count == 0)
+    {
+        <p>You know no tricks yet. Go learn some.</p>
+    }
+    else
+    {
+        <ul>
+            @foreach (FoxClub.Models.Trick element in Model.Tricks)
+            {
+                <li>@element</li>
+            }
+        </ul>
+    }
+</body>
+</html>
