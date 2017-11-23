@@ -1,0 +1,41 @@
+﻿@model FoxClub.Models.Fox
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Nutrition store</title>
+</head>
+<body>
+    <ul>
+        <li><a href="/">Main Page</a></li>
+        <li><a href="/nutritionstore">Nutrition store</a></li>
+    </ul>
+    <div>
+        <form action="/nutritionstore" method="post">
+            <div>
+                <span>Food: </span>
+                <span>
+                    <select>
+                        @foreach (var option in Enum.GetValues(typeof(FoxClub.Models.Food)))
+                        {
+                            <option>@option</option>
+                        }
+                    </select>
+                </span>
+                <span>Drink: </span>
+                <span>
+                    <select>
+                        @foreach (var option in Enum.GetValues(typeof(FoxClub.Models.Drink)))
+                        {
+                            <option>@option</option>
+                        }
+                    </select>
+                </span>
+            </div>
+            <div>
+                <input type="submit" value="Update food and drink" />
+            </div>
+        </form>
+    </div>
+</body>
+</html>

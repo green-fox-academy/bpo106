@@ -22,5 +22,19 @@ namespace FoxClub.Controllers
         {
             return View(fox);
         }
+
+        [HttpGet]
+        [Route("/nutritionstore")]
+        public IActionResult NutritionStore(Fox fox)
+        {
+            return View(fox);
+        }
+
+        [HttpPost]
+        [Route("/nutritionstore")]
+        public IActionResult NutritionChange(Fox fox)
+        {
+            return RedirectToAction("Index");
+        }
     }
 }
