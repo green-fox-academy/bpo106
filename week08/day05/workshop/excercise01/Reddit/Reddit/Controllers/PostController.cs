@@ -41,12 +41,13 @@ namespace Reddit.Controllers
             return RedirectToAction("Posts");
         }
 
-        [HttpPost("{id}")]
-        [Route("/vote")]
-        public IActionResult Vote(int Id)
+        [HttpGet]
+        [Route("/vote/{Id}/{Vote}")]
+        public IActionResult Vote(int Id, string Vote)
         {
-            postRepository.Change(Id, true);
-            return RedirectToAction("Posts");
+            bool IsIncr = Vote == "up" ? true : false;
+            postRepository.Change(Id, IsIncr);
+            return View("Posts", postRepository.ListPosts());
         }
     }
 }

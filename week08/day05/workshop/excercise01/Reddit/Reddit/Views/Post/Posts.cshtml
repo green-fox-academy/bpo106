@@ -15,22 +15,14 @@
                 <th>Actions</th>
                 <th>Content</th>
             </tr>
-            @foreach (Reddit.Models.Post element in Model)
+            @foreach (var element in Model)
             {
                 <tr>
                     <td>@element.Score</td>
                     <td>
-                        @using (Html.BeginForm("Vote", "Post"))
-                        {
-                            <input type="hidden" name="Id" value="@element.Id" />
-                            <input type="submit" name="+" value="+" />
-                        }
+                        <a href="/vote/@element.Id/up">+</a>
                         <span>/</span>
-                        @using (Html.BeginForm("Vote", "Post"))
-                        {
-                            <input type="hidden" name="Id" value="@element.Id" />
-                            <input type="submit" name="-" value="-" />
-                        }
+                        <a href="/vote/@element.Id/down">-</a>
                     </td>                 
                     <td>@element.Content</td>
                 </tr>
