@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Frontend.Models;
 
-// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace Frontend.Controllers
 {
     public class HomeController : Controller
@@ -91,7 +89,7 @@ namespace Frontend.Controllers
             int konets = array.array[0];
             if (array.array.Length == 1)
             {
-                return Json(new { what = what, result = konets });
+                return Json(new { result = konets });
             }
             for (int i = 1; i < array.array.Length; i++)
             {
