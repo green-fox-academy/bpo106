@@ -10,11 +10,19 @@
     <h1>Posts</h1>
     <form>
         <table>
-            <tr>
+            <tr align="left">
                 <th>SCORE</th>
                 <th>Actions</th>
                 <th>Content</th>
             </tr>
+            @foreach (Reddit.Models.Post element in Model)
+            {
+                <tr>
+                    <td>@element.Score</td>
+                    <td>Upvote/downvote</td>
+                    <td>@element.Content</td>
+                </tr>
+            }
         </table>
     </form>
 </body>
