@@ -1,10 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RandomProject.Models;
 using RandomProject.Repositories;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace RandomProject.Controllers
 {
@@ -42,7 +39,6 @@ namespace RandomProject.Controllers
                     return View(new List<Car>());
                 }
             }
-            return View();
         }
 
         [HttpGet]
