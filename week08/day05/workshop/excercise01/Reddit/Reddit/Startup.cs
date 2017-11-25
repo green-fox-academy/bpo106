@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using Reddit.Entities;
+using Reddit.Repositories;
 
 namespace Reddit
 {
@@ -14,7 +15,7 @@ namespace Reddit
         {
             services.AddMvc();
             services.AddDbContext<PostContext>(options => options.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Reddit;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;"));
-            //services.AddScoped<PostRepository>();
+            services.AddScoped<PostRepository>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
