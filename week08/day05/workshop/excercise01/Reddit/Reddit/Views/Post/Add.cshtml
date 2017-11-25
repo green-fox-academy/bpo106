@@ -8,8 +8,7 @@
 <body>
     @using (Html.BeginForm("Add", "Post"))
     {
-        <p>Add new content:</p>
-        <p>@Html.TextBoxFor(model => model.Content)</p>
+        <p>Content: @Html.TextBoxFor(model => model.Content)</p>
         <p><input class="button" type="submit" value="Submit" /></p>
     }
 </body>

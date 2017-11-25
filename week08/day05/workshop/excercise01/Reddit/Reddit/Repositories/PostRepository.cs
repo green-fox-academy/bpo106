@@ -24,5 +24,11 @@ namespace Reddit.Repositories
             postContext.Add(post);
             postContext.SaveChanges();
         }
+
+        public void Change (int Id, bool IsIncrement)
+        {
+            postContext.Posts.Where(x => x.Id == Id).FirstOrDefault().ChangeScore(IsIncrement);
+            postContext.SaveChanges();
+        }
     }
 }

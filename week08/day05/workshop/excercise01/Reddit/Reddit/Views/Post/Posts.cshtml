@@ -19,7 +19,19 @@
             {
                 <tr>
                     <td>@element.Score</td>
-                    <td>+/-</td>
+                    <td>
+                        @using (Html.BeginForm("Vote", "Post"))
+                        {
+                            <input type="hidden" name="Id" value="@element.Id" />
+                            <input type="submit" name="+" value="+" />
+                        }
+                        <span>/</span>
+                        @using (Html.BeginForm("Vote", "Post"))
+                        {
+                            <input type="hidden" name="Id" value="@element.Id" />
+                            <input type="submit" name="-" value="-" />
+                        }
+                    </td>                 
                     <td>@element.Content</td>
                 </tr>
             }

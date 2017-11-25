@@ -40,5 +40,13 @@ namespace Reddit.Controllers
             postRepository.Add(post);
             return RedirectToAction("Posts");
         }
+
+        [HttpPost("{id}")]
+        [Route("/vote")]
+        public IActionResult Vote(int Id)
+        {
+            postRepository.Change(Id, true);
+            return RedirectToAction("Posts");
+        }
     }
 }
