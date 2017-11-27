@@ -10,8 +10,7 @@ namespace RedditBackend.Controllers
 {
     public class PostController : Controller
     {
-        // GET: /<controller>/
-        public IActionResult Index()
+        public IActionResult Posts()
         {
             return View();
         }
