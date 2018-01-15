@@ -13,8 +13,8 @@ The student, on their own, is able to:
  -  Use git:
      -  Resolving a simple merge conflict (<<<< >>>>)
      -  Creating a pull request (new pull request stb.)
- -  Understand API documentation
- -  Understand token based authorization (JWT, stb.)
+ -  Understand API documentation (temp. glitch-based JSON)
+ -  Understand token based authorization (role, future plans)
  -  Refactor code: [(live refactorable content)](https://github.com/bpo106/fedex)
      -  Create meaningful names for methods, classes and variables
      -  Split bigger functions to smaller ones
