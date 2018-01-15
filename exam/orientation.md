@@ -21,7 +21,7 @@
 ## 3rd party libraries
 
 - able to add and use libraries (add reference, using, stb.)
-- find documentation and usage examples
+- find documentation and usage examples [(related content)](https://github.com/greenfox-academy/bpo106/tree/master/week09/day02/workshop/excercise01/Frontend)
 
 ## Backend Framework
 
