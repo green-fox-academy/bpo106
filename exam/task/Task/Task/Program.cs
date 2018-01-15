@@ -37,6 +37,7 @@ namespace Task
 
         static void Main(string[] args)
         {
+            //Just to see if it works
             string s = "asdasdasd";
             Console.WriteLine(s);
             Console.WriteLine(Reverse(s));
