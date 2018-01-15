@@ -22,7 +22,7 @@ The student, on their own, is able to:
      -  Point out code smells
  -  Understand base concept of hosting (servers, stb.)
  -  Deployment and continuous integration (commits, tests, parallel developing, merging, stb.)
- -  Using design patterns (e.g. DI)
+ -  Using design patterns (e.g. MVC/DI)
  -  Integration testing
  -  Differentiate between backend and frontend (client) functionality
 
