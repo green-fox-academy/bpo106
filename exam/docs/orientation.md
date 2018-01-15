@@ -14,7 +14,7 @@
 
 ## Build tool
 
-- use build tools to build and run your applications e.g. gradle/.Net CLI (dotnet build stb.)
+- use build tools to build and run your applications e.g. gradle/.Net CLI
 - dependency definition
 - able to restore 3rd party library dependencies
 
