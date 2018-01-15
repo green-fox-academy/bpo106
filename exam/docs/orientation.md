@@ -55,8 +55,8 @@
 - parts of the URL [(related content)](https://doepud.co.uk/images/blogs/complex_url.png)
 - endpoint
 - HTTP
-  - Requests (GET url stb.)
-  - Response (status codes)
+  - Requests (GET url date server content-type)
+  - Response (status codes + <content>)
   - methods (GET POST PUT stb.)
 - headers
 - body
