@@ -2,7 +2,7 @@
 
 ## Accomplishments
 
- -  Significant contribution to the team project
+ -  Significant contribution to the team project [(related content)](https://github.com/greenfox-academy/huli-review-helper/)
  -  High understanding of project structure
 
 ## Skills
@@ -11,67 +11,28 @@
 
 The student, on their own, is able to:
  -  Use git:
-     -  Resolving a simple merge conflict
-     -  Creating a pull request
+     -  Resolving a simple merge conflict (<<<< >>>>)
+     -  Creating a pull request (new pull request stb.)
  -  Understand API documentation
- -  Understand token based authorization
- -  Refactor code:
+ -  Understand token based authorization (JWT, stb.)
+ -  Refactor code: [(live refactorable content)](https://github.com/bpo106/fedex)
      -  Create meaningful names for methods, classes and variables
      -  Split bigger functions to smaller ones
      -  Separate functionalities to different files
      -  Point out code smells
- -  Understand base concept of hosting
- -  Deployment and continuous integration
- -  Using design patterns
+ -  Understand base concept of hosting (servers, stb.)
+ -  Deployment and continuous integration (commits, tests, parallel developing, merging, stb.)
+ -  Using design patterns (e.g. DI)
  -  Integration testing
  -  Differentiate between backend and frontend (client) functionality
 
 
 **Choose one from below:**
 
-### Backend
-
- -  Use async structures:
-     -  Writing functions that are taking and calling callbacks
-     -  Determining the calling order in nested callbacks
- -  Authentication:
-     -  Handle authentication
-     -  Handle token based authorization
- -  Database
-     - Using complex data structures
-     - Understanding and using table connections
-     - Understanding migration 
-
-### Fullstack
-
- -  Use async structures:
-     -  Writing functions that are taking and calling callbacks
-     -  Determining the calling order in nested callbacks
- -  Understanding and using rich web application framework:
-     -  Components, configuration, dependencies, extensions
-     -  Handle Authentication
-
-### Mobile
-
- -  Use async structures:
-     -  Writing functions that are taking and calling callbacks
- -  Understanding and using mobile framework:
-     -  Components, configuration, dependencies, extensions
- -  Designing multiple screens
- -  Handling authorized communication with backend
-
-### DevOps
-
- -  Understanding the purpose of Docker containers
- -  Understanding the purpose and mechanism of monitoring tools
- -  AWS
-     -  Difference between EC2 and EBS
-     -  Purpose of S3
-
 ### Frontend
 
  -  Understanding frontend framework:
-     -  Components, configuration, dependencies, extensions, routing
-     -  Reusable components and screen parts
- -  Rich DOM manipulation
- -  Handle Authentication
+     -  Components, configuration, dependencies, extensions, routing [(related content)](https://github.com/greenfox-academy/huli-review-helper/tree/develop/src)
+     -  Reusable components and screen parts [(related content)](https://github.com/greenfox-academy/huli-review-helper/blob/develop/src/app/Suggestion.js)
+ -  Rich DOM manipulation [(related content)](https://github.com/greenfox-academy/huli-review-helper/blob/develop/src/app/index.js)
+ -  Handle Authentication (?)
